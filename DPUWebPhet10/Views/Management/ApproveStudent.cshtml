@@ -1,0 +1,69 @@
+﻿@model DPUWebPhet10.Models.TB_APPLICATION_STUDENT
+@{
+    Layout = "~/Views/Shared/_Managementlayout.cshtml";
+}
+@{
+    <div class="full_w">
+        <div class="h_title">
+            Manage pages - พิจารณาอนุมัตินักเรียน/นักศึกษา</div>
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(model => model.STD_ID)
+            @Html.HiddenFor(model => model.STD_EMAIL)
+            @Html.HiddenFor(model => model.STD_GRADE)
+            @Html.HiddenFor(model => model.STD_ID_CARD)
+            @Html.HiddenFor(model => model.STD_LEVEL_ID)		
+            @Html.HiddenFor(model => model.STD_NAME)
+            @Html.HiddenFor(model => model.STD_PASSPORT_ID)
+            @Html.HiddenFor(model => model.STD_PHONE)
+            @Html.HiddenFor(model => model.STD_PHONE_PROVIDER)
+            @Html.HiddenFor(model => model.STD_PICTURE_PATH)
+            @Html.HiddenFor(model => model.STD_SCHOOL_ID)
+            @Html.HiddenFor(model => model.STD_SURNAME)
+            @Html.HiddenFor(model => model.STD_TITLE_ID)
+
+
+                
+
+            <p>
+                @Html.DropDownList("STD_APPROVED_STATUS", String.Empty)
+            </p>
+
+
+
+                
+            <!-- Form Buttons -->
+            <div class="entry">
+                <div class="sep">
+                </div>
+                <button type="submit" class="button edit">
+                    บันทึก</button>
+                @Html.ActionLink("ย้อนกลับ", "ApproveStudentList", new { id = Model.STD_SCHOOL_ID }, new { @class = "button" })
+                @if (ViewBag.ResultMsg != null)
+                {
+
+                    <div class="n_ok">
+                        <p>
+                            @ViewBag.ResultMsg
+                        </p>
+                    </div>
+
+                }
+            </div>
+            <!-- End Form Buttons -->
+        }
+    </div>  
+    
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+
+
+        });
+    </script>
+}

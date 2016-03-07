@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="31deeee7aaa1435eaaddcee858e09ae3" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.TB_APPLICATION" Width="1.5" PointX="0.75" PointY="1.875" />
+        <EntityTypeShape EntityType="Model.TB_APPLICATION_SCHOOL" Width="1.5" PointX="8" PointY="7.125" />
+        <EntityTypeShape EntityType="Model.TB_APPLICATION_STAFF" Width="1.5" PointX="13.25" PointY="8.875" />
+        <EntityTypeShape EntityType="Model.TB_APPLICATION_STUDENT" Width="1.5" PointX="10.25" PointY="8" />
+        <EntityTypeShape EntityType="Model.TB_COMMITEE" Width="1.5" PointX="13.25" PointY="25.25" />
+        <EntityTypeShape EntityType="Model.TB_COMMITEE_ROOM" Width="1.5" PointX="15.5" PointY="2.625" />
+        <EntityTypeShape EntityType="Model.TB_CONCERN" Width="1.5" PointX="2.75" PointY="1.875" />
+        <EntityTypeShape EntityType="Model.TB_EXAM_ABSENT" Width="1.5" PointX="2.75" PointY="3.875" />
+        <EntityTypeShape EntityType="Model.TB_EXAM_ANOUNCE" Width="1.5" PointX="4.75" PointY="1.875" />
+        <EntityTypeShape EntityType="Model.TB_M_AMPHUR" Width="1.5" PointX="3.5" PointY="16.875" />
+        <EntityTypeShape EntityType="Model.TB_M_BUILDING" Width="1.5" PointX="11" PointY="2.75" />
+        <EntityTypeShape EntityType="Model.TB_M_DISTRICT" Width="1.5" PointX="5.75" PointY="16.875" />
+        <EntityTypeShape EntityType="Model.TB_M_LEVEL" Width="1.5" PointX="8" PointY="3.875" />
+        <EntityTypeShape EntityType="Model.TB_M_PRIZE" Width="1.5" PointX="12.75" PointY="18" />
+        <EntityTypeShape EntityType="Model.TB_M_PROVINCE" Width="1.5" PointX="5.75" PointY="5.5" />
+        <EntityTypeShape EntityType="Model.TB_M_SCHOOL_9" Width="1.5" PointX="0.75" PointY="12.875" />
+        <EntityTypeShape EntityType="Model.TB_M_STATUS" Width="1.5" PointX="0.75" PointY="9.25" />
+        <EntityTypeShape EntityType="Model.TB_M_TITLE" Width="1.5" PointX="8" PointY="15" />
+        <EntityTypeShape EntityType="Model.TB_ROLE" Width="1.5" PointX="3" PointY="9.375" />
+        <EntityTypeShape EntityType="Model.TB_ROLE_PERMISSION" Width="1.5" PointX="5.25" PointY="13.5" />
+        <EntityTypeShape EntityType="Model.TB_ROOM" Width="1.5" PointX="13.25" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.TB_SCHOOL_DOCUMENT" Width="1.5" PointX="0.75" PointY="5.875" />
+        <EntityTypeShape EntityType="Model.TB_SCORE_ROUND_1" Width="1.5" PointX="15" PointY="14.375" />
+        <EntityTypeShape EntityType="Model.TB_SCORE_ROUND_1_ERROR" Width="1.5" PointX="2.75" PointY="5.875" />
+        <EntityTypeShape EntityType="Model.TB_SCORE_ROUND_2" Width="1.5" PointX="15" PointY="16.875" />
+        <EntityTypeShape EntityType="Model.TB_STUDENT_SEAT" Width="1.5" PointX="15.5" PointY="9.375" />
+        <EntityTypeShape EntityType="Model.TB_USER" Width="1.5" PointX="5.25" PointY="9" />
+        <AssociationConnector Association="Model.TB_APPLICATION_R05" />
+        <AssociationConnector Association="Model.TB_APPLICATION_SCHOOL_R01" />
+        <AssociationConnector Association="Model.TB_APPLICATION_SCHOOL_R02" />
+        <AssociationConnector Association="Model.TB_APPLICATION_SCHOOL_R03" />
+        <AssociationConnector Association="Model.TB_APPLICATION_SCHOOL_R04" />
+        <AssociationConnector Association="Model.TB_APPLICATION_SCHOOL_R05" />
+        <AssociationConnector Association="Model.TB_APPLICATION_STAFF_R05" />
+        <AssociationConnector Association="Model.TB_APPLICATION_STAFF_R02" />
+        <AssociationConnector Association="Model.TB_APPLICATION_STAFF_R03" />
+        <AssociationConnector Association="Model.TB_APPLICATION_R01" />
+        <AssociationConnector Association="Model.TB_APPLICATION_R03" />
+        <AssociationConnector Association="Model.TB_APPLICATION_STUDENT_R04" />
+        <AssociationConnector Association="Model.TB_STUDENT_SEAT_R02" />
+        <AssociationConnector Association="Model.TB_COMMITEE_R01" />
+        <AssociationConnector Association="Model.TB_COMMITEE_ROOM_R01" />
+        <AssociationConnector Association="Model.TB_COMMITEE_ROOM_R02" />
+        <AssociationConnector Association="Model.TB_M_AMPHUR_R01" />
+        <AssociationConnector Association="Model.TB_M_DISTRICT_R01" />
+        <AssociationConnector Association="Model.TB_APPLICATION_ROOM_R01" />
+        <AssociationConnector Association="Model.TB_ROOM_R02" />
+        <AssociationConnector Association="Model.TB_SCORE_ROUND_1_R01" />
+        <AssociationConnector Association="Model.TB_SCORE_ROUND_2_R01" />
+        <AssociationConnector Association="Model.TB_ROLE_R01" />
+        <AssociationConnector Association="Model.TB_USER_R02" />
+        <AssociationConnector Association="Model.TB_ROLE_PERMISSION_R01" />
+        <AssociationConnector Association="Model.TB_USER_R01" />
+        <AssociationConnector Association="Model.TB_STUDENT_SEAT_R01" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

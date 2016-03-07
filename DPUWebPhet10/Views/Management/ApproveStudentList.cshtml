@@ -1,0 +1,77 @@
+﻿@using DPUWebPhet10.Helpers
+@model DPUWebPhet10.Models.ApplicationModel
+@{
+    Layout = "~/Views/Shared/_Managementlayout.cshtml";
+}
+<div class="full_w">
+    <div class="h_title">
+        Manage pages - แสดงข้อมูลโรงเรียน</div>
+
+    <h1>
+        ข้อมูลนักเรียน</h1>
+    <table>
+        <tr>
+            <th style="width: 120px; text-align: center; font-weight: bold;">
+                @Html.Label("ระดับชั้น")
+            </th>
+            <th style="width: 80px; text-align: center; font-weight: bold;">
+                @Html.Label("ปีที่")
+            </th>
+            <th style="width: 100px; text-align: center; font-weight: bold;">
+                @Html.Label("คำนำหน้าชื่อ")
+            </th>
+            <th style="width: 150px; text-align: center; font-weight: bold;">
+                @Html.Label("ชื่อ")
+            </th>
+            <th style="width: 150px; text-align: center; font-weight: bold;">
+                @Html.Label("นามสกุล")
+            </th>
+            <th style="width: 80px; text-align: center; font-weight: bold;">
+                @Html.Label("สถานะ")
+            </th>
+        </tr>
+        @foreach (var item in Model.Students)
+        {
+            <tr>
+                <td style="width: 120px; text-align: left;">
+                    @Html.DisplayFor(modelItem => item.TB_M_LEVEL.LEVEL_NAME_TH)
+                </td>
+                <td style="width: 80px; text-align: center;">
+                    @Html.DisplayFor(modelItem => item.STD_GRADE)
+                </td>
+                <td style="width: 100px; text-align: center;">
+                    @Html.DisplayFor(modelItem => item.TB_M_TITLE.TITLE_NAME_TH)
+                </td>
+                <td style="width: 150px; text-align: center;">
+                    @Html.DisplayFor(modelItem => item.STD_NAME)
+                </td>
+                <td style="width: 150px; text-align: center;">
+                    @Html.DisplayFor(modelItem => item.STD_SURNAME)
+                </td>
+                <td style="width: 80px; text-align: center;">
+                @if (item.STD_APPROVED_STATUS != null)
+                {
+                    @Html.ActionLink(((string)item.TB_M_STATUS.STATUS_NAME_TH), "ApproveStudent", new { id = item.STD_ID })
+                }
+                else { 
+                    @Html.ActionLink("รอการยืนยันการสมัคร", "ApproveStudent", new { id = item.STD_ID })
+                }
+                </td>
+            </tr>
+        }
+    </table>
+    <div class="entry">
+        <div class="sep">
+        </div>
+
+        @Html.ActionLink("ย้อนกลับ", "SchoolList", new { id = @Model.Students[0].STD_SCHOOL_ID }, new { @class = "button" })    
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+          
+    </script>
+}

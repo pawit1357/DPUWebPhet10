@@ -1,0 +1,104 @@
+﻿@model DPUWebPhet10.Models.ConfirmDocumentModel
+@{
+    Layout = "~/Views/Shared/_Managementlayout.cshtml";
+}
+@{
+
+    String userrole = (String)Session["ROLE"];
+    String[] userPermission = (String[])Session["ROLE_PERMISSION"];
+
+
+    <div class="full_w" style="width:715px">
+        <div class="h_title" style="width:700px">
+            Manage pages - พิมพ์เอกสารยืนยันการสมัคร</div>
+        <h2>
+        </h2>
+        @using (Html.BeginForm())
+        {
+            <span>ชื่อ/เลขประจำตัวสอบ</span>
+            @Html.TextBoxFor(model => model.schoolName, new { @class = "field small-field" })
+            <input type="submit" class="button" value="ค้นหา" />
+            <div class="entry">
+                <div class="sep">
+                </div>
+            </div>
+            
+            <table>
+                <tr>
+                    <th style="width: 100px;">
+                        เลขประจำตัว
+                    </th>
+                    <th style="width: 150px;">
+                        ชื่อ -นามสกุล
+                    </th>
+                    <th style="width: 150px;">
+                       ที่นั่ง/ห้องสอบ
+                    </th>
+                    <th style="width: 150px;">
+                        โรงเรียน
+                    </th>
+                    <th style="width: 80px;">
+                        สถานะ
+                    </th>
+                    <th style="width: 80px;">
+                    ใบยืนยัน
+                    </th>
+                </tr>
+                @if (Model.students != null)
+                {
+                    if (Model.students.Count > 0)
+                    {
+                        foreach (var item in Model.students)
+                        {
+                    <tr>
+                        <td style="width: 120px; text-align: left;">
+                        @String.Format("{0:G}", item.TB_STUDENT_SEAT.STUDENT_CODE)
+
+                        </td>
+                        <td style="width: 80px; text-align: center;">
+@*                            @Html.DisplayFor(modelItem => item.TB_M_TITLE.TITLE_NAME_TH)*@
+                            @Html.DisplayFor(modelItem => item.STD_NAME)
+                            @Html.DisplayFor(modelItem => item.STD_SURNAME)
+                        </td>
+                        <td style="width: 100px; text-align: center;">
+
+
+                        @Html.DisplayFor(modelItem => item.STD_EMAIL)/
+                            @Html.DisplayFor(modelItem => item.TB_STUDENT_SEAT.TB_ROOM.ROOM_NUMBER)
+                        </td>
+                        <td style="width: 150px; text-align: center;">
+                            @Html.DisplayFor(modelItem => item.TB_APPLICATION_SCHOOL.SCHOOL_NAME)
+                        </td>
+                        <td style="width: 150px; text-align: center;">
+                            @Html.DisplayFor(modelItem => item.TB_M_STATUS.STATUS_NAME_TH)
+                        </td>
+                        <td style="width: 80px; text-align: center;">
+                            @Html.ActionLink("แสดง", "PrintConfirmDocument", new { id = item.STD_ID })
+                        </td>
+                    </tr>
+                        }
+                    }
+                    else
+                    {
+                    <div class="n_error">
+                        <p>
+                            ไม่พบข้อมูล
+                        </p>
+                    </div>
+                    }
+                }
+            </table>                
+        }
+    </div>    
+    
+}
+@section Scripts {
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+
+
+        });
+    </script>
+}

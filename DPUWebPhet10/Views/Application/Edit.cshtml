@@ -1,0 +1,925 @@
+﻿@using DPUWebPhet10.Helpers
+@model DPUWebPhet10.Models.ApplicationModel
+@{
+    ViewBag.Title = "รับสมัคร";
+    Layout = "~/Views/Shared/_LayoutRegister.cshtml";
+}
+<input type="hidden" name="cul" id="cul" value="@Session["PhetCulture"]" />
+@using (Html.BeginForm())
+{
+    <div id="loading">
+        <div id="loadingcontent">
+            <p id="loadingspinner">
+                <img id="img-spinner" src="/Images/spinnerLarge.gif" alt="Loading" />
+                <br />
+                กำลังดำเนินการบันทึกข้อมูล...
+            </p>
+        </div>
+    </div>
+
+    @Html.HiddenFor(model => model.school.SCHOOL_NAME)
+    @Html.HiddenFor(model => model.school.SCHOOL_ID)
+    @Html.HiddenFor(model => model.school.SCHOOL_PASSWORD)
+    @Html.HiddenFor(model => model.school.SCHOOL_DOC_PATH)
+    @Html.HiddenFor(model => model.school.SCHOOL_REGISTER_DATE)
+    @Html.HiddenFor(model => model.school.SCHOOL_APPROVED_STATUS)
+    @Html.HiddenFor(model => model.school.SCHOOL_EMAIL)
+    @Html.HiddenFor(model => model.school.SCHOOL_CULTURE)
+    @Html.HiddenFor(model => model.school.SCHOOL_ROUND)
+    @Html.HiddenFor(model => model.selectLabel)
+    <div class="regiseter">
+        <h3>
+            @DPUWebPhet10.Resources.Application.Application.LB_HEADER
+        </h3>
+        <br />
+        @DPUWebPhet10.Resources.Application.Application.REGISTER_ITEM_REMARK_1
+        <!-- Thai Application Form -->
+        <fieldset class="row1">
+            <legend>
+                @DPUWebPhet10.Resources.Application.Application.LB_LEGEND_1
+            </legend>
+            <!-- School Name -->
+            <p>
+                @Html.Label(@DPUWebPhet10.Resources.Application.Application.SCHOOL_NAME)
+                @Html.Label(@Model.school.SCHOOL_NAME, new { style = "width: 200px;text-align:left;font-weight:bold" })
+            </p>
+            <p>
+                <!-- Educationi Zone-->
+                @Html.Label(@DPUWebPhet10.Resources.Application.Application.SCHOOL_ZONE_EDU)
+                @Html.EditorFor(model => model.school.SCHOOL_ZONE_EDU)
+                @Html.ValidationMessageFor(model => model.school.SCHOOL_ZONE_EDU)
+            </p>
+            <p>
+                <!-- Zone-->
+                @Html.Label(@DPUWebPhet10.Resources.Application.Application.SCHOOL_ZONE)
+                @Html.EditorFor(model => model.school.SCHOOL_ZONE)
+                @Html.ValidationMessageFor(model => model.school.SCHOOL_ZONE)
+            </p>
+            <p>
+                <!-- Province -->
+                @Html.Label(@DPUWebPhet10.Resources.Application.Application.SCHOOL_PROVINCE)
+                @Html.DropDownListFor(model => model.school.SCHOOL_PROVINCE, Model.provinceLists, ((@HttpContext.Current.Session["PhetCulture"].ToString().Equals("en")) ? "-- select --" : "-- เลือก --"), new { style = "width: 142px" })
+                @Html.ValidationMessageFor(model => model.school.SCHOOL_PROVINCE)
+            </p>
+            <p>
+                <!-- School Type -->
+                @Html.Label(@DPUWebPhet10.Resources.Application.Application.SCHOOL_TYPE)
+                @Html.DropDownList("idSelectedSchoolType", Model.rSchoolTypes, ((@HttpContext.Current.Session["PhetCulture"].ToString().Equals("en")) ? "-- select --" : "-- เลือก --"), new { style = "width: 142px" })
+                @Html.ValidationMessageFor(model => model.idSelectedSchoolType)
+                <!-- Other -->
+                @Html.EditorFor(model => model.school.SCHOOL_TYPE_OTHER)
+                @Html.ValidationMessageFor(model => model.school.SCHOOL_TYPE_OTHER)
+            </p>
+            <p>
+                <!-- Address -->
+                @Html.Label(@DPUWebPhet10.Resources.Application.Application.SCHOOL_ADDR)
+                @Html.TextAreaFor(model => model.school.SCHOOL_ADDR)
+                @Html.ValidationMessageFor(model => model.school.SCHOOL_ADDR)
+            </p>
+            <p>
+                <!-- soi -->
+                @Html.Label(@DPUWebPhet10.Resources.Application.Application.SCHOOL_ADDR_SOI)
+                @Html.EditorFor(model => model.school.SCHOOL_ADDR_SOI)
+                @Html.ValidationMessageFor(model => model.school.SCHOOL_ADDR_SOI)
+            </p>
+            <p>
+                <!-- road -->
+                @Html.Label(@DPUWebPhet10.Resources.Application.Application.SCHOOL_ADDR_ROAD)
+                @Html.EditorFor(model => model.school.SCHOOL_ADDR_ROAD)
+                @Html.ValidationMessageFor(model => model.school.SCHOOL_ADDR_ROAD)
+            </p>
+            <p>
+                <!-- Province -->
+                @Html.Label(@DPUWebPhet10.Resources.Application.Application.SCHOOL_ADDR_PROVINCE)
+                @Html.DropDownList("SCHOOL_ADDR_PROVINCE", Model.provinceLists, ((@HttpContext.Current.Session["PhetCulture"].ToString().Equals("en")) ? "-- select --" : "-- เลือก --"), new { style = "width: 142px" })
+                @Html.ValidationMessageFor(model => model.SCHOOL_ADDR_PROVINCE)
+            </p>
+            <p>
+                <!-- Amphur -->
+                @Html.Label(@DPUWebPhet10.Resources.Application.Application.SCHOOL_ADDR_AMPHUR)
+                @Html.DropDownList("SCHOOL_ADDR_AMPHUR", Model.amphurLists, ((@HttpContext.Current.Session["PhetCulture"].ToString().Equals("en")) ? "-- select --" : "-- เลือก --"), new { style = "width: 142px" })
+                @Html.ValidationMessageFor(model => model.SCHOOL_ADDR_AMPHUR)
+            </p>
+            <p>
+                <!-- Tombon -->
+                @Html.Label(@DPUWebPhet10.Resources.Application.Application.SCHOOL_ADDR_TOMBON)
+                @Html.DropDownList("SCHOOL_ADDR_TOMBON", Model.tumbonLists, ((@HttpContext.Current.Session["PhetCulture"].ToString().Equals("en")) ? "-- select --" : "-- เลือก --"), new { style = "width: 142px" })
+                @Html.ValidationMessageFor(model => model.SCHOOL_ADDR_TOMBON)
+            </p>
+            <p>
+                <!-- Zipcode -->
+                @Html.Label(@DPUWebPhet10.Resources.Application.Application.SCHOOL_ADDR_ZIPCODE)
+                @Html.EditorFor(model => model.school.SCHOOL_ADDR_ZIPCODE)
+                @Html.ValidationMessageFor(model => model.school.SCHOOL_ADDR_ZIPCODE)
+            </p>
+            <p>
+                <!-- Phone -->
+                @Html.Label(@DPUWebPhet10.Resources.Application.Application.SCHOOL_ADDR_PHONE)
+                @Html.EditorFor(model => model.school.SCHOOL_ADDR_PHONE)
+                @Html.ValidationMessageFor(model => model.school.SCHOOL_ADDR_PHONE)
+            </p>
+            <p>
+                <!-- Fax -->
+                @Html.Label(@DPUWebPhet10.Resources.Application.Application.SCHOOL_ADDR_FAX)
+                @Html.EditorFor(model => model.school.SCHOOL_ADDR_FAX)
+                @Html.ValidationMessageFor(model => model.school.SCHOOL_ADDR_FAX)
+            </p>
+            <p>
+                <!-- Email -->
+                @Html.Label(@DPUWebPhet10.Resources.Application.Application.SCHOOL_EMAIL)
+                <span style="width: 200px; text-align: left; font-weight: bold">@Model.school.SCHOOL_EMAIL</span>
+            </p>
+        </fieldset>
+        <br />
+        <fieldset class="row3">
+            <legend>
+                @DPUWebPhet10.Resources.Application.Application.LB_LEGEND_2
+            </legend>
+            <table>
+                <tr>
+                    <td style="width: 150px; text-align: center; font-weight: bold;">
+                        @Html.Label(@DPUWebPhet10.Resources.Application.Application.REGISTER_STAFF_ITEM001, new { style = "text-align:center" })
+                    </td>
+                    <td style="width: 150px; text-align: left; font-weight: bold;">
+                        @Html.Label(@DPUWebPhet10.Resources.Application.Application.REGISTER_STAFF_ITEM002, new { style = "text-align:center" })
+                    </td>
+                    <td style="width: 150px; text-align: left; font-weight: bold;">
+                        @Html.Label(@DPUWebPhet10.Resources.Application.Application.REGISTER_STAFF_ITEM003, new { style = "text-align:center" })
+                    </td>
+                    <td style="width: 150px; text-align: left; font-weight: bold;">
+                        @Html.Label(@DPUWebPhet10.Resources.Application.Application.REGISTER_STAFF_ITEM004, new { style = "text-align:center" })
+                    </td>
+                    <td style="width: 150px"></td>
+                </tr>
+                <tr>
+                    @if (@HttpContext.Current.Session["PhetCulture"].ToString().Equals("en"))
+                    {
+                        <td style="width: 150px; text-align: center;">
+                            <select id="TMP_STAFF_TITLE_ID" name="TMP_STAFF_TITLE_ID" style="width: 100px">
+                                <option value="0">-- select --</option>
+                                <option value="3">Mr.</option>
+                                <option value="4">Mrs</option>
+                                <option value="5">Ms.</option>
+                            </select>
+                        </td>
+                    }
+                    else
+                    {
+                        <td style="width: 150px; text-align: center;">
+                            <select id="TMP_STAFF_TITLE_ID" name="TMP_STAFF_TITLE_ID" style="width: 100px">
+                                <option value="0">-- เลือก --</option>
+                                <option value="3">นาย</option>
+                                <option value="4">นางสาว</option>
+                                <option value="5">นาง</option>
+                                <option value="6">อาจารย์</option>
+                                <option value="7">ผศ.</option>
+                                <option value="8">รศ.</option>
+                                <option value="9">ศ.</option>
+                                <option value="10">ดร.</option>
+                            </select>
+                        </td>
+                    }
+                    <td style="width: 150px; text-align: left;">
+                        <!-- Teacher name -->
+                        @Html.EditorFor(model => model.TMP_STAFF_NAME)
+                    </td>
+                    <td style="width: 150px; text-align: left;">
+                        <!-- Teacher surname -->
+                        @Html.EditorFor(model => model.TMP_STAFF_SURNAME)
+                    </td>
+                    <td style="width: 150px; text-align: left;">
+                        <!-- Teacher phone -->
+                        <input type="text" id="TMP_STAFF_PHONE" name="TMP_STAFF_PHONE" onkeypress="return chkNumber(this)" />
+                    </td>
+                    <td style="width: 150px">
+                        <!-- ADD STAFF -->
+                        @Html.ActionLink(@DPUWebPhet10.Resources.Application.Application.LB_BUTTON_04, "editStaff", null, new { id = "addStaffItem" })
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <div id="editorStaffRows">
+                @foreach (var item in Model.Staffs)
+                {
+                    Html.RenderPartial("_AddStaffPartial_Edit", item);
+                }
+            </div>
+        </fieldset>
+        <br />
+        <fieldset class="row3">
+            <legend>
+                @DPUWebPhet10.Resources.Application.Application.LB_LEGEND_3
+            </legend>
+            <div style="height:250px; width:900px; overflow-x:scroll ; overflow-y: scroll; padding-bottom:10px;">
+                <table>
+                    <tr>
+                        <td style="width: 120px; text-align: center; font-weight: bold;">
+                            @Html.Label(@DPUWebPhet10.Resources.Application.Application.REGISTER_STUDENT_ITEM001)
+                        </td>
+                        <td style="width: 80px; text-align: center; font-weight: bold;">
+                            @Html.Label(@DPUWebPhet10.Resources.Application.Application.REGISTER_STUDENT_ITEM002)
+                        </td>
+                        <td style="width: 100px; text-align: center; font-weight: bold;">
+                            @Html.Label(@DPUWebPhet10.Resources.Application.Application.REGISTER_STUDENT_ITEM003)
+                        </td>
+                        <td style="width: 150px; text-align: center; font-weight: bold;">
+                            @Html.Label(@DPUWebPhet10.Resources.Application.Application.REGISTER_STUDENT_ITEM004)
+                        </td>
+                        <td style="width: 150px; text-align: center; font-weight: bold;">
+                            @Html.Label(@DPUWebPhet10.Resources.Application.Application.REGISTER_STUDENT_ITEM005)
+                        </td>
+                        <td style="width: 80px; text-align: center; font-weight: bold;">
+                            @Html.Label(@DPUWebPhet10.Resources.Application.Application.REGISTER_STUDENT_ITEM006)
+                        </td>
+                        <td style="width: 80px; text-align: center; font-weight: bold;">
+                            @Html.Label(@DPUWebPhet10.Resources.Application.Application.REGISTER_STUDENT_ITEM007)
+                        </td>
+                        <td style="width: 80px; text-align: center; font-weight: bold;">
+                            @Html.Label(@DPUWebPhet10.Resources.Application.Application.REGISTER_STUDENT_ITEM008)
+                        </td>
+                        <td style="width: 80px; text-align: center; font-weight: bold;">
+                            @Html.Label(@DPUWebPhet10.Resources.Application.Application.REGISTER_STUDENT_ITEM009)
+                        </td>
+                        <td style="width: 80px; text-align: center; font-weight: bold;">
+                            @Html.Label(@DPUWebPhet10.Resources.Application.Application.REGISTER_STUDENT_ITEM010)
+                        </td>
+                        <td style="width: 150px;"></td>
+                    </tr>
+                    <tr>
+                        @if (@HttpContext.Current.Session["PhetCulture"].ToString().Equals("en"))
+                        {
+                            <td style="width: 120px; text-align: center;">
+                                <select id="TMP_STD_LEVEL_ID" name="TMP_STD_LEVEL_ID">
+                                    <option value="0">-- select --</option>
+                                    <option value="1">Grade 1-3</option>
+                                    <option value="2">Grade 4-6</option>
+                                    <option value="3">Grade 7-9</option>
+                                    <option value="4">Grade 10-12</option>
+                                    <option value="5">Higher education</option>
+                                </select>
+                            </td>
+                        }
+                        else
+                        {
+                            <td style="width: 120px; text-align: center;">
+                                <select id="TMP_STD_LEVEL_ID" name="TMP_STD_LEVEL_ID">
+                                    <option value="0">-- เลือก --</option>
+                                    <option value="1">ประถมศึกษาตอนต้น</option>
+                                    <option value="2">ประถมศึกษาตอนปลาย</option>
+                                    <option value="3">มัธยมศึกษาตอนต้น</option>
+                                    <option value="4">มัธยมศึกษาตอนปลาย</option>
+                                    <option value="5">อุดมศึกษา</option>
+                                </select>
+                            </td>
+                        }
+                        <td style="width: 80px; text-align: center;">
+                            <select id="TMP_STD_GRADE" name="TMP_STD_GRADE">
+                                @if (@HttpContext.Current.Session["PhetCulture"].ToString().Equals("en"))
+                            {
+                                <option value="0">-- select --</option>
+                            }
+                            else
+                            {
+                                <option value="0">-- เลือก --</option>
+                            }
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select>
+                        </td>
+                        @if (@HttpContext.Current.Session["PhetCulture"].ToString().Equals("en"))
+                        {
+                            <td style="width: 100px; text-align: center;">
+                                <select id="TMP_STD_TITLE_ID" name="TMP_STD_TITLE_ID">
+                                    <option value="0">-- select --</option>
+                                    <option value="1">Master</option>
+                                    <option value="2">Miss</option>
+                                    <option value="3">Mr.</option>
+                                    <option value="4">Mrs</option>
+                                    <option value="5">Ms.</option>
+                                </select>
+                            </td>
+                        }
+                        else
+                        {
+                            <td style="width: 100px; text-align: center;">
+                                <select id="TMP_STD_TITLE_ID" name="TMP_STD_TITLE_ID">
+                                    <option value="0">-- เลือก --</option>
+                                    <option value="1">เด็กชาย</option>
+                                    <option value="2">เด็กหญิง</option>
+                                    <option value="3">นาย</option>
+                                    <option value="4">นางสาว</option>
+                                    <option value="5">นาง</option>
+                                </select>
+                            </td>
+                        }
+                        <td style="width: 150px; text-align: center;">
+                            <!-- Student Name-->
+                            @Html.EditorFor(model => model.TMP_STD_NAME)
+                        </td>
+                        <td style="width: 150px; text-align: center;">
+                            <!-- Student Surname-->
+                            @Html.EditorFor(model => model.TMP_STD_SURNAME)
+                        </td>
+                        <td style="width: 80px; text-align: center;">
+                            <!-- Student Phone-->
+                            <input type="text" id="TMP_STD_PHONE" name="TMP_STD_PHONE" onkeypress="return chkNumber(this)" />
+                        </td>
+                        <td style="width: 150px; text-align: left;">
+                            <!-- Student email-->
+                            @Html.EditorFor(model => model.TMP_STD_EMAIL)
+                        </td>
+                        <td style="width: 150px; text-align: left;">
+                            <!-- Student birth day-->
+                            @Html.EditorFor(model => model.TMP_STD_BIRTH_DAY)
+                        </td>
+                        @if (@HttpContext.Current.Session["PhetCulture"].ToString().Equals("en"))
+                        {
+                            <td style="width: 100px; text-align: center;">
+                                <select id="TMP_STD_NATION" name="TMP_STD_NATION">
+                                    <option value="0">-- select --</option>
+                                    <option value="1">Thai</option>
+                                    <option value="2">Chinese</option>
+                                    <option value="3">Other.</option>
+                                </select>
+                            </td>
+                        }
+                        else
+                        {
+                            <td style="width: 100px; text-align: center;">
+                                <select id="TMP_STD_NATION" name="TMP_STD_NATION">
+                                    <option value="0">-- เลือก --</option>
+                                    <option value="1">ไทย</option>
+                                    <option value="2">จีน</option>
+                                    <option value="3">อื่น ๆ</option>
+                                </select>
+                            </td>
+                        }
+                        <td style="width: 150px; text-align: center;">
+                            <!-- Student Surname-->
+                            @Html.EditorFor(model => model.TMP_STD_NATION_OTHER)
+                        </td>
+                        <td style="width: 150px">
+                            <!-- ADD STUDENT -->
+                            @Html.ActionLink(@DPUWebPhet10.Resources.Application.Application.LB_BUTTON_04, "editStudent", null, new { id = "addStudentItem" })
+                        </td>
+                    </tr>
+                </table>
+                <br />
+                <div id="editorStudentRows">
+                    @foreach (var item in Model.Students)
+                    {
+                        Html.RenderPartial("_AddStudentPartial_Edit", item);
+                    }
+                </div>
+            </div>
+        </fieldset>
+        <fieldset style="width: auto;">
+            <legend></legend>
+            <div style="text-align: center;">
+                <button class="button2" id="editButton" name="editButton">
+                    @DPUWebPhet10.Resources.Application.Application.LB_BUTTON_02
+                </button>
+            </div>
+        </fieldset>
+        <fieldset style="width: auto;">
+            <legend>@DPUWebPhet10.Resources.Application.Application.LB_LEGEND_4</legend>
+            <div>
+                @DPUWebPhet10.Resources.Application.Application.REGISTER_ITEM_REMARK_2
+            </div>
+        </fieldset>
+    </div>
+
+
+
+}
+@section Scripts {
+    <script type="text/javascript" src="/Scripts/jquery.cascadingDropDown.js"></script>
+    <script type="text/javascript" src="/Scripts/spin.min.js"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Styles.Render("~/Content/themes/base/css")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var currentYear = 0;
+            $("#TMP_STD_BIRTH_DAY").datepicker
+            ({
+                changeMonth: true,
+                changeYear: true,
+                yearRange: '1990:2014',
+                dateFormat: 'yy-mm-dd',
+                showStatus: true,
+                showWeeks: true,
+                highlightWeek: true,
+                numberOfMonths: 1,
+                showAnim: "scale",
+                showOptions: {
+                    origin: ["top", "left"]
+                },
+                onSelect: function (dateText, inst) {
+                    var cureDate = new Date();
+                    var startDate = new Date(dateText);
+                    currentYear = cureDate.getFullYear() - startDate.getFullYear(); // selected year
+
+                }
+            });
+
+            var cul = $("#cul").val();
+
+            if ($("#idSelectedSchoolType").val() == '5') {
+                //Initial
+                $("#school_SCHOOL_TYPE_OTHER").show();
+            } else {
+                //Initial
+                $("#school_SCHOOL_TYPE_OTHER").hide();
+            }
+
+            $("#addStaffItem").click(function () {
+
+                var staffLength = $("#editorStaffRows").children("div").length;
+                if (staffLength > 2) {
+                    if (cul == 'th') {
+                        alert('จำนวน ครู/อาจารย์ผู้ควบคุมดูแลนักเรียน/นักศึกษา เกินกว่าที่ระบบกำหนด (3 ท่าน)');
+                    } else {
+                        alert('number of staff/teacher is over.');
+                    }
+                    return false;
+                }
+                /**
+                Validation
+                */
+                var _STAFF_TITLE_ID = $("#TMP_STAFF_TITLE_ID").val();
+                var _STAFF_NAME = $("#TMP_STAFF_NAME").val();
+                var _STAFF_SURNAME = $("#TMP_STAFF_SURNAME").val();
+                var _STAFF_PHONE = $("#TMP_STAFF_PHONE").val();
+
+                if (_STAFF_TITLE_ID == 0) {
+                    if (cul == 'th') {
+                        alert('ยังไม่ได้เลือกคำนำหน้าชื่อ');
+                    } else {
+                        alert('Please select title.');
+                    }
+                    return false;
+                }
+                if (_STAFF_NAME == '') {
+                    if (cul == 'th') {
+                        alert('ยังไม่ได้ป้อนชื่อ');
+                    } else {
+                        alert('Please input name.');
+                    }
+                    return false;
+                }
+
+                if (_STAFF_SURNAME == '') {
+                    if (cul == 'th') {
+                        alert('ยังไม่ได้ป้อนนามสกุล');
+                    } else {
+                        alert('Please input surname.');
+                    }
+                    return false;
+                }
+                if (_STAFF_PHONE == '') {
+                    if (cul == 'th') {
+                        alert('ยังไม่ได้ป้อนเบอร์ติดต่อ');
+                    } else {
+                        alert('Please input phone.');
+                    }
+                    return false;
+                }
+
+                $.ajax({
+                    url: this.href,
+                    data: { STAFF_TITLE_ID: _STAFF_TITLE_ID, STAFF_NAME: _STAFF_NAME, STAFF_SURNAME: _STAFF_SURNAME, STAFF_PHONE: _STAFF_PHONE },
+                    cache: false,
+                    success: function (html) {
+                        $("#editorStaffRows").append(html);
+                        $("#TMP_STAFF_TITLE_ID").val(0);
+                        $("#TMP_STAFF_NAME").val('');
+                        $("#TMP_STAFF_SURNAME").val('');
+                        $("#TMP_STAFF_PHONE").val('');
+                    }
+                });
+                return false;
+            });
+
+
+
+            $("#addStudentItem").click(function () {
+
+
+                /**
+                Validation
+                */
+                var _TMP_STD_LEVEL_ID = $("#TMP_STD_LEVEL_ID").val();
+                var _TMP_STD_GRADE = $("#TMP_STD_GRADE").val();
+                var _TMP_STD_TITLE_ID = $("#TMP_STD_TITLE_ID").val();
+                var _TMP_STD_NAME = $("#TMP_STD_NAME").val();
+                var _TMP_STD_SURNAME = $("#TMP_STD_SURNAME").val();
+                var _TMP_STD_PHONE = $("#TMP_STD_PHONE").val();
+                var _TMP_STD_EMAIL = $("#TMP_STD_EMAIL").val();
+                var _TMP_STD_BIRTH_DAY = $("#TMP_STD_BIRTH_DAY").val();
+                var _TMP_STD_NATION = $("#TMP_STD_NATION").val();
+                var _TMP_STD_NATION_OTHER = $("#TMP_STD_NATION_OTHER").val();
+
+                if (_TMP_STD_LEVEL_ID == 0) {
+                    if (cul == 'th') {
+                        alert('ยังไม่ได้เลือกระดับชั้น');
+                    } else {
+                        alert('Please select Level.');
+                    }
+                    return false;
+                }
+                if (_TMP_STD_GRADE == 0) {
+                    if (cul == 'th') {
+                        alert('ยังไม่ได้เลือกปีที่');
+                    } else {
+                        alert('Please select year.');
+                    }
+                    return false;
+                }
+                if (_TMP_STD_TITLE_ID == 0) {
+                    if (cul == 'th') {
+                        alert('ยังไม่ได้เลือกคำนำหน้า');
+                    } else {
+                        alert('Please select title.');
+                    }
+                    return false;
+                }
+                if (_TMP_STD_NAME == '') {
+                    if (cul == 'th') {
+                        alert('ยังไม่ได้ป้อนชื่อ');
+                    } else {
+                        alert('Please input name.');
+                    }
+                    return false;
+                }
+                if (_TMP_STD_SURNAME == '') {
+                    if (cul == 'th') {
+                        alert('ยังไม่ได้ป้อนนามสกุล');
+                    } else {
+                        alert('Please input surname.');
+                    }
+                    return false;
+                }
+                if (_TMP_STD_PHONE == '') {
+                    if (cul == 'th') {
+                        alert('ยังไม่ได้ป้อนเบอร์ติดต่อ');
+                    } else {
+                        alert('Please input phone.');
+                    }
+                    return false;
+                }
+
+                /*
+                ประถมศึกษาตอนต้น           อายุต้อง <= 9 ปี
+                ประถมศึกษาตอนปลาย         อายุต้อง 10 - 12 ปี
+                มัธยมศึกษาตอนต้น           อายุต้อง 13 - 15 ปี
+                มัธยมศึกษาตอนปลาย          อายุต้อง 16 - 18 ปี
+                อุดมศึกษา                 อายุต้อง  > 18 ปี
+                */
+                var isValidLevel = false;
+
+
+                if (currentYear <= 9) {
+                    if (_TMP_STD_LEVEL_ID == 1) {
+                        isValidLevel = true;;
+                    }
+                } else if (currentYear >= 10 && currentYear <= 12) {
+                    if (_TMP_STD_LEVEL_ID == 2) isValidLevel = true;
+                } else if (currentYear >= 13 && currentYear <= 15) {
+                    if (_TMP_STD_LEVEL_ID == 3) isValidLevel = true;
+                } else if (currentYear >= 16 && currentYear <= 18) {
+                    if (_TMP_STD_LEVEL_ID == 4) isValidLevel = true;
+                } else {
+                    if (_TMP_STD_LEVEL_ID == 5) isValidLevel = true;
+                }
+
+                if ($("#TMP_STD_BIRTH_DAY").val() == '') {
+                    alert('ยังไม่ได้ป้อนวันเดือนปีเกิด');
+                    return false;
+                }
+
+                $("#TMP_STD_BIRTH_DAY").val('');
+                if (isValidLevel == false) {
+                    alert("กรุณาตรวจสอบระดับการศึกษาของ " + _TMP_STD_NAME + "  " + _TMP_STD_SURNAME + " อีกครั้ง หากไม่ถูกต้องกรุณาแก้ไขก่อนยืนยันการบันทึกข้อมูล \n และหากระดับการศึกษาของผู้เข้าสอบตามที่สถานศึกษาแจ้งมาไม่ถูกต้อง จะไม่อนุญาตให้เข้าสอบโดยเด็ดขาด");
+                    //return false;
+                }
+                if (_TMP_STD_NATION == 0) {
+                    if (cul == 'th') {
+                        alert('ยังไม่ได้เลือกสัญชาติ');
+                    } else {
+                        alert('Please select nationality.');
+                    }
+                    return false;
+                }
+
+                if ($("#TMP_STD_NATION_OTHER").val() == '' && _TMP_STD_NATION == 3) {
+                    if (cul == 'th') {
+                        alert('ระบุสัญชาติ');
+                    } else {
+                        alert('Please enter nationality.');
+                    }
+                    return false;
+                }
+
+                $.ajax({
+                    url: this.href,
+                    data: { STD_LEVEL_ID: _TMP_STD_LEVEL_ID, STD_GRADE: _TMP_STD_GRADE, STD_TITLE_ID: _TMP_STD_TITLE_ID, STD_NAME: _TMP_STD_NAME, STD_SURNAME: _TMP_STD_SURNAME, STD_PHONE: _TMP_STD_PHONE, STD_EMAIL: _TMP_STD_EMAIL, STD_BIRTH_DAY: _TMP_STD_BIRTH_DAY, STD_NATION: _TMP_STD_NATION, STD_NATION_OTHER: _TMP_STD_NATION_OTHER },
+                    cache: false,
+                    success: function (html) {
+                        $("#editorStudentRows").append(html);
+                        $("#TMP_STD_LEVEL_ID").val(0);
+                        $("#TMP_STD_GRADE").val(0);
+                        $("#TMP_STD_TITLE_ID").val(0);
+                        $("#TMP_STD_NAME").val('');
+                        $("#TMP_STD_SURNAME").val('');
+                        $("#TMP_STD_PHONE").val('');
+                        $("#TMP_STD_BIRTH_DAY").val('');
+                        $("#TMP_STD_NATION").val(0);
+                        $("#TMP_STD_NATION_OTHER").val('');
+                    }
+                });
+
+
+                return false;
+            });
+
+            $('#editorStaffRows').on('click', '.delete-staff', function () {
+
+                var id = $(this).attr('id');
+                if (id == '0') {
+                    $(this).parents("div.editorStaffRow:first").remove();
+                } else {
+                    $.post(
+                	    '/Application/deleteStaff',
+                                        { 'id': id },
+                            function (data) {
+                                if (data == true) {
+
+                                }
+                            });
+                    $(this).parents("div.editorStaffRow:first").remove();
+
+                }
+                return false;
+            });
+
+            $('#editorStudentRows').on('click', '.delete-student', function () {
+
+
+                var id = $(this).attr('id');
+                if (id == '0') {
+                    $(this).parents("div.editorStudentRow:first").remove();
+                } else {
+                    $.post(
+                	    '/Application/deleteStudent',
+                                        { 'id': id },
+                            function (data) {
+                                if (data == true) {
+
+                                }
+                            });
+                    $(this).parents("div.editorStudentRow:first").remove();
+
+                }
+
+
+
+                return false;
+            });
+
+            //Attach cascading behavior to the amphur select element.
+            $("#SCHOOL_ADDR_AMPHUR").CascadingDropDown("#SCHOOL_ADDR_PROVINCE", '/Application/AsyncAmphurs',
+            {
+                promptText: '-- Pick an Amphur --',
+                onLoading: function () {
+                    $(this).css("background-color", "#ff3");
+                },
+                onLoaded: function () {
+                    $(this).animate({ backgroundColor: '#ffffff' }, 300);
+                }
+            });
+
+            //Attach cascading behavior to the district select element.
+            $("#SCHOOL_ADDR_TOMBON").CascadingDropDown("#SCHOOL_ADDR_AMPHUR", '/Application/AsyncDistricts',
+            {
+                promptText: '-- Pick District --',
+                onLoading: function () {
+                    $(this).css("background-color", "#ff3");
+                },
+                onLoaded: function () {
+                    $(this).animate({ backgroundColor: '#ffffff' }, 300);
+
+                }
+            });
+
+            //            $("#SCHOOL_EMAIL").keyup(function () {
+
+            //                var emailAccount = $("#SCHOOL_EMAIL").val();
+            //                alert(emailAccount);
+
+            //                if (emailAccount.length > 5) {
+            //                    var Status = $("#emailStatus");
+            //                    Sttus.html("Checking...");
+
+            //                    $.post(
+            //	                    '/Application/CheckEmailAvailability',
+            //                        { 'emailAccount': emailAccount },
+            //                            function (data) {
+            //                                alert(data);
+            //                                if (data) {
+            //                                    Status.html("<front color=green>Email Account '" + emailAccount + "' is available.</front>");
+            //                                } else {
+            //                                    Status.html("<front color=green>Email Account '" + emailAccount + "' is not available.</front>");
+            //                                }
+            //                            });
+            //                }
+            //            });
+
+
+
+
+            //onchange other type
+            $('#idSelectedSchoolType').change(function () {
+
+                var idSelectedSchoolType = $("#idSelectedSchoolType").val();
+                if (idSelectedSchoolType == "5") {
+                    $("#school_SCHOOL_TYPE_OTHER").show();
+                } else {
+                    $("#school_SCHOOL_TYPE_OTHER").val('');
+                    $("#school_SCHOOL_TYPE_OTHER").hide();
+                }
+            });
+
+            var frm = $(this);
+            $(frm).submit(function () {
+
+                var staffLength = $("#editorStaffRows").children("div").length;
+                var studentLength = $("#editorStudentRows").children("div").length;
+
+
+                var staffName = $("#TMP_STAFF_NAME").val();
+                var staffSurname = $("#TMP_STAFF_SURNAME").val();
+                var staffPhone = $("#TMP_STAFF_PHONE").val();
+                var stdName = $("#TMP_STD_NAME").val();
+                var stdSurname = $("#TMP_STD_SURNAME").val();
+                var stdPhone = $("#TMP_STD_PHONE").val();
+
+                var schNameLength = $("#school_SCHOOL_NAME").length;
+                var schTypeLength = $("#idSelectedSchoolType").val();
+                var schAddrLength = $("#school_SCHOOL_ADDR").val();
+                var schProvinceLength = $("#SCHOOL_ADDR_PROVINCE").val();
+                var schAmphurLength = $("#SCHOOL_ADDR_AMPHUR").val();
+                var schTombonLength = $("#SCHOOL_ADDR_TOMBON").val();
+                var schPhoneLength = $("#school_SCHOOL_ADDR_PHONE").length;
+                var schEmailLength = $("#school_SCHOOL_EMAIL").length;
+
+
+                if (schNameLength == 0 || $("#school_SCHOOL_NAME").val() == '') {
+                    if (cul == 'th') {
+                        alert('ยังไม่ได้ป้อนโรงเรียน');
+                    } else {
+                        alert('Please enter school.');
+                    }
+                    $("#school_SCHOOL_NAME").addClass('input-validation-error');
+                    $("#school_SCHOOL_NAME").focus();
+                    return false;
+                } else if (schTypeLength == 0) {
+                    if (cul == 'th') {
+                        alert('ยังไม่ได้ป้อนสังกัด');
+                    } else {
+                        alert('Please enter school type.');
+                    }
+                    $("#idSelectedSchoolType").addClass('input-validation-error');
+                    $("#idSelectedSchoolType").focus();
+                    return false;
+                } else if (schAddrLength == '') {
+                    if (cul == 'th') {
+                        alert('ยังไม่ได้ป้อนที่อยู่');
+                    } else {
+                        alert('Please enter address.');
+                    }
+                    $("#school_SCHOOL_ADDR").addClass('input-validation-error');
+                    $("#school_SCHOOL_ADDR").focus();
+                    return false;
+                } else if (schProvinceLength == 0) {
+                    if (cul == 'th') {
+                        alert('ยังไม่ได้เลือกจังหวัด');
+                    } else {
+                        alert('Please enter province.');
+                    }
+                    $("#SCHOOL_ADDR_PROVINCE").addClass('input-validation-error');
+                    $("#SCHOOL_ADDR_PROVINCE").focus();
+                    return false;
+                } else if (schAmphurLength == 0) {
+                    if (cul == 'th') {
+                        alert('ยังไม่ได้เลือก อำเภอ');
+                    } else {
+                        alert('Please select district');
+                    }
+                    $("#SCHOOL_ADDR_AMPHUR").addClass('input-validation-error');
+                    $("#SCHOOL_ADDR_AMPHUR").focus();
+                    return false;
+
+                } else if (schTombonLength == 0) {
+                    if (cul == 'th') {
+                        alert('ยังไม่ได้เลือก ตำบล');
+                    } else {
+                        alert('Please select subdistrict');
+                    }
+                    $("#SCHOOL_ADDR_TOMBON").addClass('input-validation-error');
+                    $("#SCHOOL_ADDR_TOMBON").focus();
+                    return false;
+                } else if (schPhoneLength == 0 || $("#school_SCHOOL_ADDR_PHONE").val() == '') {
+                    if (cul == 'th') {
+                        alert('ยังไม่ได้ป้อนเบอร์ติดต่อ');
+                    } else {
+                        alert('Please enter phone number.');
+                    }
+                    $("#school_SCHOOL_ADDR_PHONE").addClass('input-validation-error');
+                    $("#school_SCHOOL_ADDR_PHONE").focus();
+                    return false;
+                } else if (schEmailLength == 0 || $("#school_SCHOOL_EMAIL").val() == '') {
+                    if (cul == 'th') {
+                        alert('ยังไม่ได้ป้อนอีเมล์');
+                    } else {
+                        alert('Please enter email.');
+                    }
+                    $("#school_SCHOOL_EMAIL").addClass('input-validation-error');
+                    $("#school_SCHOOL_EMAIL").focus();
+                    return false;
+                } else if (isEmailValid($("#school_SCHOOL_EMAIL").val()) == false) {
+                    if (cul == 'th') {
+                        alert('รูปแบบอีเมล์ไม่ถูกต้อง');
+                    } else {
+                        alert('Email format is wrong.');
+                    }
+                    $("#school_SCHOOL_EMAIL").addClass('input-validation-error');
+                    $("#school_SCHOOL_EMAIL").focus();
+                    return false;
+                } else if (staffLength == 0) {
+                    if (cul == 'th') {
+                        alert('ยังไม่เพิ่มข้อมูล ครู/อาจารย์ผู้ควบคุมดูแลนักเรียน/นักศึกษา');
+                    } else {
+                        alert('No supervisor input.');
+                    }
+                    $("#TMP_STAFF_TITLE_ID").focus();
+                    return false;
+                } else if (studentLength == 0) {
+                    if (cul == 'th') {
+                        alert('ยังไม่ได้เพิ่ม รายชื่อนักเรียน/นักศึกษาที่สมัครแข่งขัน');
+                    } else {
+                        alert('No student input.');
+                    }
+                    $("#TMP_STD_LEVEL_ID").focus();
+                    return false;
+                } else if (stdName != '' || stdSurname != '' || stdPhone != '') {
+                    if (cul == 'th') {
+                        alert('มีการป้อนข้อมูล นักเรียน/นักศึกษาแต่ยังไม่ได้กดปุ่มเพิ่มข้อมูล');
+                    } else {
+                        alert('Please press the Add button. After students have finished entering data.');
+                    }
+                    $("#addStudentItem").focus();
+                    return false;
+                } else if (staffName != '' || staffSurname != '' || staffPhone != '') {
+                    if (cul == 'th') {
+                        alert('มีการป้อนข้อมูล ครู/อาจารย์ผู้ควบคุมดูแลนักเรียน/นักศึกษา แต่ยังไม่ได้กดปุ่มเพิ่มข้อมูล');
+                    } else {
+                        alert('Please press the Add button. After Supervisor have finished entering data.');
+                    }
+                    $("#addStaffItem").focus();
+                    return false;
+
+                } else {
+
+                    $("#loading").fadeIn();
+                    var opts = {
+                        lines: 12, // The number of lines to draw
+                        length: 7, // The length of each line
+                        width: 4, // The line thickness
+                        radius: 10, // The radius of the inner circle
+                        color: '#000', // #rgb or #rrggbb
+                        speed: 1, // Rounds per second
+                        trail: 60, // Afterglow percentage
+                        shadow: false, // Whether to render a shadow
+                        hwaccel: false // Whether to use hardware acceleration
+                    };
+                    var target = document.getElementById('loading');
+                    var spinner = new Spinner(opts).spin(target);
+
+                }
+            });
+
+
+
+        });
+        function chkNumber(ele) {
+            var vchar = String.fromCharCode(event.keyCode);
+            if ((vchar < '0' || vchar > '9') && (vchar != '.')) return false;
+            ele.onKeyPress = vchar;
+        }
+    </script>
+}

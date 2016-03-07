@@ -1,0 +1,111 @@
+﻿@model DPUWebPhet10.Models.TB_APPLICATION_STUDENT
+@using DPUWebPhet10.Helpers
+<div class="editorStudentRow">
+    @using (Html.BeginCollectionItem("Students"))
+    {
+        <table>
+            <tr>
+                <td style="width: 120px; text-align: center;">
+                    @{
+        String levelName = "";
+        int idLevel = Convert.ToInt16(Model.STD_LEVEL_ID);
+        switch (idLevel)
+        {
+            case 1: levelName = "ประถมศึกษาตอนต้น";
+                break;
+            case 2: levelName = "ประถมศึกษาตอนปลาย";
+                break;
+            case 3: levelName = "มัธยมศึกษาตอนต้น";
+                break;
+            case 4: levelName = "มัธยมศึกษาตอนปลาย";
+                break;
+            case 5: levelName = "อุดมศึกษา";
+                break;
+        }
+        @Html.Label(levelName)
+                    }
+                </td>
+                <td style="width: 80px; text-align: center;">
+                    @Html.Label(@Model.STD_GRADE + "")
+                </td>
+                <td style="width: 100px; text-align: center;">
+                    @{
+        String titleName = "";
+        int idTitle = Convert.ToInt16(Model.STD_TITLE_ID);
+        switch (idTitle)
+        {
+            case 1: titleName = "เด็กชาย";
+                break;
+            case 2: titleName = "เด็กหญิง";
+                break;
+            case 3: titleName = "นาย";
+                break;
+            case 4: titleName = "นางสาว";
+                break;
+            case 5: titleName = "นาง";
+                break;
+        }
+        @Html.Label(titleName)
+                    }
+                </td>
+                <td style="width: 150px; text-align: center;">
+                    @Html.Label(@Model.STD_NAME)
+                </td>
+                <td style="width: 150px; text-align: center;">
+                    @Html.Label(@Model.STD_SURNAME)
+                </td>
+                <td style="width: 80px; text-align: center;">
+                    @Html.Label(@Model.STD_PHONE)
+                </td>
+                <td style="width: 150px; text-align: left;">
+                    @Html.Raw(@Model.STD_EMAIL)
+                </td>
+                <td style="width: 150px; text-align: left;">
+                    @if (@Model.STD_BIRTH_DAY == null)
+                    {
+                        @Html.Label("");
+                    }
+                    else
+                    {
+                        @Html.Label(@Model.STD_BIRTH_DAY)
+                    }
+                </td>
+                <td style="width: 100px; text-align: center;">
+                    @{
+                    String nationName = "";
+                    int idNation = Convert.ToInt16(@Model.STD_NATION);
+                    switch (idNation)
+                    {
+                        case 1: nationName = "ไทย";
+                            break;
+                        case 2: nationName = "จีน";
+                            break;
+                        case 3: nationName = "อื่นๆ";
+                            break;
+
+                    }
+                    @Html.Label(nationName)
+                    }
+                </td>
+                <td style="width: 150px; text-align: left;">
+                    @Html.Raw(@Model.STD_NATION_OTHER)
+                </td>
+                <td style="width: 150px;">
+                    <label class="delete-student" style="text-align: center; cursor: pointer;">@DPUWebPhet10.Resources.Application.Application.LB_BUTTON_05</label>
+                </td>
+            </tr>
+        </table>
+        @Html.HiddenFor(model => model.STD_ID)
+        @Html.HiddenFor(model => model.STD_LEVEL_ID)
+        @Html.HiddenFor(model => model.STD_GRADE)
+        @Html.HiddenFor(model => model.STD_TITLE_ID)
+        @Html.HiddenFor(model => model.STD_NAME)
+        @Html.HiddenFor(model => model.STD_SURNAME)
+        @Html.HiddenFor(model => model.STD_PHONE)
+        @Html.HiddenFor(model => model.STD_BIRTH_DAY)
+        @Html.HiddenFor(model => model.STD_EMAIL)
+        @Html.HiddenFor(model => model.STD_IS_CONCERN)
+    @Html.HiddenFor(model => model.STD_NATION)
+    @Html.HiddenFor(model => model.STD_NATION_OTHER)
+    }
+</div>

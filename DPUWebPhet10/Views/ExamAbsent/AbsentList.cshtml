@@ -1,0 +1,72 @@
+﻿@model DPUWebPhet10.Models.ReportModelCriteria
+@{
+    Layout = "~/Views/Shared/_Managementlayout.cshtml";
+}
+@{
+    <div class="full_w">
+        <div class="h_title">
+            Manage pages - รายงานจำนวนผู้ขาดสอบ</div>
+        <br />
+        @using (Html.BeginForm())
+        {
+            <p>
+                <span>เลือกระดับชั้น</span>
+                @Html.DropDownList("StudentLevel", "<-- ทั้งหมด -->")
+                <input type="submit" class="button" value="ค้นหา" />
+            </p>
+            <div class="entry">
+                <div class="sep">
+                </div>
+            </div>
+            if (Model.reports != null)
+            {
+            <table style="width:80%">
+                <tr>
+                    <th style="width:50px;text-align:center;">
+                        ลำดับ
+                    </th>
+                    <th style="width:150px">
+                        รายการ
+                    </th>
+                    <th style="width:150px;text-align:center;">
+                        จำนวน (คน)
+                    </th>
+                </tr>
+                @foreach (var item in Model.reports)
+                {
+            
+                    <tr>
+                        <td style="text-align:center">
+                            @item.seq
+                        </td>
+                        <td>
+                            @item.description
+                        </td>
+                        <td style="text-align:center">
+                            @item.count
+                        </td>
+                    </tr>
+                }
+            </table>
+            }
+            else
+            {
+            <div class="n_error">
+                <p>
+                    ไม่มีข้อมูลขาดสอบ
+                </p>
+            </div>
+            }
+        }
+    </div>
+
+    
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+    <script type="text/javascript">
+        $(document).ready(function () {
+        });
+    </script>
+}

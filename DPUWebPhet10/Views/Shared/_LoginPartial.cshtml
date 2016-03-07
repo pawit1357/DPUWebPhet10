@@ -1,0 +1,74 @@
+﻿<table>
+    <tr>
+        @if (Request.IsAuthenticated)
+        {
+            <td>
+                @Html.Encode(User.Identity.Name)
+            </td>
+            <td>
+                |@Html.ActionLink(@DPUWebPhet10.Resources.LoginPartial.LoginPartial.BUTTON_LOGOUT, "Logout", "Account", null, new { style = "color:white" })
+            </td>    
+        }
+        else
+        {
+            <td>
+                <img src="/images/mailicon.png" alt="" />
+            </td>
+            <td>
+                <div class="loginPartial">
+                    <input type="text" id="uname" name="uname" value="E-Mail Address" onclick="this.value = ''" />
+                </div>
+            </td>
+            <td>
+                <img src="/images/passicon.png" alt="" />
+            </td>
+            <td>
+                <div class="loginPartial">
+                    <input type="password" id="pwd" name="pwd" value="Password" onclick="this.value = ''" />
+                </div>
+            </td>
+            <td>
+                <div class="loginPartial">
+                    <input id="btnLogin" type="button" value="@DPUWebPhet10.Resources.LoginPartial.LoginPartial.BUTTON_LOGIN" />
+                </div>
+            </td>
+
+        }
+        <td>
+            | Language :
+        </td>
+        <td>
+            @Html.ActionLink(
+    " ",
+        "ChangeCulture",
+    "Home",
+    new
+    {
+        lang = "th",
+        returnUrl = this.Request.RawUrl
+    },
+    new
+    {
+        style = "background: url('" + Url.Content("~/images/Thailand-Flag.png") + "') no-repeat center right; display:block; height:17px; width:17px;"
+    }
+)
+        </td>
+        <td>
+            @Html.ActionLink(
+    " ",
+        "ChangeCulture",
+    "Home",
+    new
+    {
+        lang = "en",
+        returnUrl = this.Request.RawUrl
+    },
+    new
+    {
+
+        style = "background: url('" + Url.Content("~/images/United-Kingdom-Flag.png") + "') no-repeat center right; display:block; height:17px; width:17px;"
+    }
+)
+        </td>
+    </tr>
+</table>

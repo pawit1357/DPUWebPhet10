@@ -1,0 +1,59 @@
+﻿@model IEnumerable<DPUWebPhet10.Models.TB_USER>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Managementlayout.cshtml";
+}
+<div class="full_w">
+    <div class="h_title">
+        Manage pages - User</div>
+    <table>
+        <tr>
+            <th>
+                @Html.Label("ROLE")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.USERNAME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PASSWORD)
+            </th>
+            <th>
+                @Html.Label("STATUS")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EMAIL)
+            </th>
+            <th>
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TB_ROLE.NAME)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.USERNAME)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PASSWORD)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TB_M_STATUS.STATUS_NAME_TH)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EMAIL)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+    </table>
+    <div class="entry">
+        <div class="sep">
+        </div>
+        <a class="button add" href="/User/Create">Create New</a>
+    </div>
+</div>

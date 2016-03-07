@@ -1,0 +1,323 @@
+﻿@model DPUWebPhet10.Models.ScoreRound21Model
+@using DPUWebPhet10.Helpers
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "";
+    Layout = "~/Views/Shared/_Managementlayout.cshtml";
+}
+@{
+    <div class="full_w" style="width: 860px">
+        <div class="h_title" style="width: 845px">
+            Manage pages - บันทึกคะแนน</div>
+        @using (Html.BeginForm("Round2_1", "Score"))
+        { 
+            @Html.HiddenFor(model => model.studentName);
+            <p>
+                <label>
+                    รหัสนักเรียน</label>
+                @Html.EditorFor(model => model.studentCode)
+                <input type="submit" name="actionName" class="button add" value="ค้นหา" style="width: 50px" />
+                @Html.ValidationMessageFor(model => model.studentCode)
+                @Model.studentName
+            </p>
+            
+
+                                                       if (ViewBag.ResultMsg != null)
+                                                       {
+            <div class="n_ok">
+                <p>
+                    @ViewBag.ResultMsg
+                </p>
+            </div>
+                                                       }
+                                                       if (ViewBag.ResultErrorMsg != null)
+                                                       {
+            <div class="n_error">
+                <p>
+                @Html.Raw(ViewBag.ResultErrorMsg.Replace("\n", "</br>"))
+                </p>
+            </div>
+                                                       }
+
+                                                       if (Model.studentName != null)
+                                                       {
+            <h1>
+                บันทึกคะแนนการเขียนเรียงความภาษาจีน</h1>
+            <table>
+                <tr>
+                    <td style="width: 40px; text-align: left;">@Html.Label("กรรมการ")
+                    </td>
+                    <td style="width: 20px; text-align: center;">
+                        การนำเข้าสู่เนื้อหา<br />
+                        (5)
+                    </td>
+                    <td style="width: 20px; text-align: center;">
+                        เนื้อหาสาระ<br />
+                        (25)
+                    </td>
+                    <td style="width: 20px; text-align: center;">
+                        สรุป<br />
+                        (5)
+                    </td>
+                    <td style="width: 20px; text-align: center;">
+                        ความคิดสร้างสรรค์<br />
+                        (5)
+                    </td>
+                    <td style="width: 20px; text-align: center;">
+                        ความถูกต้องของตัวอักษร<br />
+                        (10)
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <label id="col1">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 40px; text-align: left;">
+                    </td>
+                    <td style="width: 20px; text-align: left;">
+                        @Html.ValidationMessageFor(model => model.score11)
+                    </td>
+                    <td style="width: 20px; text-align: left;">
+                        @Html.ValidationMessageFor(model => model.score12)
+                    </td>
+                    <td style="width: 20px; text-align: left;">
+                        @Html.ValidationMessageFor(model => model.score13)
+                    </td>
+                    <td style="width: 20px; text-align: center;">
+                        @Html.ValidationMessageFor(model => model.score14)
+                    </td>
+                    <td style="width: 20px; text-align: center;">
+                        @Html.ValidationMessageFor(model => model.score15)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 40px; text-align: left;">@Html.Label("(1)")
+                    </td>
+                    <td style="width: 20px; text-align: left;">
+                        @Html.EditorFor(model => model.score11)
+                    </td>
+                    <td style="width: 20px; text-align: left;">
+                        @Html.EditorFor(model => model.score12)
+                    </td>
+                    <td style="width: 20px; text-align: left;">
+                        @Html.EditorFor(model => model.score13)
+                    </td>
+                    <td style="width: 20px; text-align: center;">
+                        @Html.EditorFor(model => model.score14)
+                    </td>
+                    <td style="width: 20px; text-align: center;">
+                        @Html.EditorFor(model => model.score15)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td style="width: 40px; text-align: left;">
+                        @Html.ValidationMessageFor(model => model.score21)
+                    </td>
+                    <td style="width: 20px; text-align: left;">
+                        @Html.ValidationMessageFor(model => model.score22)
+                    </td>
+                    <td style="width: 20px; text-align: left;">
+                        @Html.ValidationMessageFor(model => model.score23)
+                    </td>
+                    <td style="width: 20px; text-align: center;">
+                        @Html.ValidationMessageFor(model => model.score24)
+                    </td>
+                    <td style="width: 20px; text-align: center;">
+                        @Html.ValidationMessageFor(model => model.score25)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 40px; text-align: left;">@Html.Label("(2)")
+                    </td>
+                    <td style="width: 20px; text-align: left;">
+                        @Html.EditorFor(model => model.score21)
+                    </td>
+                    <td style="width: 20px; text-align: left;">
+                        @Html.EditorFor(model => model.score22)
+                    </td>
+                    <td style="width: 20px; text-align: left;">
+                        @Html.EditorFor(model => model.score23)
+                    </td>
+                    <td style="width: 20px; text-align: center;">
+                        @Html.EditorFor(model => model.score24)
+                    </td>
+                    <td style="width: 20px; text-align: center;">
+                        @Html.EditorFor(model => model.score25)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 40px; text-align: left;">
+                    </td>
+                    <td style="width: 20px; text-align: left;">
+                        @Html.ValidationMessageFor(model => model.score31)
+                    </td>
+                    <td style="width: 20px; text-align: left;">
+                        @Html.ValidationMessageFor(model => model.score32)
+                    </td>
+                    <td style="width: 20px; text-align: left;">
+                        @Html.ValidationMessageFor(model => model.score33)
+                    </td>
+                    <td style="width: 20px; text-align: center;">
+                        @Html.ValidationMessageFor(model => model.score34)
+                    </td>
+                    <td style="width: 20px; text-align: center;">
+                        @Html.ValidationMessageFor(model => model.score35)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 40px; text-align: left;">@Html.Label("(3)")
+                    </td>
+                    <td style="width: 20px; text-align: left;">
+                        @Html.EditorFor(model => model.score31)
+                    </td>
+                    <td style="width: 20px; text-align: left;">
+                        @Html.EditorFor(model => model.score32)
+                    </td>
+                    <td style="width: 20px; text-align: left;">
+                        @Html.EditorFor(model => model.score33)
+                    </td>
+                    <td style="width: 20px; text-align: center;">
+                        @Html.EditorFor(model => model.score34)
+                    </td>
+                    <td style="width: 20px; text-align: center;">
+                        @Html.EditorFor(model => model.score35)
+                    </td>
+                </tr>
+            </table>  
+            <div class="entry">
+                <div class="sep">
+                </div>
+                <input type="submit" name="actionName" class="button" value="บันทึก" style="width: 50px" />
+                @Html.ActionLink("ลบ", "clearRound21Score", new { id = Model.studentCode }, new { @class = "del button" })
+            </div>                  
+                                                       }
+
+        }
+        @*        @if (ViewBag.ResultOKMsg != null)
+        {
+            <div class="n_ok">
+                <p>
+                    @ViewBag.ResultOKMsg
+                </p>
+            </div>
+        }*@
+    </div>
+}
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#studentCode').focus();
+
+
+//                        $("#score11,#score21,#score31").keyup(function () {
+//                            var isOver = false;
+//                            var maxValue = 5;
+//                            var score11 = $("#score11").val();
+//                            var score21 = $("#score11").val();
+//                            var score31 = $("#score11").val();
+
+//                            if (score11 > maxValue) {
+//                                isOver = true;
+//                            }
+//                            if (score21 > maxValue) {
+//                                isOver = true;
+//                            }
+//                            if (score21 > maxValue) {
+//                                isOver = true;
+//                            }
+//                            if (isOver == true) {
+//                                $("#col1").html("<font color=red><b>คะแนนเกินกว่า " + maxValue + "</b>.</font>");
+//                            } else {
+//                                $("#col1").html("");
+//                            }
+//                        });
+            //            $("#score12,#score22,#score32").keyup(function () {
+            //                var isOver = false;
+
+            //                var maxValue = 25;
+            //                var score12 = $("#score12").val();
+            //                var score22 = $("#score22").val();
+            //                var score32 = $("#score32").val();
+
+            //                if (score12 > maxValue) {
+
+            //                }
+            //                if (score22 > maxValue) {
+
+            //                }
+            //                if (score32 > maxValue) {
+
+            //                }
+            //                $("#idSelectedSchoolType").addClass('input-validation-error');
+            //            });
+            //            $("#score13,#score23,#score33").keyup(function () {
+            //                var isOver = false;
+            //                var maxValue = 5;
+            //                var score13 = $("#score13").val();
+            //                var score23 = $("#score23").val();
+            //                var score33 = $("#score33").val();
+
+            //                if (score13 > maxValue) {
+
+            //                }
+            //                if (score23 > maxValue) {
+
+            //                }
+            //                if (score33 > maxValue) {
+
+            //                }
+            //                $("#idSelectedSchoolType").addClass('input-validation-error');
+            //            });
+            //            $("#score14,#score24,#score34").keyup(function () {
+            //                var isOver = false;
+            //                var maxValue = 5;
+            //                var score14 = $("#score14").val();
+            //                var score24 = $("#score24").val();
+            //                var score34 = $("#score34").val();
+
+            //                if (score14 > maxValue) {
+
+            //                }
+            //                if (score24 > maxValue) {
+
+            //                }
+            //                if (score34 > maxValue) {
+
+            //                }
+            //                $("#idSelectedSchoolType").addClass('input-validation-error');
+            //            });
+            //            $("#score15,#score25,#score35").keyup(function () {
+            //                var isOver = false;
+            //                var maxValue = 10;
+            //                var score15 = $("#score15").val();
+            //                var score25 = $("#score25").val();
+            //                var score35 = $("#score35").val();
+
+            //                if (score15 > maxValue) {
+
+            //                }
+            //                if (score25 > maxValue) {
+
+            //                }
+            //                if (score35 > maxValue) {
+
+            //                }
+            //                $("#idSelectedSchoolType").addClass('input-validation-error');
+            //            });
+        });
+    </script>
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />

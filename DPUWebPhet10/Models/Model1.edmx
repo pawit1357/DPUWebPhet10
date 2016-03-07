@@ -1,0 +1,2082 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="Oracle.DataAccess.Client" ProviderManifestToken="10.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="TB_APPLICATION">
+          <Key>
+            <PropertyRef Name="PROJECT_ID" />
+          </Key>
+          <Property Name="PROJECT_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PROJECT_ROUND" Type="number" Precision="38" Scale="0" />
+          <Property Name="PROJECT_REGISTER_START" Type="date" />
+          <Property Name="PROJECT_REGISTER_END" Type="date" />
+          <Property Name="PROJECT_EXAM_DATE" Type="date" />
+          <Property Name="PROJECT_STATUS" Type="char" MaxLength="1" />
+          <Property Name="PROJECT_ANNOUNCE_DATE" Type="date" />
+          <Property Name="PROJECT_IS_ANNOUNCE_ROUND1" Type="number" Precision="38" Scale="0" />
+          <Property Name="PROJECT_IS_ANNOUNCE_ROUND2" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="TB_APPLICATION_SCHOOL">
+          <Key>
+            <PropertyRef Name="SCHOOL_ID" />
+          </Key>
+          <Property Name="SCHOOL_ID" Type="number" Precision="38" Scale="0" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SCHOOL_ZONE_EDU" Type="varchar2" MaxLength="20" />
+          <Property Name="SCHOOL_ZONE" Type="varchar2" MaxLength="100" />
+          <Property Name="SCHOOL_TYPE" Type="varchar2" MaxLength="1" />
+          <Property Name="SCHOOL_TYPE_OTHER" Type="varchar2" MaxLength="200" />
+          <Property Name="SCHOOL_ADDR" Type="varchar2" MaxLength="200" />
+          <Property Name="SCHOOL_ADDR_SOI" Type="varchar2" MaxLength="100" />
+          <Property Name="SCHOOL_ADDR_ROAD" Type="varchar2" MaxLength="100" />
+          <Property Name="SCHOOL_ADDR_TOMBON" Type="number" Precision="38" Scale="0" />
+          <Property Name="SCHOOL_ADDR_AMPHUR" Type="number" Precision="38" Scale="0" />
+          <Property Name="SCHOOL_ADDR_PROVINCE" Type="number" Precision="38" Scale="0" />
+          <Property Name="SCHOOL_ADDR_ZIPCODE" Type="varchar2" MaxLength="20" />
+          <Property Name="SCHOOL_ADDR_PHONE" Type="varchar2" MaxLength="20" />
+          <Property Name="SCHOOL_ADDR_FAX" Type="varchar2" MaxLength="20" />
+          <Property Name="SCHOOL_NAME" Type="varchar2" MaxLength="200" />
+          <Property Name="SCHOOL_PROVINCE" Type="number" Precision="38" Scale="0" />
+          <Property Name="SCHOOL_PASSWORD" Type="varchar2" MaxLength="50" />
+          <Property Name="SCHOOL_DOC_PATH" Type="varchar2" MaxLength="100" />
+          <Property Name="SCHOOL_REGISTER_DATE" Type="date" />
+          <Property Name="SCHOOL_APPROVED_STATUS" Type="number" Precision="38" Scale="0" />
+          <Property Name="SCHOOL_EMAIL" Type="varchar2" MaxLength="50" />
+          <Property Name="SCHOOL_CULTURE" Type="varchar2" MaxLength="2" />
+          <Property Name="SCHOOL_ROUND" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="TB_APPLICATION_STAFF">
+          <Key>
+            <PropertyRef Name="STAFF_ID" />
+          </Key>
+          <Property Name="STAFF_ID" Type="number" Precision="38" Scale="0" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="STAFF_SCHOOL_ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="STAFF_POSITION" Type="number" Precision="38" Scale="0" />
+          <Property Name="STAFF_NAME" Type="varchar2" MaxLength="100" />
+          <Property Name="STAFF_SURNAME" Type="varchar2" MaxLength="100" />
+          <Property Name="STAFF_PHONE" Type="varchar2" MaxLength="20" />
+          <Property Name="STAFF_TITLE_ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="STAFF_FOR_LEVEL" Type="number" Precision="38" Scale="0" />
+          <Property Name="STAFF_NATION" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="TB_APPLICATION_STUDENT">
+          <Key>
+            <PropertyRef Name="STD_ID" />
+          </Key>
+          <Property Name="STD_ID" Type="number" Precision="38" Scale="0" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="STD_TITLE_ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="STD_NAME" Type="varchar2" MaxLength="100" />
+          <Property Name="STD_SURNAME" Type="varchar2" MaxLength="100" />
+          <Property Name="STD_LEVEL_ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="STD_SCHOOL_ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="STD_PICTURE_PATH" Type="varchar2" MaxLength="200" />
+          <Property Name="STD_PHONE" Type="varchar2" MaxLength="20" />
+          <Property Name="STD_EMAIL" Type="varchar2" MaxLength="100" />
+          <Property Name="STD_ID_CARD" Type="varchar2" MaxLength="16" />
+          <Property Name="STD_PASSPORT_ID" Type="varchar2" MaxLength="10" />
+          <Property Name="STD_GRADE" Type="number" Precision="38" Scale="0" />
+          <Property Name="STD_PHONE_PROVIDER" Type="varchar2" MaxLength="20" />
+          <Property Name="STD_APPROVED_STATUS" Type="number" Precision="38" Scale="0" />
+          <Property Name="STD_BIRTH_DAY" Type="varchar2" MaxLength="20" />
+          <Property Name="STD_IS_CONCERN" Type="varchar2" MaxLength="1" />
+          <Property Name="STD_NATION" Type="number" Precision="38" Scale="0" />
+          <Property Name="STD_NATION_OTHER" Type="varchar2" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TB_COMMITEE">
+          <Key>
+            <PropertyRef Name="COMMITEE_ID" />
+          </Key>
+          <Property Name="COMMITEE_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="COMMITEE_TITLE_ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="COMMITEE_NAME" Type="varchar2" MaxLength="100" />
+          <Property Name="COMMITEE_SURNAME" Type="varchar2" MaxLength="100" />
+          <Property Name="COMMITEE_PHONE" Type="varchar2" MaxLength="20" />
+          <Property Name="COMMITEE_STATUS" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="TB_COMMITEE_ROOM">
+          <Key>
+            <PropertyRef Name="COMMITEE_ID" />
+          </Key>
+          <Property Name="COMMITEE_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="COMMITEE_ROOM_ID" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="TB_CONCERN">
+          <Key>
+            <PropertyRef Name="STD_CODE" />
+          </Key>
+          <Property Name="STD_CODE" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_EXAM_ABSENT">
+          <Key>
+            <PropertyRef Name="STD_CODE" />
+          </Key>
+          <Property Name="STD_CODE" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_EXAM_ANOUNCE">
+          <Key>
+            <PropertyRef Name="ANOUNCE_ID" />
+          </Key>
+          <Property Name="ANOUNCE_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ANOUNCE_FOR_LEVEL" Type="number" Precision="38" Scale="0" />
+          <Property Name="ANOUNCE_BUILDING" Type="number" Precision="38" Scale="0" />
+          <Property Name="ANOUNCE_BOARD" Type="varchar2" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="TB_M_AMPHUR">
+          <Key>
+            <PropertyRef Name="AMPHUR_ID" />
+          </Key>
+          <Property Name="AMPHUR_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="AMPHUR_CODE" Type="varchar2" MaxLength="4" />
+          <Property Name="AMPHUR_NAME" Type="varchar2" MaxLength="150" />
+          <Property Name="GEO_ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="PROVINCE_ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="AMPHUR_NAME_ENG" Type="varchar2" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="TB_M_BUILDING">
+          <Key>
+            <PropertyRef Name="BUILDING_ID" />
+          </Key>
+          <Property Name="BUILDING_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="BUILDING_NAME" Type="varchar2" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TB_M_DISTRICT">
+          <Key>
+            <PropertyRef Name="DISTRICT_ID" />
+          </Key>
+          <Property Name="DISTRICT_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DISTRICT_CODE" Type="varchar2" MaxLength="6" />
+          <Property Name="DISTRICT_NAME" Type="varchar2" MaxLength="150" />
+          <Property Name="AMPHUR_ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="PROVINCE_ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="GEO_ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="DISTRICT_NAME_ENG" Type="varchar2" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="TB_M_LEVEL">
+          <Key>
+            <PropertyRef Name="LEVEL_ID" />
+          </Key>
+          <Property Name="LEVEL_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="LEVEL_NAME_TH" Type="varchar2" MaxLength="50" />
+          <Property Name="LEVEL_NAME_EN" Type="varchar2" MaxLength="50" />
+          <Property Name="LEVEL_NAME_ZH" Type="varchar2" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TB_M_PRIZE">
+          <Key>
+            <PropertyRef Name="PRIZE_ID" />
+          </Key>
+          <Property Name="PRIZE_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PRIZE_NAME_TH" Type="varchar2" MaxLength="100" />
+          <Property Name="PRIZE_NAME_EN" Type="varchar2" MaxLength="100" />
+          <Property Name="PRIZE_FOR_ROUND" Type="number" Precision="38" Scale="0" />
+          <Property Name="PRIZE_SCORE_PERIOD" Type="varchar2" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TB_M_PROVINCE">
+          <Key>
+            <PropertyRef Name="PROVINCE_ID" />
+          </Key>
+          <Property Name="PROVINCE_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PROVINCE_CODE" Type="varchar2" MaxLength="2" />
+          <Property Name="PROVINCE_NAME" Type="varchar2" MaxLength="150" />
+          <Property Name="GEO_ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="PROVINCE_NAME_ENG" Type="varchar2" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="TB_M_SCHOOL_9">
+          <Key>
+            <PropertyRef Name="SCHOOL_ID" />
+          </Key>
+          <Property Name="SCHOOL_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="SCHOOL_ZONE_EDU" Type="varchar2" MaxLength="20" />
+          <Property Name="SCHOOL_ZONE" Type="varchar2" MaxLength="100" />
+          <Property Name="SCHOOL_TYPE" Type="varchar2" MaxLength="1" />
+          <Property Name="SCHOOL_TYPE_OTHER" Type="varchar2" MaxLength="200" />
+          <Property Name="SCHOOL_ADDR" Type="varchar2" MaxLength="200" />
+          <Property Name="SCHOOL_ADDR_SOI" Type="varchar2" MaxLength="100" />
+          <Property Name="SCHOOL_ADDR_ROAD" Type="varchar2" MaxLength="100" />
+          <Property Name="SCHOOL_ADDR_TOMBON" Type="number" Precision="38" Scale="0" />
+          <Property Name="SCHOOL_ADDR_AMPHUR" Type="number" Precision="38" Scale="0" />
+          <Property Name="SCHOOL_ADDR_PROVINCE" Type="number" Precision="38" Scale="0" />
+          <Property Name="SCHOOL_ADDR_ZIPCODE" Type="varchar2" MaxLength="20" />
+          <Property Name="SCHOOL_ADDR_PHONE" Type="varchar2" MaxLength="20" />
+          <Property Name="SCHOOL_ADDR_FAX" Type="varchar2" MaxLength="20" />
+          <Property Name="SCHOOL_NAME" Type="varchar2" MaxLength="200" />
+          <Property Name="SCHOOL_PROVINCE" Type="varchar2" MaxLength="20" />
+          <Property Name="SCHOOL_PASSWORD" Type="varchar2" MaxLength="8" />
+          <Property Name="SCHOOL_DOC_PATH" Type="varchar2" MaxLength="100" />
+          <Property Name="SCHOOL_REGISTER_DATE" Type="date" />
+          <Property Name="SCHOOL_APPROVED_STATUS" Type="char" MaxLength="1" />
+          <Property Name="SCHOOL_CODE" Type="varchar2" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="TB_M_STATUS">
+          <Key>
+            <PropertyRef Name="STATUS_ID" />
+          </Key>
+          <Property Name="STATUS_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="STATUS_NAME_TH" Type="varchar2" MaxLength="50" />
+          <Property Name="STATUS_GROUP" Type="number" Precision="38" Scale="0" />
+          <Property Name="STATUS_NAME_EN" Type="varchar2" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TB_M_TITLE">
+          <Key>
+            <PropertyRef Name="TITLE_ID" />
+          </Key>
+          <Property Name="TITLE_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="TITLE_NAME_TH" Type="varchar2" MaxLength="20" />
+          <Property Name="TITLE_NAME_EN" Type="varchar2" MaxLength="20" />
+          <Property Name="TITLE_NAME_ZH" Type="varchar2" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="TB_ROLE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NAME" Type="varchar2" MaxLength="100" />
+          <Property Name="DESCRIPTON" Type="varchar2" MaxLength="200" />
+          <Property Name="STATUS" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="TB_ROLE_PERMISSION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ROLE_ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="PERMISSION_CODE" Type="varchar2" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TB_ROOM">
+          <Key>
+            <PropertyRef Name="ROOM_ID" />
+          </Key>
+          <Property Name="ROOM_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ROOM_FOR_LEVEL" Type="number" Precision="38" Scale="0" />
+          <Property Name="ROOM_BUILD" Type="number" Precision="38" Scale="0" />
+          <Property Name="ROOM_FLOOR" Type="number" Precision="38" Scale="0" />
+          <Property Name="ROOM_NUMBER" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ROOM_SEAT_COUNT" Type="number" Precision="38" Scale="0" />
+          <Property Name="ROOM_COMMITTEE_COUNT" Type="number" Precision="38" Scale="0" />
+          <Property Name="ROOM_ROW" Type="varchar2" MaxLength="10" />
+          <Property Name="ROW_1" Type="number" Precision="38" Scale="0" />
+          <Property Name="ROW_2" Type="number" Precision="38" Scale="0" />
+          <Property Name="ROW_3" Type="number" Precision="38" Scale="0" />
+          <Property Name="ROW_4" Type="number" Precision="38" Scale="0" />
+          <Property Name="ROW_5" Type="number" Precision="38" Scale="0" />
+          <Property Name="ROW_6" Type="number" Precision="38" Scale="0" />
+          <Property Name="ROW_7" Type="number" Precision="38" Scale="0" />
+          <Property Name="ROW_8" Type="number" Precision="38" Scale="0" />
+          <Property Name="ROW_9" Type="number" Precision="38" Scale="0" />
+          <Property Name="ROW_10" Type="number" Precision="38" Scale="0" />
+          <Property Name="ROW_11" Type="number" Precision="38" Scale="0" />
+          <Property Name="ROW_12" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="TB_SCHOOL_DOCUMENT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="SCHOOL_ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="DOCUMENT_PATH" Type="varchar2" MaxLength="100" />
+          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_SCORE_ROUND_1">
+          <Key>
+            <PropertyRef Name="STD_CODE" />
+          </Key>
+          <Property Name="STD_CODE" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ROUND_SCORE" Type="number" Precision="38" Scale="0" />
+          <Property Name="PRIZE_ID" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="TB_SCORE_ROUND_1_ERROR">
+          <Key>
+            <PropertyRef Name="STD_CODE" />
+          </Key>
+          <Property Name="STD_CODE" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="STD_NAME" Type="varchar2" MaxLength="100" />
+          <Property Name="STD_SCORE" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="TB_SCORE_ROUND_2">
+          <Key>
+            <PropertyRef Name="STD_CODE" />
+          </Key>
+          <Property Name="STD_CODE" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="SCORE_1_11" Type="number" Precision="38" Scale="0" />
+          <Property Name="SCORE_1_12" Type="number" Precision="38" Scale="0" />
+          <Property Name="SCORE_1_13" Type="number" Precision="38" Scale="0" />
+          <Property Name="SCORE_1_14" Type="number" Precision="38" Scale="0" />
+          <Property Name="SCORE_1_15" Type="number" Precision="38" Scale="0" />
+          <Property Name="SCORE_2_21" Type="number" Precision="38" Scale="0" />
+          <Property Name="SCORE_2_22" Type="number" Precision="38" Scale="0" />
+          <Property Name="SCORE_2_23" Type="number" Precision="38" Scale="0" />
+          <Property Name="SCORE_2_24" Type="number" Precision="38" Scale="0" />
+          <Property Name="ROUND_1_SCORE" Type="number" Precision="38" Scale="0" />
+          <Property Name="PRIZE_ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="SCORE_1_21" Type="number" Precision="38" Scale="0" />
+          <Property Name="SCORE_1_22" Type="number" Precision="38" Scale="0" />
+          <Property Name="SCORE_1_23" Type="number" Precision="38" Scale="0" />
+          <Property Name="SCORE_1_24" Type="number" Precision="38" Scale="0" />
+          <Property Name="SCORE_1_25" Type="number" Precision="38" Scale="0" />
+          <Property Name="SCORE_1_31" Type="number" Precision="38" Scale="0" />
+          <Property Name="SCORE_1_32" Type="number" Precision="38" Scale="0" />
+          <Property Name="SCORE_1_33" Type="number" Precision="38" Scale="0" />
+          <Property Name="SCORE_1_34" Type="number" Precision="38" Scale="0" />
+          <Property Name="SCORE_1_35" Type="number" Precision="38" Scale="0" />
+          <Property Name="SCORE_2_11" Type="number" Precision="38" Scale="0" />
+          <Property Name="SCORE_2_12" Type="number" Precision="38" Scale="0" />
+          <Property Name="SCORE_2_13" Type="number" Precision="38" Scale="0" />
+          <Property Name="SCORE_2_14" Type="number" Precision="38" Scale="0" />
+          <Property Name="SCORE_2_31" Type="number" Precision="38" Scale="0" />
+          <Property Name="SCORE_2_32" Type="number" Precision="38" Scale="0" />
+          <Property Name="SCORE_2_33" Type="number" Precision="38" Scale="0" />
+          <Property Name="SCORE_2_34" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="TB_STUDENT_SEAT">
+          <Key>
+            <PropertyRef Name="STUDENT_ID" />
+          </Key>
+          <Property Name="STUDENT_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="STUDENT_CODE" Type="number" Precision="38" Scale="0" />
+          <Property Name="SIT_NUMBER" Type="number" Precision="38" Scale="0" />
+          <Property Name="SIT_NUMBER_PREFIX" Type="char" MaxLength="1" />
+          <Property Name="ROOM_ID" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="TB_USER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ROLE_ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="USERNAME" Type="varchar2" MaxLength="10" />
+          <Property Name="PASSWORD" Type="varchar2" MaxLength="8" />
+          <Property Name="STATUS" Type="number" Precision="38" Scale="0" />
+          <Property Name="CREATE_BY" Type="number" Precision="38" Scale="0" />
+          <Property Name="LASTED_LOGIN" Type="date" />
+          <Property Name="EMAIL" Type="varchar2" MaxLength="100" />
+          <Property Name="CREATE_DATE" Type="date" />
+        </EntityType>
+        <Association Name="TB_APPLICATION_R01">
+          <End Role="TB_M_LEVEL" Type="Self.TB_M_LEVEL" Multiplicity="0..1" />
+          <End Role="TB_APPLICATION_STUDENT" Type="Self.TB_APPLICATION_STUDENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_M_LEVEL">
+              <PropertyRef Name="LEVEL_ID" />
+            </Principal>
+            <Dependent Role="TB_APPLICATION_STUDENT">
+              <PropertyRef Name="STD_LEVEL_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_APPLICATION_R03">
+          <End Role="TB_M_TITLE" Type="Self.TB_M_TITLE" Multiplicity="0..1" />
+          <End Role="TB_APPLICATION_STUDENT" Type="Self.TB_APPLICATION_STUDENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_M_TITLE">
+              <PropertyRef Name="TITLE_ID" />
+            </Principal>
+            <Dependent Role="TB_APPLICATION_STUDENT">
+              <PropertyRef Name="STD_TITLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_APPLICATION_R05">
+          <End Role="TB_APPLICATION_SCHOOL" Type="Self.TB_APPLICATION_SCHOOL" Multiplicity="0..1" />
+          <End Role="TB_APPLICATION_STUDENT" Type="Self.TB_APPLICATION_STUDENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_APPLICATION_SCHOOL">
+              <PropertyRef Name="SCHOOL_ID" />
+            </Principal>
+            <Dependent Role="TB_APPLICATION_STUDENT">
+              <PropertyRef Name="STD_SCHOOL_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_APPLICATION_ROOM_R01">
+          <End Role="TB_M_BUILDING" Type="Self.TB_M_BUILDING" Multiplicity="0..1" />
+          <End Role="TB_ROOM" Type="Self.TB_ROOM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_M_BUILDING">
+              <PropertyRef Name="BUILDING_ID" />
+            </Principal>
+            <Dependent Role="TB_ROOM">
+              <PropertyRef Name="ROOM_BUILD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_APPLICATION_SCHOOL_R01">
+          <End Role="TB_M_PROVINCE" Type="Self.TB_M_PROVINCE" Multiplicity="0..1" />
+          <End Role="TB_APPLICATION_SCHOOL" Type="Self.TB_APPLICATION_SCHOOL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_M_PROVINCE">
+              <PropertyRef Name="PROVINCE_ID" />
+            </Principal>
+            <Dependent Role="TB_APPLICATION_SCHOOL">
+              <PropertyRef Name="SCHOOL_ADDR_PROVINCE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_APPLICATION_SCHOOL_R02">
+          <End Role="TB_M_DISTRICT" Type="Self.TB_M_DISTRICT" Multiplicity="0..1" />
+          <End Role="TB_APPLICATION_SCHOOL" Type="Self.TB_APPLICATION_SCHOOL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_M_DISTRICT">
+              <PropertyRef Name="DISTRICT_ID" />
+            </Principal>
+            <Dependent Role="TB_APPLICATION_SCHOOL">
+              <PropertyRef Name="SCHOOL_ADDR_TOMBON" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_APPLICATION_SCHOOL_R03">
+          <End Role="TB_M_AMPHUR" Type="Self.TB_M_AMPHUR" Multiplicity="0..1" />
+          <End Role="TB_APPLICATION_SCHOOL" Type="Self.TB_APPLICATION_SCHOOL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_M_AMPHUR">
+              <PropertyRef Name="AMPHUR_ID" />
+            </Principal>
+            <Dependent Role="TB_APPLICATION_SCHOOL">
+              <PropertyRef Name="SCHOOL_ADDR_AMPHUR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_APPLICATION_SCHOOL_R04">
+          <End Role="TB_M_PROVINCE" Type="Self.TB_M_PROVINCE" Multiplicity="0..1" />
+          <End Role="TB_APPLICATION_SCHOOL" Type="Self.TB_APPLICATION_SCHOOL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_M_PROVINCE">
+              <PropertyRef Name="PROVINCE_ID" />
+            </Principal>
+            <Dependent Role="TB_APPLICATION_SCHOOL">
+              <PropertyRef Name="SCHOOL_PROVINCE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_APPLICATION_SCHOOL_R05">
+          <End Role="TB_M_STATUS" Type="Self.TB_M_STATUS" Multiplicity="0..1" />
+          <End Role="TB_APPLICATION_SCHOOL" Type="Self.TB_APPLICATION_SCHOOL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_M_STATUS">
+              <PropertyRef Name="STATUS_ID" />
+            </Principal>
+            <Dependent Role="TB_APPLICATION_SCHOOL">
+              <PropertyRef Name="SCHOOL_APPROVED_STATUS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_APPLICATION_STAFF_R02">
+          <End Role="TB_M_TITLE" Type="Self.TB_M_TITLE" Multiplicity="0..1" />
+          <End Role="TB_APPLICATION_STAFF" Type="Self.TB_APPLICATION_STAFF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_M_TITLE">
+              <PropertyRef Name="TITLE_ID" />
+            </Principal>
+            <Dependent Role="TB_APPLICATION_STAFF">
+              <PropertyRef Name="STAFF_TITLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_APPLICATION_STAFF_R03">
+          <End Role="TB_M_LEVEL" Type="Self.TB_M_LEVEL" Multiplicity="0..1" />
+          <End Role="TB_APPLICATION_STAFF" Type="Self.TB_APPLICATION_STAFF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_M_LEVEL">
+              <PropertyRef Name="LEVEL_ID" />
+            </Principal>
+            <Dependent Role="TB_APPLICATION_STAFF">
+              <PropertyRef Name="STAFF_FOR_LEVEL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_APPLICATION_STAFF_R05">
+          <End Role="TB_APPLICATION_SCHOOL" Type="Self.TB_APPLICATION_SCHOOL" Multiplicity="0..1" />
+          <End Role="TB_APPLICATION_STAFF" Type="Self.TB_APPLICATION_STAFF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_APPLICATION_SCHOOL">
+              <PropertyRef Name="SCHOOL_ID" />
+            </Principal>
+            <Dependent Role="TB_APPLICATION_STAFF">
+              <PropertyRef Name="STAFF_SCHOOL_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_APPLICATION_STUDENT_R04">
+          <End Role="TB_M_STATUS" Type="Self.TB_M_STATUS" Multiplicity="0..1" />
+          <End Role="TB_APPLICATION_STUDENT" Type="Self.TB_APPLICATION_STUDENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_M_STATUS">
+              <PropertyRef Name="STATUS_ID" />
+            </Principal>
+            <Dependent Role="TB_APPLICATION_STUDENT">
+              <PropertyRef Name="STD_APPROVED_STATUS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_COMMITEE_R01">
+          <End Role="TB_M_TITLE" Type="Self.TB_M_TITLE" Multiplicity="0..1" />
+          <End Role="TB_COMMITEE" Type="Self.TB_COMMITEE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_M_TITLE">
+              <PropertyRef Name="TITLE_ID" />
+            </Principal>
+            <Dependent Role="TB_COMMITEE">
+              <PropertyRef Name="COMMITEE_TITLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_COMMITEE_ROOM_R01">
+          <End Role="TB_COMMITEE" Type="Self.TB_COMMITEE" Multiplicity="1" />
+          <End Role="TB_COMMITEE_ROOM" Type="Self.TB_COMMITEE_ROOM" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TB_COMMITEE">
+              <PropertyRef Name="COMMITEE_ID" />
+            </Principal>
+            <Dependent Role="TB_COMMITEE_ROOM">
+              <PropertyRef Name="COMMITEE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_COMMITEE_ROOM_R02">
+          <End Role="TB_ROOM" Type="Self.TB_ROOM" Multiplicity="0..1" />
+          <End Role="TB_COMMITEE_ROOM" Type="Self.TB_COMMITEE_ROOM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_ROOM">
+              <PropertyRef Name="ROOM_ID" />
+            </Principal>
+            <Dependent Role="TB_COMMITEE_ROOM">
+              <PropertyRef Name="COMMITEE_ROOM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_M_AMPHUR_R01">
+          <End Role="TB_M_PROVINCE" Type="Self.TB_M_PROVINCE" Multiplicity="0..1" />
+          <End Role="TB_M_AMPHUR" Type="Self.TB_M_AMPHUR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_M_PROVINCE">
+              <PropertyRef Name="PROVINCE_ID" />
+            </Principal>
+            <Dependent Role="TB_M_AMPHUR">
+              <PropertyRef Name="PROVINCE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_M_DISTRICT_R01">
+          <End Role="TB_M_AMPHUR" Type="Self.TB_M_AMPHUR" Multiplicity="0..1" />
+          <End Role="TB_M_DISTRICT" Type="Self.TB_M_DISTRICT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_M_AMPHUR">
+              <PropertyRef Name="AMPHUR_ID" />
+            </Principal>
+            <Dependent Role="TB_M_DISTRICT">
+              <PropertyRef Name="AMPHUR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_ROLE_PERMISSION_R01">
+          <End Role="TB_ROLE" Type="Self.TB_ROLE" Multiplicity="0..1" />
+          <End Role="TB_ROLE_PERMISSION" Type="Self.TB_ROLE_PERMISSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_ROLE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TB_ROLE_PERMISSION">
+              <PropertyRef Name="ROLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_ROLE_R01">
+          <End Role="TB_M_STATUS" Type="Self.TB_M_STATUS" Multiplicity="0..1" />
+          <End Role="TB_ROLE" Type="Self.TB_ROLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_M_STATUS">
+              <PropertyRef Name="STATUS_ID" />
+            </Principal>
+            <Dependent Role="TB_ROLE">
+              <PropertyRef Name="STATUS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_ROOM_R02">
+          <End Role="TB_M_LEVEL" Type="Self.TB_M_LEVEL" Multiplicity="0..1" />
+          <End Role="TB_ROOM" Type="Self.TB_ROOM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_M_LEVEL">
+              <PropertyRef Name="LEVEL_ID" />
+            </Principal>
+            <Dependent Role="TB_ROOM">
+              <PropertyRef Name="ROOM_FOR_LEVEL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_SCORE_ROUND_1_R01">
+          <End Role="TB_M_PRIZE" Type="Self.TB_M_PRIZE" Multiplicity="0..1" />
+          <End Role="TB_SCORE_ROUND_1" Type="Self.TB_SCORE_ROUND_1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_M_PRIZE">
+              <PropertyRef Name="PRIZE_ID" />
+            </Principal>
+            <Dependent Role="TB_SCORE_ROUND_1">
+              <PropertyRef Name="PRIZE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_SCORE_ROUND_2_R01">
+          <End Role="TB_M_PRIZE" Type="Self.TB_M_PRIZE" Multiplicity="0..1" />
+          <End Role="TB_SCORE_ROUND_2" Type="Self.TB_SCORE_ROUND_2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_M_PRIZE">
+              <PropertyRef Name="PRIZE_ID" />
+            </Principal>
+            <Dependent Role="TB_SCORE_ROUND_2">
+              <PropertyRef Name="PRIZE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_STUDENT_SEAT_R01">
+          <End Role="TB_ROOM" Type="Self.TB_ROOM" Multiplicity="0..1" />
+          <End Role="TB_STUDENT_SEAT" Type="Self.TB_STUDENT_SEAT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_ROOM">
+              <PropertyRef Name="ROOM_ID" />
+            </Principal>
+            <Dependent Role="TB_STUDENT_SEAT">
+              <PropertyRef Name="ROOM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_STUDENT_SEAT_R02">
+          <End Role="TB_APPLICATION_STUDENT" Type="Self.TB_APPLICATION_STUDENT" Multiplicity="1" />
+          <End Role="TB_STUDENT_SEAT" Type="Self.TB_STUDENT_SEAT" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TB_APPLICATION_STUDENT">
+              <PropertyRef Name="STD_ID" />
+            </Principal>
+            <Dependent Role="TB_STUDENT_SEAT">
+              <PropertyRef Name="STUDENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_USER_R01">
+          <End Role="TB_ROLE" Type="Self.TB_ROLE" Multiplicity="0..1" />
+          <End Role="TB_USER" Type="Self.TB_USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_ROLE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TB_USER">
+              <PropertyRef Name="ROLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_USER_R02">
+          <End Role="TB_M_STATUS" Type="Self.TB_M_STATUS" Multiplicity="0..1" />
+          <End Role="TB_USER" Type="Self.TB_USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_M_STATUS">
+              <PropertyRef Name="STATUS_ID" />
+            </Principal>
+            <Dependent Role="TB_USER">
+              <PropertyRef Name="STATUS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="TB_APPLICATION" EntityType="Self.TB_APPLICATION" Schema="CHINA_PHET" store:Type="Tables" />
+          <EntitySet Name="TB_APPLICATION_SCHOOL" EntityType="Self.TB_APPLICATION_SCHOOL" Schema="CHINA_PHET" store:Type="Tables" />
+          <EntitySet Name="TB_APPLICATION_STAFF" EntityType="Self.TB_APPLICATION_STAFF" Schema="CHINA_PHET" store:Type="Tables" />
+          <EntitySet Name="TB_APPLICATION_STUDENT" EntityType="Self.TB_APPLICATION_STUDENT" Schema="CHINA_PHET" store:Type="Tables" />
+          <EntitySet Name="TB_COMMITEE" EntityType="Self.TB_COMMITEE" Schema="CHINA_PHET" store:Type="Tables" />
+          <EntitySet Name="TB_COMMITEE_ROOM" EntityType="Self.TB_COMMITEE_ROOM" Schema="CHINA_PHET" store:Type="Tables" />
+          <EntitySet Name="TB_CONCERN" EntityType="Self.TB_CONCERN" Schema="CHINA_PHET" store:Type="Tables" />
+          <EntitySet Name="TB_EXAM_ABSENT" EntityType="Self.TB_EXAM_ABSENT" Schema="CHINA_PHET" store:Type="Tables" />
+          <EntitySet Name="TB_EXAM_ANOUNCE" EntityType="Self.TB_EXAM_ANOUNCE" Schema="CHINA_PHET" store:Type="Tables" />
+          <EntitySet Name="TB_M_AMPHUR" EntityType="Self.TB_M_AMPHUR" Schema="CHINA_PHET" store:Type="Tables" />
+          <EntitySet Name="TB_M_BUILDING" EntityType="Self.TB_M_BUILDING" Schema="CHINA_PHET" store:Type="Tables" />
+          <EntitySet Name="TB_M_DISTRICT" EntityType="Self.TB_M_DISTRICT" Schema="CHINA_PHET" store:Type="Tables" />
+          <EntitySet Name="TB_M_LEVEL" EntityType="Self.TB_M_LEVEL" Schema="CHINA_PHET" store:Type="Tables" />
+          <EntitySet Name="TB_M_PRIZE" EntityType="Self.TB_M_PRIZE" Schema="CHINA_PHET" store:Type="Tables" />
+          <EntitySet Name="TB_M_PROVINCE" EntityType="Self.TB_M_PROVINCE" Schema="CHINA_PHET" store:Type="Tables" />
+          <EntitySet Name="TB_M_SCHOOL_9" EntityType="Self.TB_M_SCHOOL_9" Schema="CHINA_PHET" store:Type="Tables" />
+          <EntitySet Name="TB_M_STATUS" EntityType="Self.TB_M_STATUS" Schema="CHINA_PHET" store:Type="Tables" />
+          <EntitySet Name="TB_M_TITLE" EntityType="Self.TB_M_TITLE" Schema="CHINA_PHET" store:Type="Tables" />
+          <EntitySet Name="TB_ROLE" EntityType="Self.TB_ROLE" Schema="CHINA_PHET" store:Type="Tables" />
+          <EntitySet Name="TB_ROLE_PERMISSION" EntityType="Self.TB_ROLE_PERMISSION" Schema="CHINA_PHET" store:Type="Tables" />
+          <EntitySet Name="TB_ROOM" EntityType="Self.TB_ROOM" Schema="CHINA_PHET" store:Type="Tables" />
+          <EntitySet Name="TB_SCHOOL_DOCUMENT" EntityType="Self.TB_SCHOOL_DOCUMENT" Schema="CHINA_PHET" store:Type="Tables" />
+          <EntitySet Name="TB_SCORE_ROUND_1" EntityType="Self.TB_SCORE_ROUND_1" Schema="CHINA_PHET" store:Type="Tables" />
+          <EntitySet Name="TB_SCORE_ROUND_1_ERROR" EntityType="Self.TB_SCORE_ROUND_1_ERROR" Schema="CHINA_PHET" store:Type="Tables" />
+          <EntitySet Name="TB_SCORE_ROUND_2" EntityType="Self.TB_SCORE_ROUND_2" Schema="CHINA_PHET" store:Type="Tables" />
+          <EntitySet Name="TB_STUDENT_SEAT" EntityType="Self.TB_STUDENT_SEAT" Schema="CHINA_PHET" store:Type="Tables" />
+          <EntitySet Name="TB_USER" EntityType="Self.TB_USER" Schema="CHINA_PHET" store:Type="Tables" />
+          <AssociationSet Name="TB_APPLICATION_R01" Association="Self.TB_APPLICATION_R01">
+            <End Role="TB_M_LEVEL" EntitySet="TB_M_LEVEL" />
+            <End Role="TB_APPLICATION_STUDENT" EntitySet="TB_APPLICATION_STUDENT" />
+          </AssociationSet>
+          <AssociationSet Name="TB_APPLICATION_R03" Association="Self.TB_APPLICATION_R03">
+            <End Role="TB_M_TITLE" EntitySet="TB_M_TITLE" />
+            <End Role="TB_APPLICATION_STUDENT" EntitySet="TB_APPLICATION_STUDENT" />
+          </AssociationSet>
+          <AssociationSet Name="TB_APPLICATION_R05" Association="Self.TB_APPLICATION_R05">
+            <End Role="TB_APPLICATION_SCHOOL" EntitySet="TB_APPLICATION_SCHOOL" />
+            <End Role="TB_APPLICATION_STUDENT" EntitySet="TB_APPLICATION_STUDENT" />
+          </AssociationSet>
+          <AssociationSet Name="TB_APPLICATION_ROOM_R01" Association="Self.TB_APPLICATION_ROOM_R01">
+            <End Role="TB_M_BUILDING" EntitySet="TB_M_BUILDING" />
+            <End Role="TB_ROOM" EntitySet="TB_ROOM" />
+          </AssociationSet>
+          <AssociationSet Name="TB_APPLICATION_SCHOOL_R01" Association="Self.TB_APPLICATION_SCHOOL_R01">
+            <End Role="TB_M_PROVINCE" EntitySet="TB_M_PROVINCE" />
+            <End Role="TB_APPLICATION_SCHOOL" EntitySet="TB_APPLICATION_SCHOOL" />
+          </AssociationSet>
+          <AssociationSet Name="TB_APPLICATION_SCHOOL_R02" Association="Self.TB_APPLICATION_SCHOOL_R02">
+            <End Role="TB_M_DISTRICT" EntitySet="TB_M_DISTRICT" />
+            <End Role="TB_APPLICATION_SCHOOL" EntitySet="TB_APPLICATION_SCHOOL" />
+          </AssociationSet>
+          <AssociationSet Name="TB_APPLICATION_SCHOOL_R03" Association="Self.TB_APPLICATION_SCHOOL_R03">
+            <End Role="TB_M_AMPHUR" EntitySet="TB_M_AMPHUR" />
+            <End Role="TB_APPLICATION_SCHOOL" EntitySet="TB_APPLICATION_SCHOOL" />
+          </AssociationSet>
+          <AssociationSet Name="TB_APPLICATION_SCHOOL_R04" Association="Self.TB_APPLICATION_SCHOOL_R04">
+            <End Role="TB_M_PROVINCE" EntitySet="TB_M_PROVINCE" />
+            <End Role="TB_APPLICATION_SCHOOL" EntitySet="TB_APPLICATION_SCHOOL" />
+          </AssociationSet>
+          <AssociationSet Name="TB_APPLICATION_SCHOOL_R05" Association="Self.TB_APPLICATION_SCHOOL_R05">
+            <End Role="TB_M_STATUS" EntitySet="TB_M_STATUS" />
+            <End Role="TB_APPLICATION_SCHOOL" EntitySet="TB_APPLICATION_SCHOOL" />
+          </AssociationSet>
+          <AssociationSet Name="TB_APPLICATION_STAFF_R02" Association="Self.TB_APPLICATION_STAFF_R02">
+            <End Role="TB_M_TITLE" EntitySet="TB_M_TITLE" />
+            <End Role="TB_APPLICATION_STAFF" EntitySet="TB_APPLICATION_STAFF" />
+          </AssociationSet>
+          <AssociationSet Name="TB_APPLICATION_STAFF_R03" Association="Self.TB_APPLICATION_STAFF_R03">
+            <End Role="TB_M_LEVEL" EntitySet="TB_M_LEVEL" />
+            <End Role="TB_APPLICATION_STAFF" EntitySet="TB_APPLICATION_STAFF" />
+          </AssociationSet>
+          <AssociationSet Name="TB_APPLICATION_STAFF_R05" Association="Self.TB_APPLICATION_STAFF_R05">
+            <End Role="TB_APPLICATION_SCHOOL" EntitySet="TB_APPLICATION_SCHOOL" />
+            <End Role="TB_APPLICATION_STAFF" EntitySet="TB_APPLICATION_STAFF" />
+          </AssociationSet>
+          <AssociationSet Name="TB_APPLICATION_STUDENT_R04" Association="Self.TB_APPLICATION_STUDENT_R04">
+            <End Role="TB_M_STATUS" EntitySet="TB_M_STATUS" />
+            <End Role="TB_APPLICATION_STUDENT" EntitySet="TB_APPLICATION_STUDENT" />
+          </AssociationSet>
+          <AssociationSet Name="TB_COMMITEE_R01" Association="Self.TB_COMMITEE_R01">
+            <End Role="TB_M_TITLE" EntitySet="TB_M_TITLE" />
+            <End Role="TB_COMMITEE" EntitySet="TB_COMMITEE" />
+          </AssociationSet>
+          <AssociationSet Name="TB_COMMITEE_ROOM_R01" Association="Self.TB_COMMITEE_ROOM_R01">
+            <End Role="TB_COMMITEE" EntitySet="TB_COMMITEE" />
+            <End Role="TB_COMMITEE_ROOM" EntitySet="TB_COMMITEE_ROOM" />
+          </AssociationSet>
+          <AssociationSet Name="TB_COMMITEE_ROOM_R02" Association="Self.TB_COMMITEE_ROOM_R02">
+            <End Role="TB_ROOM" EntitySet="TB_ROOM" />
+            <End Role="TB_COMMITEE_ROOM" EntitySet="TB_COMMITEE_ROOM" />
+          </AssociationSet>
+          <AssociationSet Name="TB_M_AMPHUR_R01" Association="Self.TB_M_AMPHUR_R01">
+            <End Role="TB_M_PROVINCE" EntitySet="TB_M_PROVINCE" />
+            <End Role="TB_M_AMPHUR" EntitySet="TB_M_AMPHUR" />
+          </AssociationSet>
+          <AssociationSet Name="TB_M_DISTRICT_R01" Association="Self.TB_M_DISTRICT_R01">
+            <End Role="TB_M_AMPHUR" EntitySet="TB_M_AMPHUR" />
+            <End Role="TB_M_DISTRICT" EntitySet="TB_M_DISTRICT" />
+          </AssociationSet>
+          <AssociationSet Name="TB_ROLE_PERMISSION_R01" Association="Self.TB_ROLE_PERMISSION_R01">
+            <End Role="TB_ROLE" EntitySet="TB_ROLE" />
+            <End Role="TB_ROLE_PERMISSION" EntitySet="TB_ROLE_PERMISSION" />
+          </AssociationSet>
+          <AssociationSet Name="TB_ROLE_R01" Association="Self.TB_ROLE_R01">
+            <End Role="TB_M_STATUS" EntitySet="TB_M_STATUS" />
+            <End Role="TB_ROLE" EntitySet="TB_ROLE" />
+          </AssociationSet>
+          <AssociationSet Name="TB_ROOM_R02" Association="Self.TB_ROOM_R02">
+            <End Role="TB_M_LEVEL" EntitySet="TB_M_LEVEL" />
+            <End Role="TB_ROOM" EntitySet="TB_ROOM" />
+          </AssociationSet>
+          <AssociationSet Name="TB_SCORE_ROUND_1_R01" Association="Self.TB_SCORE_ROUND_1_R01">
+            <End Role="TB_M_PRIZE" EntitySet="TB_M_PRIZE" />
+            <End Role="TB_SCORE_ROUND_1" EntitySet="TB_SCORE_ROUND_1" />
+          </AssociationSet>
+          <AssociationSet Name="TB_SCORE_ROUND_2_R01" Association="Self.TB_SCORE_ROUND_2_R01">
+            <End Role="TB_M_PRIZE" EntitySet="TB_M_PRIZE" />
+            <End Role="TB_SCORE_ROUND_2" EntitySet="TB_SCORE_ROUND_2" />
+          </AssociationSet>
+          <AssociationSet Name="TB_STUDENT_SEAT_R01" Association="Self.TB_STUDENT_SEAT_R01">
+            <End Role="TB_ROOM" EntitySet="TB_ROOM" />
+            <End Role="TB_STUDENT_SEAT" EntitySet="TB_STUDENT_SEAT" />
+          </AssociationSet>
+          <AssociationSet Name="TB_STUDENT_SEAT_R02" Association="Self.TB_STUDENT_SEAT_R02">
+            <End Role="TB_APPLICATION_STUDENT" EntitySet="TB_APPLICATION_STUDENT" />
+            <End Role="TB_STUDENT_SEAT" EntitySet="TB_STUDENT_SEAT" />
+          </AssociationSet>
+          <AssociationSet Name="TB_USER_R01" Association="Self.TB_USER_R01">
+            <End Role="TB_ROLE" EntitySet="TB_ROLE" />
+            <End Role="TB_USER" EntitySet="TB_USER" />
+          </AssociationSet>
+          <AssociationSet Name="TB_USER_R02" Association="Self.TB_USER_R02">
+            <End Role="TB_M_STATUS" EntitySet="TB_M_STATUS" />
+            <End Role="TB_USER" EntitySet="TB_USER" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="ChinaPhet10Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TB_APPLICATION" EntityType="Model.TB_APPLICATION" />
+          <EntitySet Name="TB_APPLICATION_SCHOOL" EntityType="Model.TB_APPLICATION_SCHOOL" />
+          <EntitySet Name="TB_APPLICATION_STAFF" EntityType="Model.TB_APPLICATION_STAFF" />
+          <EntitySet Name="TB_APPLICATION_STUDENT" EntityType="Model.TB_APPLICATION_STUDENT" />
+          <EntitySet Name="TB_COMMITEE" EntityType="Model.TB_COMMITEE" />
+          <EntitySet Name="TB_COMMITEE_ROOM" EntityType="Model.TB_COMMITEE_ROOM" />
+          <EntitySet Name="TB_CONCERN" EntityType="Model.TB_CONCERN" />
+          <EntitySet Name="TB_EXAM_ABSENT" EntityType="Model.TB_EXAM_ABSENT" />
+          <EntitySet Name="TB_EXAM_ANOUNCE" EntityType="Model.TB_EXAM_ANOUNCE" />
+          <EntitySet Name="TB_M_AMPHUR" EntityType="Model.TB_M_AMPHUR" />
+          <EntitySet Name="TB_M_BUILDING" EntityType="Model.TB_M_BUILDING" />
+          <EntitySet Name="TB_M_DISTRICT" EntityType="Model.TB_M_DISTRICT" />
+          <EntitySet Name="TB_M_LEVEL" EntityType="Model.TB_M_LEVEL" />
+          <EntitySet Name="TB_M_PRIZE" EntityType="Model.TB_M_PRIZE" />
+          <EntitySet Name="TB_M_PROVINCE" EntityType="Model.TB_M_PROVINCE" />
+          <EntitySet Name="TB_M_SCHOOL_9" EntityType="Model.TB_M_SCHOOL_9" />
+          <EntitySet Name="TB_M_STATUS" EntityType="Model.TB_M_STATUS" />
+          <EntitySet Name="TB_M_TITLE" EntityType="Model.TB_M_TITLE" />
+          <EntitySet Name="TB_ROLE" EntityType="Model.TB_ROLE" />
+          <EntitySet Name="TB_ROLE_PERMISSION" EntityType="Model.TB_ROLE_PERMISSION" />
+          <EntitySet Name="TB_ROOM" EntityType="Model.TB_ROOM" />
+          <EntitySet Name="TB_SCHOOL_DOCUMENT" EntityType="Model.TB_SCHOOL_DOCUMENT" />
+          <EntitySet Name="TB_SCORE_ROUND_1" EntityType="Model.TB_SCORE_ROUND_1" />
+          <EntitySet Name="TB_SCORE_ROUND_1_ERROR" EntityType="Model.TB_SCORE_ROUND_1_ERROR" />
+          <EntitySet Name="TB_SCORE_ROUND_2" EntityType="Model.TB_SCORE_ROUND_2" />
+          <EntitySet Name="TB_STUDENT_SEAT" EntityType="Model.TB_STUDENT_SEAT" />
+          <EntitySet Name="TB_USER" EntityType="Model.TB_USER" />
+          <AssociationSet Name="TB_APPLICATION_R05" Association="Model.TB_APPLICATION_R05">
+            <End Role="TB_APPLICATION_SCHOOL" EntitySet="TB_APPLICATION_SCHOOL" />
+            <End Role="TB_APPLICATION_STUDENT" EntitySet="TB_APPLICATION_STUDENT" />
+          </AssociationSet>
+          <AssociationSet Name="TB_APPLICATION_SCHOOL_R01" Association="Model.TB_APPLICATION_SCHOOL_R01">
+            <End Role="TB_M_PROVINCE" EntitySet="TB_M_PROVINCE" />
+            <End Role="TB_APPLICATION_SCHOOL" EntitySet="TB_APPLICATION_SCHOOL" />
+          </AssociationSet>
+          <AssociationSet Name="TB_APPLICATION_SCHOOL_R02" Association="Model.TB_APPLICATION_SCHOOL_R02">
+            <End Role="TB_M_DISTRICT" EntitySet="TB_M_DISTRICT" />
+            <End Role="TB_APPLICATION_SCHOOL" EntitySet="TB_APPLICATION_SCHOOL" />
+          </AssociationSet>
+          <AssociationSet Name="TB_APPLICATION_SCHOOL_R03" Association="Model.TB_APPLICATION_SCHOOL_R03">
+            <End Role="TB_M_AMPHUR" EntitySet="TB_M_AMPHUR" />
+            <End Role="TB_APPLICATION_SCHOOL" EntitySet="TB_APPLICATION_SCHOOL" />
+          </AssociationSet>
+          <AssociationSet Name="TB_APPLICATION_SCHOOL_R04" Association="Model.TB_APPLICATION_SCHOOL_R04">
+            <End Role="TB_M_PROVINCE" EntitySet="TB_M_PROVINCE" />
+            <End Role="TB_APPLICATION_SCHOOL" EntitySet="TB_APPLICATION_SCHOOL" />
+          </AssociationSet>
+          <AssociationSet Name="TB_APPLICATION_SCHOOL_R05" Association="Model.TB_APPLICATION_SCHOOL_R05">
+            <End Role="TB_M_STATUS" EntitySet="TB_M_STATUS" />
+            <End Role="TB_APPLICATION_SCHOOL" EntitySet="TB_APPLICATION_SCHOOL" />
+          </AssociationSet>
+          <AssociationSet Name="TB_APPLICATION_STAFF_R05" Association="Model.TB_APPLICATION_STAFF_R05">
+            <End Role="TB_APPLICATION_SCHOOL" EntitySet="TB_APPLICATION_SCHOOL" />
+            <End Role="TB_APPLICATION_STAFF" EntitySet="TB_APPLICATION_STAFF" />
+          </AssociationSet>
+          <AssociationSet Name="TB_APPLICATION_STAFF_R02" Association="Model.TB_APPLICATION_STAFF_R02">
+            <End Role="TB_M_TITLE" EntitySet="TB_M_TITLE" />
+            <End Role="TB_APPLICATION_STAFF" EntitySet="TB_APPLICATION_STAFF" />
+          </AssociationSet>
+          <AssociationSet Name="TB_APPLICATION_STAFF_R03" Association="Model.TB_APPLICATION_STAFF_R03">
+            <End Role="TB_M_LEVEL" EntitySet="TB_M_LEVEL" />
+            <End Role="TB_APPLICATION_STAFF" EntitySet="TB_APPLICATION_STAFF" />
+          </AssociationSet>
+          <AssociationSet Name="TB_APPLICATION_R01" Association="Model.TB_APPLICATION_R01">
+            <End Role="TB_M_LEVEL" EntitySet="TB_M_LEVEL" />
+            <End Role="TB_APPLICATION_STUDENT" EntitySet="TB_APPLICATION_STUDENT" />
+          </AssociationSet>
+          <AssociationSet Name="TB_APPLICATION_R03" Association="Model.TB_APPLICATION_R03">
+            <End Role="TB_M_TITLE" EntitySet="TB_M_TITLE" />
+            <End Role="TB_APPLICATION_STUDENT" EntitySet="TB_APPLICATION_STUDENT" />
+          </AssociationSet>
+          <AssociationSet Name="TB_APPLICATION_STUDENT_R04" Association="Model.TB_APPLICATION_STUDENT_R04">
+            <End Role="TB_M_STATUS" EntitySet="TB_M_STATUS" />
+            <End Role="TB_APPLICATION_STUDENT" EntitySet="TB_APPLICATION_STUDENT" />
+          </AssociationSet>
+          <AssociationSet Name="TB_STUDENT_SEAT_R02" Association="Model.TB_STUDENT_SEAT_R02">
+            <End Role="TB_APPLICATION_STUDENT" EntitySet="TB_APPLICATION_STUDENT" />
+            <End Role="TB_STUDENT_SEAT" EntitySet="TB_STUDENT_SEAT" />
+          </AssociationSet>
+          <AssociationSet Name="TB_COMMITEE_R01" Association="Model.TB_COMMITEE_R01">
+            <End Role="TB_M_TITLE" EntitySet="TB_M_TITLE" />
+            <End Role="TB_COMMITEE" EntitySet="TB_COMMITEE" />
+          </AssociationSet>
+          <AssociationSet Name="TB_COMMITEE_ROOM_R01" Association="Model.TB_COMMITEE_ROOM_R01">
+            <End Role="TB_COMMITEE" EntitySet="TB_COMMITEE" />
+            <End Role="TB_COMMITEE_ROOM" EntitySet="TB_COMMITEE_ROOM" />
+          </AssociationSet>
+          <AssociationSet Name="TB_COMMITEE_ROOM_R02" Association="Model.TB_COMMITEE_ROOM_R02">
+            <End Role="TB_ROOM" EntitySet="TB_ROOM" />
+            <End Role="TB_COMMITEE_ROOM" EntitySet="TB_COMMITEE_ROOM" />
+          </AssociationSet>
+          <AssociationSet Name="TB_M_AMPHUR_R01" Association="Model.TB_M_AMPHUR_R01">
+            <End Role="TB_M_PROVINCE" EntitySet="TB_M_PROVINCE" />
+            <End Role="TB_M_AMPHUR" EntitySet="TB_M_AMPHUR" />
+          </AssociationSet>
+          <AssociationSet Name="TB_M_DISTRICT_R01" Association="Model.TB_M_DISTRICT_R01">
+            <End Role="TB_M_AMPHUR" EntitySet="TB_M_AMPHUR" />
+            <End Role="TB_M_DISTRICT" EntitySet="TB_M_DISTRICT" />
+          </AssociationSet>
+          <AssociationSet Name="TB_APPLICATION_ROOM_R01" Association="Model.TB_APPLICATION_ROOM_R01">
+            <End Role="TB_M_BUILDING" EntitySet="TB_M_BUILDING" />
+            <End Role="TB_ROOM" EntitySet="TB_ROOM" />
+          </AssociationSet>
+          <AssociationSet Name="TB_ROOM_R02" Association="Model.TB_ROOM_R02">
+            <End Role="TB_M_LEVEL" EntitySet="TB_M_LEVEL" />
+            <End Role="TB_ROOM" EntitySet="TB_ROOM" />
+          </AssociationSet>
+          <AssociationSet Name="TB_SCORE_ROUND_1_R01" Association="Model.TB_SCORE_ROUND_1_R01">
+            <End Role="TB_M_PRIZE" EntitySet="TB_M_PRIZE" />
+            <End Role="TB_SCORE_ROUND_1" EntitySet="TB_SCORE_ROUND_1" />
+          </AssociationSet>
+          <AssociationSet Name="TB_SCORE_ROUND_2_R01" Association="Model.TB_SCORE_ROUND_2_R01">
+            <End Role="TB_M_PRIZE" EntitySet="TB_M_PRIZE" />
+            <End Role="TB_SCORE_ROUND_2" EntitySet="TB_SCORE_ROUND_2" />
+          </AssociationSet>
+          <AssociationSet Name="TB_ROLE_R01" Association="Model.TB_ROLE_R01">
+            <End Role="TB_M_STATUS" EntitySet="TB_M_STATUS" />
+            <End Role="TB_ROLE" EntitySet="TB_ROLE" />
+          </AssociationSet>
+          <AssociationSet Name="TB_USER_R02" Association="Model.TB_USER_R02">
+            <End Role="TB_M_STATUS" EntitySet="TB_M_STATUS" />
+            <End Role="TB_USER" EntitySet="TB_USER" />
+          </AssociationSet>
+          <AssociationSet Name="TB_ROLE_PERMISSION_R01" Association="Model.TB_ROLE_PERMISSION_R01">
+            <End Role="TB_ROLE" EntitySet="TB_ROLE" />
+            <End Role="TB_ROLE_PERMISSION" EntitySet="TB_ROLE_PERMISSION" />
+          </AssociationSet>
+          <AssociationSet Name="TB_USER_R01" Association="Model.TB_USER_R01">
+            <End Role="TB_ROLE" EntitySet="TB_ROLE" />
+            <End Role="TB_USER" EntitySet="TB_USER" />
+          </AssociationSet>
+          <AssociationSet Name="TB_STUDENT_SEAT_R01" Association="Model.TB_STUDENT_SEAT_R01">
+            <End Role="TB_ROOM" EntitySet="TB_ROOM" />
+            <End Role="TB_STUDENT_SEAT" EntitySet="TB_STUDENT_SEAT" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="TB_APPLICATION">
+          <Key>
+            <PropertyRef Name="PROJECT_ID" />
+          </Key>
+          <Property Name="PROJECT_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="PROJECT_ROUND" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="PROJECT_REGISTER_START" Type="DateTime" />
+          <Property Name="PROJECT_REGISTER_END" Type="DateTime" />
+          <Property Name="PROJECT_EXAM_DATE" Type="DateTime" />
+          <Property Name="PROJECT_STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="PROJECT_ANNOUNCE_DATE" Type="DateTime" />
+          <Property Name="PROJECT_IS_ANNOUNCE_ROUND1" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="PROJECT_IS_ANNOUNCE_ROUND2" Type="Decimal" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="TB_APPLICATION_SCHOOL">
+          <Key>
+            <PropertyRef Name="SCHOOL_ID" />
+          </Key>
+          <Property Name="SCHOOL_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SCHOOL_ZONE_EDU" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SCHOOL_ZONE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SCHOOL_TYPE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="SCHOOL_TYPE_OTHER" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SCHOOL_ADDR" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SCHOOL_ADDR_SOI" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SCHOOL_ADDR_ROAD" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SCHOOL_ADDR_TOMBON" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SCHOOL_ADDR_AMPHUR" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SCHOOL_ADDR_PROVINCE" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SCHOOL_ADDR_ZIPCODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SCHOOL_ADDR_PHONE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SCHOOL_ADDR_FAX" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SCHOOL_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SCHOOL_PROVINCE" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SCHOOL_PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SCHOOL_DOC_PATH" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SCHOOL_REGISTER_DATE" Type="DateTime" />
+          <Property Name="SCHOOL_APPROVED_STATUS" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SCHOOL_EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SCHOOL_CULTURE" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="SCHOOL_ROUND" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="TB_APPLICATION_STUDENT" Relationship="Model.TB_APPLICATION_R05" FromRole="TB_APPLICATION_SCHOOL" ToRole="TB_APPLICATION_STUDENT" />
+          <NavigationProperty Name="TB_M_PROVINCE" Relationship="Model.TB_APPLICATION_SCHOOL_R01" FromRole="TB_APPLICATION_SCHOOL" ToRole="TB_M_PROVINCE" />
+          <NavigationProperty Name="TB_M_DISTRICT" Relationship="Model.TB_APPLICATION_SCHOOL_R02" FromRole="TB_APPLICATION_SCHOOL" ToRole="TB_M_DISTRICT" />
+          <NavigationProperty Name="TB_M_AMPHUR" Relationship="Model.TB_APPLICATION_SCHOOL_R03" FromRole="TB_APPLICATION_SCHOOL" ToRole="TB_M_AMPHUR" />
+          <NavigationProperty Name="TB_M_PROVINCE1" Relationship="Model.TB_APPLICATION_SCHOOL_R04" FromRole="TB_APPLICATION_SCHOOL" ToRole="TB_M_PROVINCE" />
+          <NavigationProperty Name="TB_M_STATUS" Relationship="Model.TB_APPLICATION_SCHOOL_R05" FromRole="TB_APPLICATION_SCHOOL" ToRole="TB_M_STATUS" />
+          <NavigationProperty Name="TB_APPLICATION_STAFF" Relationship="Model.TB_APPLICATION_STAFF_R05" FromRole="TB_APPLICATION_SCHOOL" ToRole="TB_APPLICATION_STAFF" />
+        </EntityType>
+        <EntityType Name="TB_APPLICATION_STAFF">
+          <Key>
+            <PropertyRef Name="STAFF_ID" />
+          </Key>
+          <Property Name="STAFF_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="STAFF_SCHOOL_ID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="STAFF_POSITION" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="STAFF_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="STAFF_SURNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="STAFF_PHONE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="STAFF_TITLE_ID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="STAFF_FOR_LEVEL" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="STAFF_NATION" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="TB_APPLICATION_SCHOOL" Relationship="Model.TB_APPLICATION_STAFF_R05" FromRole="TB_APPLICATION_STAFF" ToRole="TB_APPLICATION_SCHOOL" />
+          <NavigationProperty Name="TB_M_TITLE" Relationship="Model.TB_APPLICATION_STAFF_R02" FromRole="TB_APPLICATION_STAFF" ToRole="TB_M_TITLE" />
+          <NavigationProperty Name="TB_M_LEVEL" Relationship="Model.TB_APPLICATION_STAFF_R03" FromRole="TB_APPLICATION_STAFF" ToRole="TB_M_LEVEL" />
+        </EntityType>
+        <EntityType Name="TB_APPLICATION_STUDENT">
+          <Key>
+            <PropertyRef Name="STD_ID" />
+          </Key>
+          <Property Name="STD_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="STD_TITLE_ID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="STD_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="STD_SURNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="STD_LEVEL_ID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="STD_SCHOOL_ID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="STD_PICTURE_PATH" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="STD_PHONE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="STD_EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="STD_ID_CARD" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="STD_PASSPORT_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="STD_GRADE" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="STD_PHONE_PROVIDER" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="STD_APPROVED_STATUS" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="STD_BIRTH_DAY" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="STD_IS_CONCERN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="STD_NATION" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="TB_APPLICATION_SCHOOL" Relationship="Model.TB_APPLICATION_R05" FromRole="TB_APPLICATION_STUDENT" ToRole="TB_APPLICATION_SCHOOL" />
+          <NavigationProperty Name="TB_M_LEVEL" Relationship="Model.TB_APPLICATION_R01" FromRole="TB_APPLICATION_STUDENT" ToRole="TB_M_LEVEL" />
+          <NavigationProperty Name="TB_M_TITLE" Relationship="Model.TB_APPLICATION_R03" FromRole="TB_APPLICATION_STUDENT" ToRole="TB_M_TITLE" />
+          <NavigationProperty Name="TB_M_STATUS" Relationship="Model.TB_APPLICATION_STUDENT_R04" FromRole="TB_APPLICATION_STUDENT" ToRole="TB_M_STATUS" />
+          <NavigationProperty Name="TB_STUDENT_SEAT" Relationship="Model.TB_STUDENT_SEAT_R02" FromRole="TB_APPLICATION_STUDENT" ToRole="TB_STUDENT_SEAT" />
+          <Property Name="STD_NATION_OTHER" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TB_COMMITEE">
+          <Key>
+            <PropertyRef Name="COMMITEE_ID" />
+          </Key>
+          <Property Name="COMMITEE_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="COMMITEE_TITLE_ID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="COMMITEE_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="COMMITEE_SURNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="COMMITEE_PHONE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="COMMITEE_STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="TB_M_TITLE" Relationship="Model.TB_COMMITEE_R01" FromRole="TB_COMMITEE" ToRole="TB_M_TITLE" />
+          <NavigationProperty Name="TB_COMMITEE_ROOM" Relationship="Model.TB_COMMITEE_ROOM_R01" FromRole="TB_COMMITEE" ToRole="TB_COMMITEE_ROOM" />
+        </EntityType>
+        <EntityType Name="TB_COMMITEE_ROOM">
+          <Key>
+            <PropertyRef Name="COMMITEE_ID" />
+          </Key>
+          <Property Name="COMMITEE_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="COMMITEE_ROOM_ID" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="TB_COMMITEE" Relationship="Model.TB_COMMITEE_ROOM_R01" FromRole="TB_COMMITEE_ROOM" ToRole="TB_COMMITEE" />
+          <NavigationProperty Name="TB_ROOM" Relationship="Model.TB_COMMITEE_ROOM_R02" FromRole="TB_COMMITEE_ROOM" ToRole="TB_ROOM" />
+        </EntityType>
+        <EntityType Name="TB_CONCERN">
+          <Key>
+            <PropertyRef Name="STD_CODE" />
+          </Key>
+          <Property Name="STD_CODE" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="TB_EXAM_ABSENT">
+          <Key>
+            <PropertyRef Name="STD_CODE" />
+          </Key>
+          <Property Name="STD_CODE" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="TB_EXAM_ANOUNCE">
+          <Key>
+            <PropertyRef Name="ANOUNCE_ID" />
+          </Key>
+          <Property Name="ANOUNCE_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="ANOUNCE_FOR_LEVEL" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ANOUNCE_BUILDING" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ANOUNCE_BOARD" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TB_M_AMPHUR">
+          <Key>
+            <PropertyRef Name="AMPHUR_ID" />
+          </Key>
+          <Property Name="AMPHUR_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="AMPHUR_CODE" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="AMPHUR_NAME" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="GEO_ID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="PROVINCE_ID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="AMPHUR_NAME_ENG" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_APPLICATION_SCHOOL" Relationship="Model.TB_APPLICATION_SCHOOL_R03" FromRole="TB_M_AMPHUR" ToRole="TB_APPLICATION_SCHOOL" />
+          <NavigationProperty Name="TB_M_PROVINCE" Relationship="Model.TB_M_AMPHUR_R01" FromRole="TB_M_AMPHUR" ToRole="TB_M_PROVINCE" />
+          <NavigationProperty Name="TB_M_DISTRICT" Relationship="Model.TB_M_DISTRICT_R01" FromRole="TB_M_AMPHUR" ToRole="TB_M_DISTRICT" />
+        </EntityType>
+        <EntityType Name="TB_M_BUILDING">
+          <Key>
+            <PropertyRef Name="BUILDING_ID" />
+          </Key>
+          <Property Name="BUILDING_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="BUILDING_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_ROOM" Relationship="Model.TB_APPLICATION_ROOM_R01" FromRole="TB_M_BUILDING" ToRole="TB_ROOM" />
+        </EntityType>
+        <EntityType Name="TB_M_DISTRICT">
+          <Key>
+            <PropertyRef Name="DISTRICT_ID" />
+          </Key>
+          <Property Name="DISTRICT_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="DISTRICT_CODE" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="DISTRICT_NAME" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="AMPHUR_ID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="PROVINCE_ID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="GEO_ID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="DISTRICT_NAME_ENG" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_APPLICATION_SCHOOL" Relationship="Model.TB_APPLICATION_SCHOOL_R02" FromRole="TB_M_DISTRICT" ToRole="TB_APPLICATION_SCHOOL" />
+          <NavigationProperty Name="TB_M_AMPHUR" Relationship="Model.TB_M_DISTRICT_R01" FromRole="TB_M_DISTRICT" ToRole="TB_M_AMPHUR" />
+        </EntityType>
+        <EntityType Name="TB_M_LEVEL">
+          <Key>
+            <PropertyRef Name="LEVEL_ID" />
+          </Key>
+          <Property Name="LEVEL_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="LEVEL_NAME_TH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LEVEL_NAME_EN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LEVEL_NAME_ZH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_APPLICATION_STAFF" Relationship="Model.TB_APPLICATION_STAFF_R03" FromRole="TB_M_LEVEL" ToRole="TB_APPLICATION_STAFF" />
+          <NavigationProperty Name="TB_APPLICATION_STUDENT" Relationship="Model.TB_APPLICATION_R01" FromRole="TB_M_LEVEL" ToRole="TB_APPLICATION_STUDENT" />
+          <NavigationProperty Name="TB_ROOM" Relationship="Model.TB_ROOM_R02" FromRole="TB_M_LEVEL" ToRole="TB_ROOM" />
+        </EntityType>
+        <EntityType Name="TB_M_PRIZE">
+          <Key>
+            <PropertyRef Name="PRIZE_ID" />
+          </Key>
+          <Property Name="PRIZE_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="PRIZE_NAME_TH" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PRIZE_NAME_EN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PRIZE_FOR_ROUND" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="PRIZE_SCORE_PERIOD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_SCORE_ROUND_1" Relationship="Model.TB_SCORE_ROUND_1_R01" FromRole="TB_M_PRIZE" ToRole="TB_SCORE_ROUND_1" />
+          <NavigationProperty Name="TB_SCORE_ROUND_2" Relationship="Model.TB_SCORE_ROUND_2_R01" FromRole="TB_M_PRIZE" ToRole="TB_SCORE_ROUND_2" />
+        </EntityType>
+        <EntityType Name="TB_M_PROVINCE">
+          <Key>
+            <PropertyRef Name="PROVINCE_ID" />
+          </Key>
+          <Property Name="PROVINCE_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="PROVINCE_CODE" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="PROVINCE_NAME" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="GEO_ID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="PROVINCE_NAME_ENG" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_APPLICATION_SCHOOL" Relationship="Model.TB_APPLICATION_SCHOOL_R01" FromRole="TB_M_PROVINCE" ToRole="TB_APPLICATION_SCHOOL" />
+          <NavigationProperty Name="TB_APPLICATION_SCHOOL1" Relationship="Model.TB_APPLICATION_SCHOOL_R04" FromRole="TB_M_PROVINCE" ToRole="TB_APPLICATION_SCHOOL" />
+          <NavigationProperty Name="TB_M_AMPHUR" Relationship="Model.TB_M_AMPHUR_R01" FromRole="TB_M_PROVINCE" ToRole="TB_M_AMPHUR" />
+        </EntityType>
+        <EntityType Name="TB_M_SCHOOL_9">
+          <Key>
+            <PropertyRef Name="SCHOOL_ID" />
+          </Key>
+          <Property Name="SCHOOL_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="SCHOOL_ZONE_EDU" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SCHOOL_ZONE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SCHOOL_TYPE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="SCHOOL_TYPE_OTHER" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SCHOOL_ADDR" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SCHOOL_ADDR_SOI" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SCHOOL_ADDR_ROAD" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SCHOOL_ADDR_TOMBON" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SCHOOL_ADDR_AMPHUR" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SCHOOL_ADDR_PROVINCE" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SCHOOL_ADDR_ZIPCODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SCHOOL_ADDR_PHONE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SCHOOL_ADDR_FAX" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SCHOOL_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SCHOOL_PROVINCE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SCHOOL_PASSWORD" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="SCHOOL_DOC_PATH" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SCHOOL_REGISTER_DATE" Type="DateTime" />
+          <Property Name="SCHOOL_APPROVED_STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="SCHOOL_CODE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TB_M_STATUS">
+          <Key>
+            <PropertyRef Name="STATUS_ID" />
+          </Key>
+          <Property Name="STATUS_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="STATUS_NAME_TH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS_GROUP" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="STATUS_NAME_EN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_APPLICATION_SCHOOL" Relationship="Model.TB_APPLICATION_SCHOOL_R05" FromRole="TB_M_STATUS" ToRole="TB_APPLICATION_SCHOOL" />
+          <NavigationProperty Name="TB_APPLICATION_STUDENT" Relationship="Model.TB_APPLICATION_STUDENT_R04" FromRole="TB_M_STATUS" ToRole="TB_APPLICATION_STUDENT" />
+          <NavigationProperty Name="TB_ROLE" Relationship="Model.TB_ROLE_R01" FromRole="TB_M_STATUS" ToRole="TB_ROLE" />
+          <NavigationProperty Name="TB_USER" Relationship="Model.TB_USER_R02" FromRole="TB_M_STATUS" ToRole="TB_USER" />
+        </EntityType>
+        <EntityType Name="TB_M_TITLE">
+          <Key>
+            <PropertyRef Name="TITLE_ID" />
+          </Key>
+          <Property Name="TITLE_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="TITLE_NAME_TH" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TITLE_NAME_EN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TITLE_NAME_ZH" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_APPLICATION_STAFF" Relationship="Model.TB_APPLICATION_STAFF_R02" FromRole="TB_M_TITLE" ToRole="TB_APPLICATION_STAFF" />
+          <NavigationProperty Name="TB_APPLICATION_STUDENT" Relationship="Model.TB_APPLICATION_R03" FromRole="TB_M_TITLE" ToRole="TB_APPLICATION_STUDENT" />
+          <NavigationProperty Name="TB_COMMITEE" Relationship="Model.TB_COMMITEE_R01" FromRole="TB_M_TITLE" ToRole="TB_COMMITEE" />
+        </EntityType>
+        <EntityType Name="TB_ROLE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPTON" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="TB_M_STATUS" Relationship="Model.TB_ROLE_R01" FromRole="TB_ROLE" ToRole="TB_M_STATUS" />
+          <NavigationProperty Name="TB_ROLE_PERMISSION" Relationship="Model.TB_ROLE_PERMISSION_R01" FromRole="TB_ROLE" ToRole="TB_ROLE_PERMISSION" />
+          <NavigationProperty Name="TB_USER" Relationship="Model.TB_USER_R01" FromRole="TB_ROLE" ToRole="TB_USER" />
+        </EntityType>
+        <EntityType Name="TB_ROLE_PERMISSION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="ROLE_ID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="PERMISSION_CODE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_ROLE" Relationship="Model.TB_ROLE_PERMISSION_R01" FromRole="TB_ROLE_PERMISSION" ToRole="TB_ROLE" />
+        </EntityType>
+        <EntityType Name="TB_ROOM">
+          <Key>
+            <PropertyRef Name="ROOM_ID" />
+          </Key>
+          <Property Name="ROOM_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="ROOM_FOR_LEVEL" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ROOM_BUILD" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ROOM_FLOOR" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ROOM_NUMBER" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="ROOM_SEAT_COUNT" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ROOM_COMMITTEE_COUNT" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ROOM_ROW" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ROW_1" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ROW_2" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ROW_3" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ROW_4" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ROW_5" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ROW_6" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ROW_7" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ROW_8" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ROW_9" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ROW_10" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ROW_11" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ROW_12" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="TB_COMMITEE_ROOM" Relationship="Model.TB_COMMITEE_ROOM_R02" FromRole="TB_ROOM" ToRole="TB_COMMITEE_ROOM" />
+          <NavigationProperty Name="TB_M_BUILDING" Relationship="Model.TB_APPLICATION_ROOM_R01" FromRole="TB_ROOM" ToRole="TB_M_BUILDING" />
+          <NavigationProperty Name="TB_M_LEVEL" Relationship="Model.TB_ROOM_R02" FromRole="TB_ROOM" ToRole="TB_M_LEVEL" />
+          <NavigationProperty Name="TB_STUDENT_SEAT" Relationship="Model.TB_STUDENT_SEAT_R01" FromRole="TB_ROOM" ToRole="TB_STUDENT_SEAT" />
+        </EntityType>
+        <EntityType Name="TB_SCHOOL_DOCUMENT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="SCHOOL_ID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="DOCUMENT_PATH" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="TB_SCORE_ROUND_1">
+          <Key>
+            <PropertyRef Name="STD_CODE" />
+          </Key>
+          <Property Name="STD_CODE" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="ROUND_SCORE" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="PRIZE_ID" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="TB_M_PRIZE" Relationship="Model.TB_SCORE_ROUND_1_R01" FromRole="TB_SCORE_ROUND_1" ToRole="TB_M_PRIZE" />
+        </EntityType>
+        <EntityType Name="TB_SCORE_ROUND_1_ERROR">
+          <Key>
+            <PropertyRef Name="STD_CODE" />
+          </Key>
+          <Property Name="STD_CODE" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="STD_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="STD_SCORE" Type="Decimal" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="TB_SCORE_ROUND_2">
+          <Key>
+            <PropertyRef Name="STD_CODE" />
+          </Key>
+          <Property Name="STD_CODE" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="SCORE_1_11" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SCORE_1_12" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SCORE_1_13" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SCORE_1_14" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SCORE_1_15" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SCORE_2_21" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SCORE_2_22" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SCORE_2_23" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SCORE_2_24" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ROUND_1_SCORE" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="PRIZE_ID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SCORE_1_21" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SCORE_1_22" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SCORE_1_23" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SCORE_1_24" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SCORE_1_25" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SCORE_1_31" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SCORE_1_32" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SCORE_1_33" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SCORE_1_34" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SCORE_1_35" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SCORE_2_11" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SCORE_2_12" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SCORE_2_13" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SCORE_2_14" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SCORE_2_31" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SCORE_2_32" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SCORE_2_33" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SCORE_2_34" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="TB_M_PRIZE" Relationship="Model.TB_SCORE_ROUND_2_R01" FromRole="TB_SCORE_ROUND_2" ToRole="TB_M_PRIZE" />
+        </EntityType>
+        <EntityType Name="TB_STUDENT_SEAT">
+          <Key>
+            <PropertyRef Name="STUDENT_ID" />
+          </Key>
+          <Property Name="STUDENT_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="STUDENT_CODE" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SIT_NUMBER" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SIT_NUMBER_PREFIX" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ROOM_ID" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="TB_APPLICATION_STUDENT" Relationship="Model.TB_STUDENT_SEAT_R02" FromRole="TB_STUDENT_SEAT" ToRole="TB_APPLICATION_STUDENT" />
+          <NavigationProperty Name="TB_ROOM" Relationship="Model.TB_STUDENT_SEAT_R01" FromRole="TB_STUDENT_SEAT" ToRole="TB_ROOM" />
+        </EntityType>
+        <EntityType Name="TB_USER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="ROLE_ID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="USERNAME" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="CREATE_BY" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="LASTED_LOGIN" Type="DateTime" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CREATE_DATE" Type="DateTime" />
+          <NavigationProperty Name="TB_M_STATUS" Relationship="Model.TB_USER_R02" FromRole="TB_USER" ToRole="TB_M_STATUS" />
+          <NavigationProperty Name="TB_ROLE" Relationship="Model.TB_USER_R01" FromRole="TB_USER" ToRole="TB_ROLE" />
+        </EntityType>
+        <Association Name="TB_APPLICATION_R05">
+          <End Type="Model.TB_APPLICATION_SCHOOL" Role="TB_APPLICATION_SCHOOL" Multiplicity="0..1" />
+          <End Type="Model.TB_APPLICATION_STUDENT" Role="TB_APPLICATION_STUDENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_APPLICATION_SCHOOL">
+              <PropertyRef Name="SCHOOL_ID" />
+            </Principal>
+            <Dependent Role="TB_APPLICATION_STUDENT">
+              <PropertyRef Name="STD_SCHOOL_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_APPLICATION_SCHOOL_R01">
+          <End Type="Model.TB_M_PROVINCE" Role="TB_M_PROVINCE" Multiplicity="0..1" />
+          <End Type="Model.TB_APPLICATION_SCHOOL" Role="TB_APPLICATION_SCHOOL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_M_PROVINCE">
+              <PropertyRef Name="PROVINCE_ID" />
+            </Principal>
+            <Dependent Role="TB_APPLICATION_SCHOOL">
+              <PropertyRef Name="SCHOOL_ADDR_PROVINCE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_APPLICATION_SCHOOL_R02">
+          <End Type="Model.TB_M_DISTRICT" Role="TB_M_DISTRICT" Multiplicity="0..1" />
+          <End Type="Model.TB_APPLICATION_SCHOOL" Role="TB_APPLICATION_SCHOOL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_M_DISTRICT">
+              <PropertyRef Name="DISTRICT_ID" />
+            </Principal>
+            <Dependent Role="TB_APPLICATION_SCHOOL">
+              <PropertyRef Name="SCHOOL_ADDR_TOMBON" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_APPLICATION_SCHOOL_R03">
+          <End Type="Model.TB_M_AMPHUR" Role="TB_M_AMPHUR" Multiplicity="0..1" />
+          <End Type="Model.TB_APPLICATION_SCHOOL" Role="TB_APPLICATION_SCHOOL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_M_AMPHUR">
+              <PropertyRef Name="AMPHUR_ID" />
+            </Principal>
+            <Dependent Role="TB_APPLICATION_SCHOOL">
+              <PropertyRef Name="SCHOOL_ADDR_AMPHUR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_APPLICATION_SCHOOL_R04">
+          <End Type="Model.TB_M_PROVINCE" Role="TB_M_PROVINCE" Multiplicity="0..1" />
+          <End Type="Model.TB_APPLICATION_SCHOOL" Role="TB_APPLICATION_SCHOOL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_M_PROVINCE">
+              <PropertyRef Name="PROVINCE_ID" />
+            </Principal>
+            <Dependent Role="TB_APPLICATION_SCHOOL">
+              <PropertyRef Name="SCHOOL_PROVINCE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_APPLICATION_SCHOOL_R05">
+          <End Type="Model.TB_M_STATUS" Role="TB_M_STATUS" Multiplicity="0..1" />
+          <End Type="Model.TB_APPLICATION_SCHOOL" Role="TB_APPLICATION_SCHOOL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_M_STATUS">
+              <PropertyRef Name="STATUS_ID" />
+            </Principal>
+            <Dependent Role="TB_APPLICATION_SCHOOL">
+              <PropertyRef Name="SCHOOL_APPROVED_STATUS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_APPLICATION_STAFF_R05">
+          <End Type="Model.TB_APPLICATION_SCHOOL" Role="TB_APPLICATION_SCHOOL" Multiplicity="0..1" />
+          <End Type="Model.TB_APPLICATION_STAFF" Role="TB_APPLICATION_STAFF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_APPLICATION_SCHOOL">
+              <PropertyRef Name="SCHOOL_ID" />
+            </Principal>
+            <Dependent Role="TB_APPLICATION_STAFF">
+              <PropertyRef Name="STAFF_SCHOOL_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_APPLICATION_STAFF_R02">
+          <End Type="Model.TB_M_TITLE" Role="TB_M_TITLE" Multiplicity="0..1" />
+          <End Type="Model.TB_APPLICATION_STAFF" Role="TB_APPLICATION_STAFF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_M_TITLE">
+              <PropertyRef Name="TITLE_ID" />
+            </Principal>
+            <Dependent Role="TB_APPLICATION_STAFF">
+              <PropertyRef Name="STAFF_TITLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_APPLICATION_STAFF_R03">
+          <End Type="Model.TB_M_LEVEL" Role="TB_M_LEVEL" Multiplicity="0..1" />
+          <End Type="Model.TB_APPLICATION_STAFF" Role="TB_APPLICATION_STAFF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_M_LEVEL">
+              <PropertyRef Name="LEVEL_ID" />
+            </Principal>
+            <Dependent Role="TB_APPLICATION_STAFF">
+              <PropertyRef Name="STAFF_FOR_LEVEL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_APPLICATION_R01">
+          <End Type="Model.TB_M_LEVEL" Role="TB_M_LEVEL" Multiplicity="0..1" />
+          <End Type="Model.TB_APPLICATION_STUDENT" Role="TB_APPLICATION_STUDENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_M_LEVEL">
+              <PropertyRef Name="LEVEL_ID" />
+            </Principal>
+            <Dependent Role="TB_APPLICATION_STUDENT">
+              <PropertyRef Name="STD_LEVEL_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_APPLICATION_R03">
+          <End Type="Model.TB_M_TITLE" Role="TB_M_TITLE" Multiplicity="0..1" />
+          <End Type="Model.TB_APPLICATION_STUDENT" Role="TB_APPLICATION_STUDENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_M_TITLE">
+              <PropertyRef Name="TITLE_ID" />
+            </Principal>
+            <Dependent Role="TB_APPLICATION_STUDENT">
+              <PropertyRef Name="STD_TITLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_APPLICATION_STUDENT_R04">
+          <End Type="Model.TB_M_STATUS" Role="TB_M_STATUS" Multiplicity="0..1" />
+          <End Type="Model.TB_APPLICATION_STUDENT" Role="TB_APPLICATION_STUDENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_M_STATUS">
+              <PropertyRef Name="STATUS_ID" />
+            </Principal>
+            <Dependent Role="TB_APPLICATION_STUDENT">
+              <PropertyRef Name="STD_APPROVED_STATUS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_STUDENT_SEAT_R02">
+          <End Type="Model.TB_APPLICATION_STUDENT" Role="TB_APPLICATION_STUDENT" Multiplicity="1" />
+          <End Type="Model.TB_STUDENT_SEAT" Role="TB_STUDENT_SEAT" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TB_APPLICATION_STUDENT">
+              <PropertyRef Name="STD_ID" />
+            </Principal>
+            <Dependent Role="TB_STUDENT_SEAT">
+              <PropertyRef Name="STUDENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_COMMITEE_R01">
+          <End Type="Model.TB_M_TITLE" Role="TB_M_TITLE" Multiplicity="0..1" />
+          <End Type="Model.TB_COMMITEE" Role="TB_COMMITEE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_M_TITLE">
+              <PropertyRef Name="TITLE_ID" />
+            </Principal>
+            <Dependent Role="TB_COMMITEE">
+              <PropertyRef Name="COMMITEE_TITLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_COMMITEE_ROOM_R01">
+          <End Type="Model.TB_COMMITEE" Role="TB_COMMITEE" Multiplicity="1" />
+          <End Type="Model.TB_COMMITEE_ROOM" Role="TB_COMMITEE_ROOM" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TB_COMMITEE">
+              <PropertyRef Name="COMMITEE_ID" />
+            </Principal>
+            <Dependent Role="TB_COMMITEE_ROOM">
+              <PropertyRef Name="COMMITEE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_COMMITEE_ROOM_R02">
+          <End Type="Model.TB_ROOM" Role="TB_ROOM" Multiplicity="0..1" />
+          <End Type="Model.TB_COMMITEE_ROOM" Role="TB_COMMITEE_ROOM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_ROOM">
+              <PropertyRef Name="ROOM_ID" />
+            </Principal>
+            <Dependent Role="TB_COMMITEE_ROOM">
+              <PropertyRef Name="COMMITEE_ROOM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_M_AMPHUR_R01">
+          <End Type="Model.TB_M_PROVINCE" Role="TB_M_PROVINCE" Multiplicity="0..1" />
+          <End Type="Model.TB_M_AMPHUR" Role="TB_M_AMPHUR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_M_PROVINCE">
+              <PropertyRef Name="PROVINCE_ID" />
+            </Principal>
+            <Dependent Role="TB_M_AMPHUR">
+              <PropertyRef Name="PROVINCE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_M_DISTRICT_R01">
+          <End Type="Model.TB_M_AMPHUR" Role="TB_M_AMPHUR" Multiplicity="0..1" />
+          <End Type="Model.TB_M_DISTRICT" Role="TB_M_DISTRICT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_M_AMPHUR">
+              <PropertyRef Name="AMPHUR_ID" />
+            </Principal>
+            <Dependent Role="TB_M_DISTRICT">
+              <PropertyRef Name="AMPHUR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_APPLICATION_ROOM_R01">
+          <End Type="Model.TB_M_BUILDING" Role="TB_M_BUILDING" Multiplicity="0..1" />
+          <End Type="Model.TB_ROOM" Role="TB_ROOM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_M_BUILDING">
+              <PropertyRef Name="BUILDING_ID" />
+            </Principal>
+            <Dependent Role="TB_ROOM">
+              <PropertyRef Name="ROOM_BUILD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_ROOM_R02">
+          <End Type="Model.TB_M_LEVEL" Role="TB_M_LEVEL" Multiplicity="0..1" />
+          <End Type="Model.TB_ROOM" Role="TB_ROOM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_M_LEVEL">
+              <PropertyRef Name="LEVEL_ID" />
+            </Principal>
+            <Dependent Role="TB_ROOM">
+              <PropertyRef Name="ROOM_FOR_LEVEL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_SCORE_ROUND_1_R01">
+          <End Type="Model.TB_M_PRIZE" Role="TB_M_PRIZE" Multiplicity="0..1" />
+          <End Type="Model.TB_SCORE_ROUND_1" Role="TB_SCORE_ROUND_1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_M_PRIZE">
+              <PropertyRef Name="PRIZE_ID" />
+            </Principal>
+            <Dependent Role="TB_SCORE_ROUND_1">
+              <PropertyRef Name="PRIZE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_SCORE_ROUND_2_R01">
+          <End Type="Model.TB_M_PRIZE" Role="TB_M_PRIZE" Multiplicity="0..1" />
+          <End Type="Model.TB_SCORE_ROUND_2" Role="TB_SCORE_ROUND_2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_M_PRIZE">
+              <PropertyRef Name="PRIZE_ID" />
+            </Principal>
+            <Dependent Role="TB_SCORE_ROUND_2">
+              <PropertyRef Name="PRIZE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_ROLE_R01">
+          <End Type="Model.TB_M_STATUS" Role="TB_M_STATUS" Multiplicity="0..1" />
+          <End Type="Model.TB_ROLE" Role="TB_ROLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_M_STATUS">
+              <PropertyRef Name="STATUS_ID" />
+            </Principal>
+            <Dependent Role="TB_ROLE">
+              <PropertyRef Name="STATUS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_USER_R02">
+          <End Type="Model.TB_M_STATUS" Role="TB_M_STATUS" Multiplicity="0..1" />
+          <End Type="Model.TB_USER" Role="TB_USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_M_STATUS">
+              <PropertyRef Name="STATUS_ID" />
+            </Principal>
+            <Dependent Role="TB_USER">
+              <PropertyRef Name="STATUS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_ROLE_PERMISSION_R01">
+          <End Type="Model.TB_ROLE" Role="TB_ROLE" Multiplicity="0..1" />
+          <End Type="Model.TB_ROLE_PERMISSION" Role="TB_ROLE_PERMISSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_ROLE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TB_ROLE_PERMISSION">
+              <PropertyRef Name="ROLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_USER_R01">
+          <End Type="Model.TB_ROLE" Role="TB_ROLE" Multiplicity="0..1" />
+          <End Type="Model.TB_USER" Role="TB_USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_ROLE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TB_USER">
+              <PropertyRef Name="ROLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_STUDENT_SEAT_R01">
+          <End Type="Model.TB_ROOM" Role="TB_ROOM" Multiplicity="0..1" />
+          <End Type="Model.TB_STUDENT_SEAT" Role="TB_STUDENT_SEAT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_ROOM">
+              <PropertyRef Name="ROOM_ID" />
+            </Principal>
+            <Dependent Role="TB_STUDENT_SEAT">
+              <PropertyRef Name="ROOM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="ChinaPhet10Entities">
+          <EntitySetMapping Name="TB_APPLICATION">
+            <EntityTypeMapping TypeName="Model.TB_APPLICATION">
+              <MappingFragment StoreEntitySet="TB_APPLICATION">
+                <ScalarProperty Name="PROJECT_IS_ANNOUNCE_ROUND2" ColumnName="PROJECT_IS_ANNOUNCE_ROUND2" />
+                <ScalarProperty Name="PROJECT_IS_ANNOUNCE_ROUND1" ColumnName="PROJECT_IS_ANNOUNCE_ROUND1" />
+                <ScalarProperty Name="PROJECT_ANNOUNCE_DATE" ColumnName="PROJECT_ANNOUNCE_DATE" />
+                <ScalarProperty Name="PROJECT_STATUS" ColumnName="PROJECT_STATUS" />
+                <ScalarProperty Name="PROJECT_EXAM_DATE" ColumnName="PROJECT_EXAM_DATE" />
+                <ScalarProperty Name="PROJECT_REGISTER_END" ColumnName="PROJECT_REGISTER_END" />
+                <ScalarProperty Name="PROJECT_REGISTER_START" ColumnName="PROJECT_REGISTER_START" />
+                <ScalarProperty Name="PROJECT_ROUND" ColumnName="PROJECT_ROUND" />
+                <ScalarProperty Name="PROJECT_ID" ColumnName="PROJECT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_APPLICATION_SCHOOL">
+            <EntityTypeMapping TypeName="Model.TB_APPLICATION_SCHOOL">
+              <MappingFragment StoreEntitySet="TB_APPLICATION_SCHOOL">
+                <ScalarProperty Name="SCHOOL_ROUND" ColumnName="SCHOOL_ROUND" />
+                <ScalarProperty Name="SCHOOL_CULTURE" ColumnName="SCHOOL_CULTURE" />
+                <ScalarProperty Name="SCHOOL_EMAIL" ColumnName="SCHOOL_EMAIL" />
+                <ScalarProperty Name="SCHOOL_APPROVED_STATUS" ColumnName="SCHOOL_APPROVED_STATUS" />
+                <ScalarProperty Name="SCHOOL_REGISTER_DATE" ColumnName="SCHOOL_REGISTER_DATE" />
+                <ScalarProperty Name="SCHOOL_DOC_PATH" ColumnName="SCHOOL_DOC_PATH" />
+                <ScalarProperty Name="SCHOOL_PASSWORD" ColumnName="SCHOOL_PASSWORD" />
+                <ScalarProperty Name="SCHOOL_PROVINCE" ColumnName="SCHOOL_PROVINCE" />
+                <ScalarProperty Name="SCHOOL_NAME" ColumnName="SCHOOL_NAME" />
+                <ScalarProperty Name="SCHOOL_ADDR_FAX" ColumnName="SCHOOL_ADDR_FAX" />
+                <ScalarProperty Name="SCHOOL_ADDR_PHONE" ColumnName="SCHOOL_ADDR_PHONE" />
+                <ScalarProperty Name="SCHOOL_ADDR_ZIPCODE" ColumnName="SCHOOL_ADDR_ZIPCODE" />
+                <ScalarProperty Name="SCHOOL_ADDR_PROVINCE" ColumnName="SCHOOL_ADDR_PROVINCE" />
+                <ScalarProperty Name="SCHOOL_ADDR_AMPHUR" ColumnName="SCHOOL_ADDR_AMPHUR" />
+                <ScalarProperty Name="SCHOOL_ADDR_TOMBON" ColumnName="SCHOOL_ADDR_TOMBON" />
+                <ScalarProperty Name="SCHOOL_ADDR_ROAD" ColumnName="SCHOOL_ADDR_ROAD" />
+                <ScalarProperty Name="SCHOOL_ADDR_SOI" ColumnName="SCHOOL_ADDR_SOI" />
+                <ScalarProperty Name="SCHOOL_ADDR" ColumnName="SCHOOL_ADDR" />
+                <ScalarProperty Name="SCHOOL_TYPE_OTHER" ColumnName="SCHOOL_TYPE_OTHER" />
+                <ScalarProperty Name="SCHOOL_TYPE" ColumnName="SCHOOL_TYPE" />
+                <ScalarProperty Name="SCHOOL_ZONE" ColumnName="SCHOOL_ZONE" />
+                <ScalarProperty Name="SCHOOL_ZONE_EDU" ColumnName="SCHOOL_ZONE_EDU" />
+                <ScalarProperty Name="SCHOOL_ID" ColumnName="SCHOOL_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_APPLICATION_STAFF">
+            <EntityTypeMapping TypeName="Model.TB_APPLICATION_STAFF">
+              <MappingFragment StoreEntitySet="TB_APPLICATION_STAFF">
+                <ScalarProperty Name="STAFF_NATION" ColumnName="STAFF_NATION" />
+                <ScalarProperty Name="STAFF_FOR_LEVEL" ColumnName="STAFF_FOR_LEVEL" />
+                <ScalarProperty Name="STAFF_TITLE_ID" ColumnName="STAFF_TITLE_ID" />
+                <ScalarProperty Name="STAFF_PHONE" ColumnName="STAFF_PHONE" />
+                <ScalarProperty Name="STAFF_SURNAME" ColumnName="STAFF_SURNAME" />
+                <ScalarProperty Name="STAFF_NAME" ColumnName="STAFF_NAME" />
+                <ScalarProperty Name="STAFF_POSITION" ColumnName="STAFF_POSITION" />
+                <ScalarProperty Name="STAFF_SCHOOL_ID" ColumnName="STAFF_SCHOOL_ID" />
+                <ScalarProperty Name="STAFF_ID" ColumnName="STAFF_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_APPLICATION_STUDENT">
+            <EntityTypeMapping TypeName="Model.TB_APPLICATION_STUDENT">
+              <MappingFragment StoreEntitySet="TB_APPLICATION_STUDENT">
+                <ScalarProperty Name="STD_NATION_OTHER" ColumnName="STD_NATION_OTHER" />
+                <ScalarProperty Name="STD_NATION" ColumnName="STD_NATION" />
+                <ScalarProperty Name="STD_IS_CONCERN" ColumnName="STD_IS_CONCERN" />
+                <ScalarProperty Name="STD_BIRTH_DAY" ColumnName="STD_BIRTH_DAY" />
+                <ScalarProperty Name="STD_APPROVED_STATUS" ColumnName="STD_APPROVED_STATUS" />
+                <ScalarProperty Name="STD_PHONE_PROVIDER" ColumnName="STD_PHONE_PROVIDER" />
+                <ScalarProperty Name="STD_GRADE" ColumnName="STD_GRADE" />
+                <ScalarProperty Name="STD_PASSPORT_ID" ColumnName="STD_PASSPORT_ID" />
+                <ScalarProperty Name="STD_ID_CARD" ColumnName="STD_ID_CARD" />
+                <ScalarProperty Name="STD_EMAIL" ColumnName="STD_EMAIL" />
+                <ScalarProperty Name="STD_PHONE" ColumnName="STD_PHONE" />
+                <ScalarProperty Name="STD_PICTURE_PATH" ColumnName="STD_PICTURE_PATH" />
+                <ScalarProperty Name="STD_SCHOOL_ID" ColumnName="STD_SCHOOL_ID" />
+                <ScalarProperty Name="STD_LEVEL_ID" ColumnName="STD_LEVEL_ID" />
+                <ScalarProperty Name="STD_SURNAME" ColumnName="STD_SURNAME" />
+                <ScalarProperty Name="STD_NAME" ColumnName="STD_NAME" />
+                <ScalarProperty Name="STD_TITLE_ID" ColumnName="STD_TITLE_ID" />
+                <ScalarProperty Name="STD_ID" ColumnName="STD_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_COMMITEE">
+            <EntityTypeMapping TypeName="Model.TB_COMMITEE">
+              <MappingFragment StoreEntitySet="TB_COMMITEE">
+                <ScalarProperty Name="COMMITEE_STATUS" ColumnName="COMMITEE_STATUS" />
+                <ScalarProperty Name="COMMITEE_PHONE" ColumnName="COMMITEE_PHONE" />
+                <ScalarProperty Name="COMMITEE_SURNAME" ColumnName="COMMITEE_SURNAME" />
+                <ScalarProperty Name="COMMITEE_NAME" ColumnName="COMMITEE_NAME" />
+                <ScalarProperty Name="COMMITEE_TITLE_ID" ColumnName="COMMITEE_TITLE_ID" />
+                <ScalarProperty Name="COMMITEE_ID" ColumnName="COMMITEE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_COMMITEE_ROOM">
+            <EntityTypeMapping TypeName="Model.TB_COMMITEE_ROOM">
+              <MappingFragment StoreEntitySet="TB_COMMITEE_ROOM">
+                <ScalarProperty Name="COMMITEE_ROOM_ID" ColumnName="COMMITEE_ROOM_ID" />
+                <ScalarProperty Name="COMMITEE_ID" ColumnName="COMMITEE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_CONCERN">
+            <EntityTypeMapping TypeName="Model.TB_CONCERN">
+              <MappingFragment StoreEntitySet="TB_CONCERN">
+                <ScalarProperty Name="STD_CODE" ColumnName="STD_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_EXAM_ABSENT">
+            <EntityTypeMapping TypeName="Model.TB_EXAM_ABSENT">
+              <MappingFragment StoreEntitySet="TB_EXAM_ABSENT">
+                <ScalarProperty Name="STD_CODE" ColumnName="STD_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_EXAM_ANOUNCE">
+            <EntityTypeMapping TypeName="Model.TB_EXAM_ANOUNCE">
+              <MappingFragment StoreEntitySet="TB_EXAM_ANOUNCE">
+                <ScalarProperty Name="ANOUNCE_BOARD" ColumnName="ANOUNCE_BOARD" />
+                <ScalarProperty Name="ANOUNCE_BUILDING" ColumnName="ANOUNCE_BUILDING" />
+                <ScalarProperty Name="ANOUNCE_FOR_LEVEL" ColumnName="ANOUNCE_FOR_LEVEL" />
+                <ScalarProperty Name="ANOUNCE_ID" ColumnName="ANOUNCE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_M_AMPHUR">
+            <EntityTypeMapping TypeName="Model.TB_M_AMPHUR">
+              <MappingFragment StoreEntitySet="TB_M_AMPHUR">
+                <ScalarProperty Name="AMPHUR_NAME_ENG" ColumnName="AMPHUR_NAME_ENG" />
+                <ScalarProperty Name="PROVINCE_ID" ColumnName="PROVINCE_ID" />
+                <ScalarProperty Name="GEO_ID" ColumnName="GEO_ID" />
+                <ScalarProperty Name="AMPHUR_NAME" ColumnName="AMPHUR_NAME" />
+                <ScalarProperty Name="AMPHUR_CODE" ColumnName="AMPHUR_CODE" />
+                <ScalarProperty Name="AMPHUR_ID" ColumnName="AMPHUR_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_M_BUILDING">
+            <EntityTypeMapping TypeName="Model.TB_M_BUILDING">
+              <MappingFragment StoreEntitySet="TB_M_BUILDING">
+                <ScalarProperty Name="BUILDING_NAME" ColumnName="BUILDING_NAME" />
+                <ScalarProperty Name="BUILDING_ID" ColumnName="BUILDING_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_M_DISTRICT">
+            <EntityTypeMapping TypeName="Model.TB_M_DISTRICT">
+              <MappingFragment StoreEntitySet="TB_M_DISTRICT">
+                <ScalarProperty Name="DISTRICT_NAME_ENG" ColumnName="DISTRICT_NAME_ENG" />
+                <ScalarProperty Name="GEO_ID" ColumnName="GEO_ID" />
+                <ScalarProperty Name="PROVINCE_ID" ColumnName="PROVINCE_ID" />
+                <ScalarProperty Name="AMPHUR_ID" ColumnName="AMPHUR_ID" />
+                <ScalarProperty Name="DISTRICT_NAME" ColumnName="DISTRICT_NAME" />
+                <ScalarProperty Name="DISTRICT_CODE" ColumnName="DISTRICT_CODE" />
+                <ScalarProperty Name="DISTRICT_ID" ColumnName="DISTRICT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_M_LEVEL">
+            <EntityTypeMapping TypeName="Model.TB_M_LEVEL">
+              <MappingFragment StoreEntitySet="TB_M_LEVEL">
+                <ScalarProperty Name="LEVEL_NAME_ZH" ColumnName="LEVEL_NAME_ZH" />
+                <ScalarProperty Name="LEVEL_NAME_EN" ColumnName="LEVEL_NAME_EN" />
+                <ScalarProperty Name="LEVEL_NAME_TH" ColumnName="LEVEL_NAME_TH" />
+                <ScalarProperty Name="LEVEL_ID" ColumnName="LEVEL_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_M_PRIZE">
+            <EntityTypeMapping TypeName="Model.TB_M_PRIZE">
+              <MappingFragment StoreEntitySet="TB_M_PRIZE">
+                <ScalarProperty Name="PRIZE_SCORE_PERIOD" ColumnName="PRIZE_SCORE_PERIOD" />
+                <ScalarProperty Name="PRIZE_FOR_ROUND" ColumnName="PRIZE_FOR_ROUND" />
+                <ScalarProperty Name="PRIZE_NAME_EN" ColumnName="PRIZE_NAME_EN" />
+                <ScalarProperty Name="PRIZE_NAME_TH" ColumnName="PRIZE_NAME_TH" />
+                <ScalarProperty Name="PRIZE_ID" ColumnName="PRIZE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_M_PROVINCE">
+            <EntityTypeMapping TypeName="Model.TB_M_PROVINCE">
+              <MappingFragment StoreEntitySet="TB_M_PROVINCE">
+                <ScalarProperty Name="PROVINCE_NAME_ENG" ColumnName="PROVINCE_NAME_ENG" />
+                <ScalarProperty Name="GEO_ID" ColumnName="GEO_ID" />
+                <ScalarProperty Name="PROVINCE_NAME" ColumnName="PROVINCE_NAME" />
+                <ScalarProperty Name="PROVINCE_CODE" ColumnName="PROVINCE_CODE" />
+                <ScalarProperty Name="PROVINCE_ID" ColumnName="PROVINCE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_M_SCHOOL_9">
+            <EntityTypeMapping TypeName="Model.TB_M_SCHOOL_9">
+              <MappingFragment StoreEntitySet="TB_M_SCHOOL_9">
+                <ScalarProperty Name="SCHOOL_CODE" ColumnName="SCHOOL_CODE" />
+                <ScalarProperty Name="SCHOOL_APPROVED_STATUS" ColumnName="SCHOOL_APPROVED_STATUS" />
+                <ScalarProperty Name="SCHOOL_REGISTER_DATE" ColumnName="SCHOOL_REGISTER_DATE" />
+                <ScalarProperty Name="SCHOOL_DOC_PATH" ColumnName="SCHOOL_DOC_PATH" />
+                <ScalarProperty Name="SCHOOL_PASSWORD" ColumnName="SCHOOL_PASSWORD" />
+                <ScalarProperty Name="SCHOOL_PROVINCE" ColumnName="SCHOOL_PROVINCE" />
+                <ScalarProperty Name="SCHOOL_NAME" ColumnName="SCHOOL_NAME" />
+                <ScalarProperty Name="SCHOOL_ADDR_FAX" ColumnName="SCHOOL_ADDR_FAX" />
+                <ScalarProperty Name="SCHOOL_ADDR_PHONE" ColumnName="SCHOOL_ADDR_PHONE" />
+                <ScalarProperty Name="SCHOOL_ADDR_ZIPCODE" ColumnName="SCHOOL_ADDR_ZIPCODE" />
+                <ScalarProperty Name="SCHOOL_ADDR_PROVINCE" ColumnName="SCHOOL_ADDR_PROVINCE" />
+                <ScalarProperty Name="SCHOOL_ADDR_AMPHUR" ColumnName="SCHOOL_ADDR_AMPHUR" />
+                <ScalarProperty Name="SCHOOL_ADDR_TOMBON" ColumnName="SCHOOL_ADDR_TOMBON" />
+                <ScalarProperty Name="SCHOOL_ADDR_ROAD" ColumnName="SCHOOL_ADDR_ROAD" />
+                <ScalarProperty Name="SCHOOL_ADDR_SOI" ColumnName="SCHOOL_ADDR_SOI" />
+                <ScalarProperty Name="SCHOOL_ADDR" ColumnName="SCHOOL_ADDR" />
+                <ScalarProperty Name="SCHOOL_TYPE_OTHER" ColumnName="SCHOOL_TYPE_OTHER" />
+                <ScalarProperty Name="SCHOOL_TYPE" ColumnName="SCHOOL_TYPE" />
+                <ScalarProperty Name="SCHOOL_ZONE" ColumnName="SCHOOL_ZONE" />
+                <ScalarProperty Name="SCHOOL_ZONE_EDU" ColumnName="SCHOOL_ZONE_EDU" />
+                <ScalarProperty Name="SCHOOL_ID" ColumnName="SCHOOL_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_M_STATUS">
+            <EntityTypeMapping TypeName="Model.TB_M_STATUS">
+              <MappingFragment StoreEntitySet="TB_M_STATUS">
+                <ScalarProperty Name="STATUS_NAME_EN" ColumnName="STATUS_NAME_EN" />
+                <ScalarProperty Name="STATUS_GROUP" ColumnName="STATUS_GROUP" />
+                <ScalarProperty Name="STATUS_NAME_TH" ColumnName="STATUS_NAME_TH" />
+                <ScalarProperty Name="STATUS_ID" ColumnName="STATUS_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_M_TITLE">
+            <EntityTypeMapping TypeName="Model.TB_M_TITLE">
+              <MappingFragment StoreEntitySet="TB_M_TITLE">
+                <ScalarProperty Name="TITLE_NAME_ZH" ColumnName="TITLE_NAME_ZH" />
+                <ScalarProperty Name="TITLE_NAME_EN" ColumnName="TITLE_NAME_EN" />
+                <ScalarProperty Name="TITLE_NAME_TH" ColumnName="TITLE_NAME_TH" />
+                <ScalarProperty Name="TITLE_ID" ColumnName="TITLE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_ROLE">
+            <EntityTypeMapping TypeName="Model.TB_ROLE">
+              <MappingFragment StoreEntitySet="TB_ROLE">
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="DESCRIPTON" ColumnName="DESCRIPTON" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_ROLE_PERMISSION">
+            <EntityTypeMapping TypeName="Model.TB_ROLE_PERMISSION">
+              <MappingFragment StoreEntitySet="TB_ROLE_PERMISSION">
+                <ScalarProperty Name="PERMISSION_CODE" ColumnName="PERMISSION_CODE" />
+                <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_ROOM">
+            <EntityTypeMapping TypeName="Model.TB_ROOM">
+              <MappingFragment StoreEntitySet="TB_ROOM">
+                <ScalarProperty Name="ROW_12" ColumnName="ROW_12" />
+                <ScalarProperty Name="ROW_11" ColumnName="ROW_11" />
+                <ScalarProperty Name="ROW_10" ColumnName="ROW_10" />
+                <ScalarProperty Name="ROW_9" ColumnName="ROW_9" />
+                <ScalarProperty Name="ROW_8" ColumnName="ROW_8" />
+                <ScalarProperty Name="ROW_7" ColumnName="ROW_7" />
+                <ScalarProperty Name="ROW_6" ColumnName="ROW_6" />
+                <ScalarProperty Name="ROW_5" ColumnName="ROW_5" />
+                <ScalarProperty Name="ROW_4" ColumnName="ROW_4" />
+                <ScalarProperty Name="ROW_3" ColumnName="ROW_3" />
+                <ScalarProperty Name="ROW_2" ColumnName="ROW_2" />
+                <ScalarProperty Name="ROW_1" ColumnName="ROW_1" />
+                <ScalarProperty Name="ROOM_ROW" ColumnName="ROOM_ROW" />
+                <ScalarProperty Name="ROOM_COMMITTEE_COUNT" ColumnName="ROOM_COMMITTEE_COUNT" />
+                <ScalarProperty Name="ROOM_SEAT_COUNT" ColumnName="ROOM_SEAT_COUNT" />
+                <ScalarProperty Name="ROOM_NUMBER" ColumnName="ROOM_NUMBER" />
+                <ScalarProperty Name="ROOM_FLOOR" ColumnName="ROOM_FLOOR" />
+                <ScalarProperty Name="ROOM_BUILD" ColumnName="ROOM_BUILD" />
+                <ScalarProperty Name="ROOM_FOR_LEVEL" ColumnName="ROOM_FOR_LEVEL" />
+                <ScalarProperty Name="ROOM_ID" ColumnName="ROOM_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_SCHOOL_DOCUMENT">
+            <EntityTypeMapping TypeName="Model.TB_SCHOOL_DOCUMENT">
+              <MappingFragment StoreEntitySet="TB_SCHOOL_DOCUMENT">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DOCUMENT_PATH" ColumnName="DOCUMENT_PATH" />
+                <ScalarProperty Name="SCHOOL_ID" ColumnName="SCHOOL_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_SCORE_ROUND_1">
+            <EntityTypeMapping TypeName="Model.TB_SCORE_ROUND_1">
+              <MappingFragment StoreEntitySet="TB_SCORE_ROUND_1">
+                <ScalarProperty Name="PRIZE_ID" ColumnName="PRIZE_ID" />
+                <ScalarProperty Name="ROUND_SCORE" ColumnName="ROUND_SCORE" />
+                <ScalarProperty Name="STD_CODE" ColumnName="STD_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_SCORE_ROUND_1_ERROR">
+            <EntityTypeMapping TypeName="Model.TB_SCORE_ROUND_1_ERROR">
+              <MappingFragment StoreEntitySet="TB_SCORE_ROUND_1_ERROR">
+                <ScalarProperty Name="STD_SCORE" ColumnName="STD_SCORE" />
+                <ScalarProperty Name="STD_NAME" ColumnName="STD_NAME" />
+                <ScalarProperty Name="STD_CODE" ColumnName="STD_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_SCORE_ROUND_2">
+            <EntityTypeMapping TypeName="Model.TB_SCORE_ROUND_2">
+              <MappingFragment StoreEntitySet="TB_SCORE_ROUND_2">
+                <ScalarProperty Name="SCORE_2_34" ColumnName="SCORE_2_34" />
+                <ScalarProperty Name="SCORE_2_33" ColumnName="SCORE_2_33" />
+                <ScalarProperty Name="SCORE_2_32" ColumnName="SCORE_2_32" />
+                <ScalarProperty Name="SCORE_2_31" ColumnName="SCORE_2_31" />
+                <ScalarProperty Name="SCORE_2_14" ColumnName="SCORE_2_14" />
+                <ScalarProperty Name="SCORE_2_13" ColumnName="SCORE_2_13" />
+                <ScalarProperty Name="SCORE_2_12" ColumnName="SCORE_2_12" />
+                <ScalarProperty Name="SCORE_2_11" ColumnName="SCORE_2_11" />
+                <ScalarProperty Name="SCORE_1_35" ColumnName="SCORE_1_35" />
+                <ScalarProperty Name="SCORE_1_34" ColumnName="SCORE_1_34" />
+                <ScalarProperty Name="SCORE_1_33" ColumnName="SCORE_1_33" />
+                <ScalarProperty Name="SCORE_1_32" ColumnName="SCORE_1_32" />
+                <ScalarProperty Name="SCORE_1_31" ColumnName="SCORE_1_31" />
+                <ScalarProperty Name="SCORE_1_25" ColumnName="SCORE_1_25" />
+                <ScalarProperty Name="SCORE_1_24" ColumnName="SCORE_1_24" />
+                <ScalarProperty Name="SCORE_1_23" ColumnName="SCORE_1_23" />
+                <ScalarProperty Name="SCORE_1_22" ColumnName="SCORE_1_22" />
+                <ScalarProperty Name="SCORE_1_21" ColumnName="SCORE_1_21" />
+                <ScalarProperty Name="PRIZE_ID" ColumnName="PRIZE_ID" />
+                <ScalarProperty Name="ROUND_1_SCORE" ColumnName="ROUND_1_SCORE" />
+                <ScalarProperty Name="SCORE_2_24" ColumnName="SCORE_2_24" />
+                <ScalarProperty Name="SCORE_2_23" ColumnName="SCORE_2_23" />
+                <ScalarProperty Name="SCORE_2_22" ColumnName="SCORE_2_22" />
+                <ScalarProperty Name="SCORE_2_21" ColumnName="SCORE_2_21" />
+                <ScalarProperty Name="SCORE_1_15" ColumnName="SCORE_1_15" />
+                <ScalarProperty Name="SCORE_1_14" ColumnName="SCORE_1_14" />
+                <ScalarProperty Name="SCORE_1_13" ColumnName="SCORE_1_13" />
+                <ScalarProperty Name="SCORE_1_12" ColumnName="SCORE_1_12" />
+                <ScalarProperty Name="SCORE_1_11" ColumnName="SCORE_1_11" />
+                <ScalarProperty Name="STD_CODE" ColumnName="STD_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_STUDENT_SEAT">
+            <EntityTypeMapping TypeName="Model.TB_STUDENT_SEAT">
+              <MappingFragment StoreEntitySet="TB_STUDENT_SEAT">
+                <ScalarProperty Name="ROOM_ID" ColumnName="ROOM_ID" />
+                <ScalarProperty Name="SIT_NUMBER_PREFIX" ColumnName="SIT_NUMBER_PREFIX" />
+                <ScalarProperty Name="SIT_NUMBER" ColumnName="SIT_NUMBER" />
+                <ScalarProperty Name="STUDENT_CODE" ColumnName="STUDENT_CODE" />
+                <ScalarProperty Name="STUDENT_ID" ColumnName="STUDENT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_USER">
+            <EntityTypeMapping TypeName="Model.TB_USER">
+              <MappingFragment StoreEntitySet="TB_USER">
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="LASTED_LOGIN" ColumnName="LASTED_LOGIN" />
+                <ScalarProperty Name="CREATE_BY" ColumnName="CREATE_BY" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

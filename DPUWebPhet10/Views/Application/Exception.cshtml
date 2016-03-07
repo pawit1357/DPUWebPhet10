@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Complete";
+}
+<br />
+<br />
+@if (@HttpContext.Current.Session["PhetCulture"].ToString().Equals("th"))
+{
+    <h2>
+        <img src="~/Images/msg-ok.gif" width="23px" height="23px" alt="" />
+        สมัครสอบแข่งขันภาษาจีนเพชรยอดมงกุฎ ครั้งที่ 11 (นานาชาติ)
+    </h2>
+    <br />
+    <h3>
+        ท่านเคยลงทะเบียนไว้แล้ว
+    </h3>
+    
+}
+else
+{ 
+    <h2>
+        <img src="~/Images/msg-ok.gif" width="23px" height="23px" alt="" />
+        Thank you for Register Chinese Completetion.
+
+    </h2>
+    <br />
+    <h3>
+        This account is registered.
+    </h3>
+
+}
+<br />
+**@DPUWebPhet10.Resources.Application.Application.REGISTER_ITEM017
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />

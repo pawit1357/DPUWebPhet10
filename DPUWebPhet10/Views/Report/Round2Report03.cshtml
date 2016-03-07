@@ -1,0 +1,138 @@
+﻿@model DPUWebPhet10.Models.Round1ReportModelCriteria
+@using DPUWebPhet10.Helpers
+@using PagedList.Mvc;
+@{
+    Layout = "~/Views/Shared/_Managementlayout.cshtml";
+}
+@{
+    <div class="full_w" style="width: 880px">
+        <div class="h_title">
+            Manage pages - รายงานคะแนนเรียงความ</div>
+        @using (Html.BeginForm("Round2Report03", "Report"))
+        {
+            @Html.Label("เลือกช่วงชั้น")
+
+            @Html.DropDownListFor(model => model.studentLevel, new SelectList(
+                      new List<Object>{ 
+                           new { value = 0 , text = "-- ทั้งหมด --"  },
+                           new { value = 1 , text = "ช่วงชั้นที่ 1 ประถมศึกษาปีที่ 1-3"  },
+                           new { value = 2 , text = "ช่วงชั้นที่ 2 ประถมศึกษาปีที่ 4-6" },
+                           new { value = 3 , text = "ช่วงชั้นที่ 3 มัธยมศึกษาปีที่ 1-3"},
+                           new { value = 4 , text = "ช่วงชั้นที่ 4 มัธยมศึกษาปีที่ 4-6"},
+                           new { value = 5 , text = "อุดมศึกษา"}
+                        },
+                      "value",
+                      "text",
+                                      0), new { style = "width: 200px" })
+            <button name="action" type="submit" class="button add" value="search">
+                แสดง</button>
+            <div class="sep">
+            </div>
+
+        
+            if (Model.reports != null)
+            {
+            
+            <table style="width: 830px">
+                <thead>
+                    <tr>
+                        <th>
+                            ลำดับที่
+                        </th>
+                        <th>
+                            เลขประจำตัวสอบ
+                        </th>
+                        <th>
+                            ชื่อ-นามสกุล
+                        </th>
+                        <th>
+                            โรงเรียน
+                        </th>
+                        <th>
+                            จังหวัด
+                        </th>
+                        <th>
+                            คะแนน
+                        </th>
+                        <th>
+                            คะแนนเจียระไนเพชร
+                        </th>
+@*                        <th>
+                            หมายเหตุ
+                        </th>*@
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var result in Model.reports)
+                    {
+                        <tr>
+                            <td>
+                                @result.seq
+                            </td>
+                            <td>@result.studentCode
+                            </td>
+                            <td>@result.studentFullName
+                            </td>
+                            <td>@result.schoolName
+                            </td>
+                            <td>@result.province
+                            </td>
+                            <td>@result.rowScore21
+                            </td>
+                            <td>@result.round1score
+                            </td>
+@*                            <td>
+                                <input type="hidden" name="SelectedStudentIDs" value="@result.studentCode" />
+                                <select id="SelectedStudentIDs@(result.studentCode)" name="SelectedPrizeValueIDs" style="width: 150px">
+                                    <option value="0" @(result.prize_id == 0 ? "selected" : "")>-</option>
+                                    <option value="5" @(result.prize_id == 5 ? "selected" : "")>รางวัลเหรียญทอง</option>
+                                    <option value="6" @(result.prize_id == 6 ? "selected" : "")>รางวัลเหรียญเงิน</option>
+                                    <option value="7" @(result.prize_id == 7 ? "selected" : "")>รางวัลเหรียญทองแดง</option>
+                                    <option value="8" @(result.prize_id == 8 ? "selected" : "")>รางวัลชมเชย</option>
+                                </select>
+                            </td>*@
+                        </tr>
+
+                    }
+@*                    <tr>
+                        <td colspan="8" style="text-align:right">
+                            @if (Model.reports.Count > 0)
+                            {
+                                <button name="action" type="submit" class="button edit" value="adjust">
+                                    ปรับบเปลี่ยนลำดับ</button>
+                            }
+                        </td>
+                    </tr>*@
+                </tbody>
+            </table>
+            
+            
+
+            <div>
+                @Html.PagedListPager(
+                         Model.reports, page => Url.Action("Round2Report03", new RouteValueDictionary() { { "Page", page }, { "studentLevel", Model.studentLevel } }),
+                    PagedListRenderOptions.MinimalWithPageCountText)
+            </div>
+            
+            
+
+            <div class="entry" style="text-align: right; vertical-align: top;">
+                <div class="sep">
+                </div>
+                <span style="font-weight: bolder;">
+                    @Html.Label("เลือกรูปแบบไฟล์")
+                </span>
+                @Html.ActionImage("Round2ReportExport", new { studentLevel = Model.studentLevel, exportFormat = 3 }, "~/Images/ico-pdf.png", "Edit")
+            </div>
+            }
+
+        }
+    </div>
+
+}
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+        });
+    </script>
+}

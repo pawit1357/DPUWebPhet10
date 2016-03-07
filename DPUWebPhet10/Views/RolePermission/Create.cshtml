@@ -1,0 +1,41 @@
+﻿@model DPUWebPhet10.Models.TB_ROLE_PERMISSION
+@{
+    Layout = "~/Views/Shared/_Managementlayout.cshtml";
+}
+<div class="full_w">
+    <div class="h_title">
+        Manage pages - Create Role Permission</div>
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true)
+
+
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ROLE_ID, "TB_ROLE")
+            </div>
+            <div class="editor-field">
+                @Html.DropDownList("ROLE_ID", String.Empty)
+                @Html.ValidationMessageFor(model => model.ROLE_ID)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.PERMISSION_CODE)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.PERMISSION_CODE)
+                @Html.ValidationMessageFor(model => model.PERMISSION_CODE)
+            </div>
+
+            <div class="entry">
+                <div class="sep">
+                </div>
+                <button type="submit" class="add">บันทึก</button>
+                <a class="button" href="/RolePermission/Index">ยกเลิก</a>
+            </div>    
+        }
+    </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

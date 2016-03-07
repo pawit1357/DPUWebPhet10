@@ -1,0 +1,347 @@
+﻿@model DPUWebPhet10.Models.ManagementModel
+@using DPUWebPhet10.Helpers
+@using PagedList.Mvc;
+@{
+    Layout = "~/Views/Shared/_Managementlayout.cshtml";
+}
+@{
+    //var grid = new WebGrid(Model.schools, rowsPerPage: 20, ajaxUpdateContainerId: "worksajaxgrid", ajaxUpdateCallback: "ajaxUpdate_Callback");
+    
+    int seq = 1 + ((Convert.ToInt16(Model.Page) == 0)? 0:((Convert.ToInt16(Model.Page)-1) * 15));
+    String userrole = (String)Session["ROLE"];
+    String[] userPermission = (String[])Session["ROLE_PERMISSION"];
+
+
+    <div class="full_w" style="width: 850px">
+        <div class="h_title">
+            Manage pages - จัดการข้อมูลโรงเรียน</div>
+        <h2>
+            แสดงรายการของโรงเรียนที่มีการสมัครแข่งขันเข้ามาในระบบ</h2>
+        <p>
+            เลือกเงื่อนไขในการแสดงผลข้อมูล</p>
+        <p>
+            @using (Html.BeginForm())
+            {
+
+                <span>วันที่เริ่มต้น</span>
+                @Html.TextBoxFor(model => model.startDate, new { @class = "field small-field" })
+                <span>วันที่สิ้นสุด</span>
+                @Html.TextBoxFor(model => model.endDate, new { @class = "field small-field" })
+                <span>สถานะใบสมัคร</span>
+                @Html.DropDownList("approveStatus", String.Empty)
+                <p>
+                    <span>โรงเรียน</span>
+                    @Html.TextBoxFor(model => model.schoolName, new { @class = "field small-field" })
+                    <input type="submit" class="button" value="ค้นหา" />
+                </p>
+
+            }
+        </p>
+        <div class="entry">
+            <div class="sep">
+            </div>
+        </div>
+        @if (userrole.Equals("ADMIN") || userrole.Equals("DPU_STAFF"))
+        {
+
+            if (ViewBag.ResultMsg != null)
+            {
+            <div class="n_error">
+                <p>
+                    @ViewBag.ResultMsg
+                </p>
+            </div>
+            }
+
+            <table width="100%">
+                <thead>
+                    <tr>
+                        <th>
+                            #
+                        </th>
+                        <th style="width: 250px">
+                            ชื่อโรงเรียน /มหาวิทยาลัย
+                        </th>
+                        <th>
+                            เอกสาร
+                        </th>
+                        <th style="width: 150px">
+                            อนุมัตินักเรียน
+                        </th>
+                        <th style="width: 150px">
+                            สถานะใบสมัคร
+                        </th>
+                        <th style="width: 150px">
+                            บันทึกขาดสอบ
+                        </th>
+                        <th>
+                            แก้ไข
+                        </th>
+                        <th>
+                            ลบ
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var result in Model.schools)
+                    {
+                        <tr>
+                            <td>
+                               @seq
+
+                            </td>
+                            <td>
+                                @result.SCHOOL_NAME
+                            </td>
+                            <td>
+                                @if (@result.SCHOOL_DOC_PATH == null)
+                                {
+                                    @Html.Raw("")
+                                }
+                                else
+                                {
+                                    @Html.ActionLink("ตรวจสอบ", "../SchoolDocument/DocumentDetail", new { ID = @result.SCHOOL_ID })
+                                }
+                            </td>
+                            <td>
+                                @if (@result.SCHOOL_ID == null)
+                                {
+                                    @Html.Raw("")
+                                }
+                                else
+                                {
+                                    @Html.ActionLink("เลือก", "../Management/ApproveStudentList", new { ID = @result.SCHOOL_ID })
+                                }
+                            </td>
+                            <td>
+                                @Html.ActionLink(((string)result.TB_M_STATUS.STATUS_NAME_TH), "Approve", new { id = result.SCHOOL_ID })
+                            </td>
+                            <td>
+                                @Html.ActionLink("เลือก", "../ExamAbsent/Index", new { ID = @result.SCHOOL_ID })
+                            </td>
+                            <td>
+                                @Html.ActionLink("แก้ไข", "EditSchool", new { id = @result.SCHOOL_ID }, new { @class = "ico edit" })
+                            </td>
+                            <td>
+                                @Html.ActionLink("ลบ", "DeleteSchool", new { id = @result.SCHOOL_ID, startDate = Model.startDate, endDate = Model.endDate }, new { @class = "ico del" })
+                            </td>
+                        </tr>
+                                seq++;
+                    }
+                </tbody>
+            </table>
+            @Html.PagedListPager(Model.schools,
+                 page => Url.Action("SchoolList", new RouteValueDictionary() {
+               { "Page", page },{"approveStatus",Model.approveStatus},{"schoolName",Model.schoolName},{"startDate",Model.startDate},{"endDate",Model.endDate}
+            }),
+            PagedListRenderOptions.MinimalWithPageCountText)
+        
+        }
+        else if (userrole.Equals("TRIMIT_STAFF"))
+        {
+
+            <table width="100%">
+                <thead>
+                    <tr>
+                        <th>
+                            #
+                        </th>
+                        <th>
+                            ชื่อโรงเรียน /มหาวิทยาลัย
+                        </th>
+                        <th>
+                            เอกสาร
+                        </th>
+                        <th>
+                            อนุมัตินักเรียน
+                        </th>
+                        <th>
+                            สถานะใบสมัคร
+                        </th>
+                        <th>
+                            บันทึกขาดสอบ
+                        </th>
+                        <th>
+                            แก้ไข
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var result in Model.schools)
+                    {
+                        <tr>
+                            <td>
+                                @seq
+                            </td>
+                            <td>
+                                @Html.ActionLink(((string)@result.SCHOOL_NAME), "DetailSchool", new { id = @result.SCHOOL_ID })
+                            </td>
+                            <td>
+                                @if (@result.SCHOOL_DOC_PATH == null)
+                                {
+                                    @Html.Raw("")
+                                }
+                                else
+                                {
+                                    @Html.ActionLink("ตรวจสอบ", "../SchoolDocument/DocumentDetail", new { ID = @result.SCHOOL_ID })
+                                }
+                            </td>
+                            <td>
+                                @if (@result.SCHOOL_ID == null)
+                                {
+                                    @Html.Raw("")
+                                }
+                                else
+                                {
+                                    @Html.ActionLink("เลือก", "../Management/ApproveStudentList", new { ID = @result.SCHOOL_ID })
+                                }
+                            </td>
+                            <td>
+                                @Html.ActionLink(((string)result.TB_M_STATUS.STATUS_NAME_TH), "Approve", new { id = result.SCHOOL_ID })
+                            </td>
+                            <td>
+                                @Html.ActionLink("เลือก", "../ExamAbsent/Index", new { ID = @result.SCHOOL_ID })
+                            </td>
+                            <td>
+                                @Html.ActionLink("แก้ไข", "EditSchool", new { id = result.SCHOOL_ID }, new { @class = "ico edit" })
+                            </td>
+                        </tr>
+                                seq++;
+                    }
+                </tbody>
+            </table>
+            @Html.PagedListPager(Model.schools,
+                 page => Url.Action("SchoolList", new RouteValueDictionary() {
+               { "Page", page },{"approveStatus",Model.approveStatus},{"schoolName",Model.schoolName},{"startDate",Model.startDate},{"endDate",Model.endDate}
+            }),
+            PagedListRenderOptions.MinimalWithPageCountText)
+            
+        }
+        else if (userrole.Equals("DPU_CALLCENER"))
+        {
+            
+            <table width="100%">
+                <thead>
+                    <tr>
+                        <th>
+                            #
+                        </th>
+                        <th>
+                            ชื่อโรงเรียน /มหาวิทยาลัย
+                        </th>
+                        <th>
+                            เอกสาร
+                        </th>
+                        <th>
+                            สถานะใบสมัคร
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var result in Model.schools)
+                    {
+                        <tr>
+                            <td>
+                                @seq
+                            </td>
+                            <td>
+                                @Html.ActionLink(((string)@result.SCHOOL_NAME), "DetailSchool", new { id = @result.SCHOOL_ID })
+                            </td>
+                            <td>
+                                @if (@result.SCHOOL_DOC_PATH == null)
+                                {
+                                    @Html.Raw("")
+                                }
+                                else
+                                {
+                                    @Html.ActionLink("ตรวจสอบ", "../SchoolDocument/DocumentDetail", new { ID = @result.SCHOOL_ID })
+                                }
+                            </td>
+                            <td>
+                                @Html.Raw(@result.TB_M_STATUS.STATUS_NAME_TH)
+                            </td>
+                        </tr>
+                                seq++;
+                    }
+                </tbody>
+            </table>
+            @Html.PagedListPager(Model.schools,
+                 page => Url.Action("SchoolList", new RouteValueDictionary() {
+               { "Page", page },{"approveStatus",Model.approveStatus},{"schoolName",Model.schoolName},{"startDate",Model.startDate},{"endDate",Model.endDate}
+            }),
+            PagedListRenderOptions.MinimalWithPageCountText)
+            
+                       
+
+        }
+        else { }
+        <div class="entry">
+            <div class="sep">
+            </div>
+            <a class="button add" href="/Application">สมัครแข่งขัน</a>
+        </div>
+    </div>    
+    
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Styles.Render("~/Content/themes/base/css")
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("#startDate").datepicker
+            ({
+                dateFormat: 'dd/mm/yy',
+                showStatus: true,
+                showWeeks: true,
+                highlightWeek: true,
+                numberOfMonths: 1,
+                showAnim: "scale",
+                showOptions: {
+                    origin: ["top", "left"]
+                }
+            });
+            $("#endDate").datepicker
+            ({
+                dateFormat: 'dd/mm/yy',
+                showStatus: true,
+                showWeeks: true,
+                highlightWeek: true,
+                numberOfMonths: 1,
+                showAnim: "scale",
+                showOptions: {
+                    origin: ["top", "left"]
+                }
+            });
+            //BEGIN Delete School
+            $("#delete-school").click(function () {
+
+                if (confirm("Are you sure to delete records")) {
+                    $('#gridContent table tr').each(function () {
+                        if ($(this).find("input[id*='chkSchool']").length > 0) {
+                            if ($(this).find("input[id*='chkSchool']")[0].checked == true) {
+                                var schoolId = $(this).find("input[id*='chkSchool']").attr("value");
+                                var data = { ID: schoolId };
+                                var temp = $(this);
+                                $.getJSON("Management/DeleteSchool", data, function (response) {
+
+                                    if (response == true) {
+                                        temp.remove();
+                                    } else {
+                                        alert('' + response);
+                                    }
+                                });
+
+
+                            }
+                        }
+                    });
+                }
+            });
+
+
+        });
+    </script>
+}

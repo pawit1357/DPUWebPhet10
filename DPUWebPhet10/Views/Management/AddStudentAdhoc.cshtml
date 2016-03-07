@@ -1,0 +1,145 @@
+﻿@model DPUWebPhet10.Models.ApplicationAdhocModel
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Managementlayout.cshtml";
+}
+<div class="full_w">
+    <div class="h_title">
+        Manage pages - เพิ่มนักเรียนหน้างาน
+    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+
+        <div class="editor-label">
+            @Html.Label(@DPUWebPhet10.Resources.Application.Application.REGISTER_STUDENT_ITEM001)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.STD_LEVEL_ID, new SelectList(
+                      new List<Object>{
+                           new { value = 0 , text = "-- เลือก --"},
+                           new { value = 1 , text = "ประถมศึกษาตอนต้น"},
+                           new { value = 2 , text = "ประถมศึกษาตอนปลาย"},
+                           new { value = 3 , text = "มัธยมศึกษาตอนต้น"},
+                           new { value = 4 , text = "มัธยมศึกษาตอนปลาย"},
+                           new { value = 5 , text = "อุดมศึกษา"},
+                        },
+                      "value",
+                      "text",
+                            0), new { style = "width: 100px" })
+        </div>
+        <div class="editor-label">
+            @Html.Label(@DPUWebPhet10.Resources.Application.Application.REGISTER_STUDENT_ITEM002)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.STD_GRADE, new SelectList(
+                      new List<Object>{
+                           new { value = 0 , text = "-- เลือก --"},
+                           new { value = 1 , text = "1"},
+                           new { value = 2 , text = "2"},
+                           new { value = 3 , text = "3"},
+                           new { value = 4 , text = "4"},
+                           new { value = 5 , text = "5"},
+                           new { value = 6 , text = "6"},
+                        },
+                      "value",
+                      "text",
+                            0), new { style = "width: 100px" })
+
+        </div>
+        <div class="editor-label">
+            @Html.Label(@DPUWebPhet10.Resources.Application.Application.REGISTER_STUDENT_ITEM003)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.STD_TITLE_ID, new SelectList(
+                      new List<Object>{
+                           new { value = 0 , text = "-- เลือก --"},
+                           new { value = 1 , text = "เด็กชาย"},
+                           new { value = 2 , text = "เด็กหญิง"},
+                           new { value = 3 , text = "นาย"},
+                           new { value = 4 , text = "นางสาว"},
+                           new { value = 5 , text = "นาง"},
+                        },
+                      "value",
+                      "text",
+                            0), new { style = "width: 100px" })
+
+        </div>
+        <div class="editor-label">
+            @Html.Label(@DPUWebPhet10.Resources.Application.Application.REGISTER_STUDENT_ITEM004)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.STD_NAME)
+        </div>
+        <div class="editor-label">
+            @Html.Label(@DPUWebPhet10.Resources.Application.Application.REGISTER_STUDENT_ITEM005)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.STD_SURNAME)
+        </div>
+        <div class="editor-label">
+            @Html.Label(@DPUWebPhet10.Resources.Application.Application.REGISTER_STUDENT_ITEM009)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.STD_NATION, new SelectList(
+                      new List<Object>{
+                           new { value = 0 , text = "-- เลือก --"},
+                           new { value = 1 , text = "ไทย"},
+                           new { value = 2 , text = "จีน"},
+                           new { value = 3 , text = "อื่น ๆ"}
+                        },
+                      "value",
+                      "text",
+                            0), new { style = "width: 100px" })
+
+        </div>
+        <div class="editor-label">
+            @Html.Label("โรงเรียน")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SCHOOL_NAME)
+        </div>
+        <div class="editor-label">
+            @Html.Label("เลขห้อง")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ROOM_NUMBER)
+        </div>
+        <div class="editor-label">
+            @Html.Label("เลขที่นั่ง")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SIT_NUMBER)
+        </div>
+        <div class="editor-label">
+            @Html.Label("เลขนำหน้า")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SIT_NUMBER_PREFIX)
+        </div>
+        <div class="editor-label">
+            @Html.Label("เลขที่ผู้สมัคร")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.STUDENT_CODE)
+        </div>
+
+        <div class="entry">
+            <div class="sep"></div>
+            <button type="submit" class="add">บันทึก</button>
+            <a class="button" href="/Management/AddStudentAdhoc">ยกเลิก</a>
+        </div>
+    }
+    @if (ViewBag.ResultMsg != null)
+    {
+        <div class="n_ok">
+            <p>
+                @ViewBag.ResultMsg
+            </p>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

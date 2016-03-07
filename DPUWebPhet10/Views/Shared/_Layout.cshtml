@@ -1,0 +1,380 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>- Chinese Competition -</title>
+    <script type="text/javascript" src="~/Scripts/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-asyncUpload/jquery-asyncUpload-0.1.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-asyncUpload/swfupload.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            //            $("#dialogRole").dialog({ width: '60%' });
+
+            var cul = $("#cul").val();
+
+            $('html').click(function (e) {
+                if (e.target.id == 'menu04' ||
+				      e.target.parentNode.id == 'menu04') {
+                    if ($('#menupanel04').css("visibility") == "hidden") {
+                        $('#menupanel04').css({ visibility: "visible" });
+                    } else {
+                        $('#menupanel04').css({ visibility: "hidden" });
+                    }
+                } else {
+                    if (e.target.id != 'menupanel04' && e.target.parentNode.id != 'menupanel04' && e.target.id != 'menupanel04-inner' && e.target.parentNode.id != 'menupanel04-inner') {
+                        $('#menupanel04').css({ visibility: "hidden" });
+                    }
+                }
+            });
+
+
+
+
+            $('html').click(function (e) {
+                if (e.target.id == 'menu05' ||
+				      e.target.parentNode.id == 'menu05') {
+                    if ($('#menupanel05').css("visibility") == "hidden") {
+                        $('#menupanel05').css({ visibility: "visible" });
+                    } else {
+                        $('#menupanel05').css({ visibility: "hidden" });
+                    }
+                } else {
+                    if (e.target.id != 'menupanel05' && e.target.parentNode.id != 'menupanel05' && e.target.id != 'menupanel05-inner' && e.target.parentNode.id != 'menupanel05-inner') {
+                        $('#menupanel05').css({ visibility: "hidden" });
+                    }
+                }
+            });
+            $("#btnLogin").click(function (e) {
+                e.preventDefault;
+
+                $('#spinner').show();
+                var uname = $("#uname").val();
+                var pwd = $("#pwd").val();
+                $.post("/Account/CheckLogin", { 'uname': uname, 'pwd': pwd },
+
+                    function (data) {
+                        if (data.Success == true) {
+
+                            window.location.href = '/Home';
+                        }
+                        else {
+
+                            if (cul == 'th') {
+                                alert('บัญชีผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง');
+                            } else {
+                                alert('The username or password you entered is correct.');
+                            }
+
+
+                        }
+
+                        $('#spinner').hide();
+                    });
+                return false;
+            });
+
+
+
+        });
+
+    </script>
+</head>
+<body>
+    <input type="hidden" name="cul" id="cul" value="@Session["PhetCulture"]" />
+    <div id="spinner" class="spinner" style="display: none;">
+        <img id="img-spinner" src="/Images/spinner.gif" alt="Loading" />
+    </div>
+    @*<div id="dialogRole" title="ข้อกำหนด / เงื่อนไขในวันสอบแข่งขัน" style="width="800px">
+  <p>
+
+  <ul>
+    <li>1. ผู้เข้าสอบต้อง<strong></strong><span style="color: #b22222">นำใบยืนยันการสมัคร</span></strong>นี้มาด้วยในวันที่สอบแข่งขัน </li>
+    <li>2. นักเรียน / นักศึกษาที่เข้าแข่งขันทุกคน<strong></strong><span style="color: #b22222">ต้องแต่งกายเครื่องแบบนักเรียน / นักศึกษาตามระเบียบ</span></strong>ของสถานศึกษาที่กำลังศึกษาอยู่เท่านั้น   </li>
+    <li>3. ผู้เข้าสอบต้อง<strong></strong><span style="color: #b22222">นำบัตรนักเรียน /บัตรประจำตัวประชาชน</span></strong>แสดงต่อผู้กำกับห้องสอบ</li>
+    <li>4. การตอบข้อสอบ<strong></strong><span style="color: #b22222">ใช้ดินสอ 2B</span></strong> ในการระบายคำตอบในกระดาษคำตอบเท่านั้น</li>
+    <li>5. ผู้เข้าสอบต้อง<strong></strong><span style="color: #b22222">ตรวจสอบข้อมูลส่วนตัว เลขประจำตัวสอบให้ถูกต้อง</span></strong> คณะกรรมการถือว่าเป็นความรับผิดชอบของผู้เข้าสอบ</li>
+    <li>6. ผู้เข้าสอบต้องมา<strong></strong><span style="color: #b22222">รายตัวที่ห้องสอบ และเข้าสอบตามเวลาที่กำหนด</span></strong></li>
+    <li>7. <strong></strong><span style="color: #b22222">การตัดสินของคณะกรรมการถือว่าเป็นที่สิ้นสุด</span></strong></li>
+  </ul>
+
+</p>
+</div>*@
+    <div id="menupanel04" class="menupanel04">
+        <div id="menupanel04-inner">
+            <div class="arrow">
+            </div>
+            @if (@HttpContext.Current.Session["PhetCulture"].ToString().Equals("en"))
+            {
+                <a href="/FileUpload/documents/basic-ed-en.pdf" target="_blank"><span>@DPUWebPhet10.Resources.Layout.Layout.TOPMENU_HEADER04_SUB01</span></a>
+                <a href="/FileUpload/documents/higher-ed-en.pdf" target="_blank"><span>@DPUWebPhet10.Resources.Layout.Layout.TOPMENU_HEADER04_SUB02</span></a>                                  
+            }
+            else
+            {
+                <a href="/FileUpload/documents/basic-ed.pdf" target="_blank"><span>@DPUWebPhet10.Resources.Layout.Layout.TOPMENU_HEADER04_SUB01</span></a>
+                <a href="/FileUpload/documents/higher-ed.pdf" target="_blank"><span>@DPUWebPhet10.Resources.Layout.Layout.TOPMENU_HEADER04_SUB02</span></a>
+            }
+        </div>
+    </div>
+    @*    <div id="menupanel05" class="menupanel05">
+        <div id="menupanel05-inner">
+            <div class="arrow">
+            </div>
+            @if (@HttpContext.Current.Session["isInRegisterPeriod"].ToString().Equals("False"))
+            {
+                <a href="~/Report/Report17">@DPUWebPhet10.Resources.Layout.Layout.TOPMENU_HEADER05_SUB01</a>
+                <a href="~/Report/Report16">@DPUWebPhet10.Resources.Layout.Layout.TOPMENU_HEADER05_SUB02</a>
+            }
+            else
+            { 
+                <a class="diableLink" href="~/Report/Report17">@DPUWebPhet10.Resources.Layout.Layout.TOPMENU_HEADER05_SUB01</a>
+                <a class="diableLink" href="~/Report/Report16">@DPUWebPhet10.Resources.Layout.Layout.TOPMENU_HEADER05_SUB02</a>
+            }
+        </div>
+    </div>*@
+    <div id="wrapper">
+        <div id="header-text">
+            <div class="left">
+                <table>
+                    <tr>
+                        <td><a id="menu01" href="~/Home" style=" color: white"><img src="~/Images/home.png" width="17px" height="17px" alt="" /></a></td>
+                        <td>
+                            <a href="https://twitter.com/dhurakijpundit">
+                                <img src="~/Images/twitter_icon.gif" width="17px" height="17px" alt="" /></a>
+                        </td>
+                        <td>
+                            <a href="http://www.facebook.com/dpu.ac.th">
+                                <img src="~/Images/facebook_icon.gif" width="17px" height="17px" alt="" /></a>
+                        </td>
+                        <td>
+                            Dhurakij Pundit University
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="right">
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+        @*<div id="header">
+        </div>*@
+        <div id="banner">
+            @*<img src="~/Images/banner.png" />*@
+        </div>
+ 
+        @*<div id="menu">*@
+            @*<a id="menu01" href="~/Home">@DPUWebPhet10.Resources.Layout.Layout.TOPMENU_HEADER01</a>*@
+            @*<span class="menu-clear"></span>*@@*<a id="menu02" href="~/Home/Schedule">@DPUWebPhet10.Resources.Layout.Layout.TOPMENU_HEADER02</a>*@
+            @*<span class="menu-clear"></span>*@@*<a id="menu03" href="~/Home/Map">@DPUWebPhet10.Resources.Layout.Layout.TOPMENU_HEADER03</a>*@
+            @*<span class="menu-clear"></span>*@@*<a id="menu04" href="javascript:void(0)">@DPUWebPhet10.Resources.Layout.Layout.TOPMENU_HEADER04*@</a>
+            @*            <span class="menu-clear"></span><a id="menu05" href="javascript:void(0)">@DPUWebPhet10.Resources.Layout.Layout.TOPMENU_HEADER05</a>*@
+            @*<span class="menu-clear"></span>*@@*<a id="menu06" href="~/Home/Contact">@DPUWebPhet10.Resources.Layout.Layout.TOPMENU_HEADER06</a>*@
+        @*</div>*@
+        <table>
+            <tr>
+                <td>
+                    <img src="../../Images/exclamation.png" />
+                </td>
+                <td>
+                    <span style="color: black">
+                        ระบบการรับสมัคร ฯ ออนไลน์ทำงานได้ดีกับบราวเซอร์ : Google
+                        Chrome, Internet Explorer 8, Internet Explorer 9 และ Mozilla Firefox
+                    </span>
+                </td>
+            </tr>
+        </table>
+        <div id="content">
+            <!-- Content Here -->
+            <div id="left">
+                <div class="box">
+                    <div class="head">
+                        @*<img src="~/Images/icons/page_white_edit.png" width="16px" height="16px" alt="" />*@
+                        @DPUWebPhet10.Resources.Layout.Layout.LEFTMENU_HEADER01</div>
+                    <br />
+                    <div>
+                        @if (@HttpContext.Current.Session["isInRegisterPeriod"].ToString().Equals("True"))
+                        {
+                            if (!User.Identity.IsAuthenticated)
+                            {
+                            <a href="/Application/Index">@DPUWebPhet10.Resources.Layout.Layout.LEFTMENU_HEADER01_SUB01</a> 
+                            }
+                            else
+                            {                             
+                            <a href="/Application/Edit/1362">@DPUWebPhet10.Resources.Layout.Layout.LEFTMENU_HEADER01_SUB01_1</a> 
+                            }
+                        }
+                        else
+                        { 
+                            @Html.Label("<-- หมดเขตรับสมัคร --->")
+                        }
+                    </div>
+                    <!-- Can use when login -->
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <div>
+                            <a class="diableLink" href="~/Report/Report02">@DPUWebPhet10.Resources.Layout.Layout.LEFTMENU_HEADER01_SUB02</a>
+                        </div>
+                        <div>
+                            <a class="diableLink" href="~/Upload/Index">@DPUWebPhet10.Resources.Layout.Layout.LEFTMENU_HEADER01_SUB03</a>
+                        </div>
+                        <div>
+                            <a class="diableLink" href="~/School/Index">@DPUWebPhet10.Resources.Layout.Layout.LEFTMENU_HEADER01_SUB04</a>
+                        </div>
+                        if (@HttpContext.Current.Session["isInRegisterPeriod"].ToString().Equals("False"))
+                        {
+                        <div>
+                            <a class="diableLink" href="~/Report/Report01">@DPUWebPhet10.Resources.Layout.Layout.LEFTMENU_HEADER01_SUB05</a>
+                        </div>
+                        }
+                    }
+                    else
+                    {
+                        <div>
+                            <a href="~/Report/Report02" target="_blank">@DPUWebPhet10.Resources.Layout.Layout.LEFTMENU_HEADER01_SUB02</a>
+                        </div>
+                        <div>
+                            <a href="~/Upload/Index">@DPUWebPhet10.Resources.Layout.Layout.LEFTMENU_HEADER01_SUB03</a>
+                        </div>
+                        <div>
+                            <a href="~/School/Index">@DPUWebPhet10.Resources.Layout.Layout.LEFTMENU_HEADER01_SUB04</a>
+                        </div>
+                        if (@HttpContext.Current.Session["isInRegisterPeriod"].ToString().Equals("False"))
+                        {
+                        <div>
+                            <a href="~/Report/Report01" target="_blank">@DPUWebPhet10.Resources.Layout.Layout.LEFTMENU_HEADER01_SUB05</a>
+                            @*<img src="~/Images/update.gif" width="47px" height="10px" alt="" />*@
+                        </div>
+                        }
+                    }
+                    <br />
+                </div>
+                <div class="box">
+                    <div class="head">
+                        <img src="~/Images/icons/page_white_text_width.png" width="16px" height="16px" alt="" />
+                        @DPUWebPhet10.Resources.Layout.Layout.LEFTMENU_HEADER02</div>
+                    <br />
+                    <div>
+                        <a href="~/Report/Report03">@DPUWebPhet10.Resources.Layout.Layout.LEFTMENU_HEADER02_SUB01</a>
+                    </div>
+                    @if (@HttpContext.Current.Session["isInRegisterPeriod"].ToString().Equals("False"))
+                    {
+                        <div>
+                            <a href="~/Report/Report06">@DPUWebPhet10.Resources.Layout.Layout.LEFTMENU_HEADER02_SUB02</a>
+                            <img src="~/Images/update.gif" width="47px" height="10px" alt="" />
+                        </div>
+                        <div>
+                            <a href="~/Report/Report07">@DPUWebPhet10.Resources.Layout.Layout.LEFTMENU_HEADER02_SUB03</a>
+                            <img src="~/Images/update.gif" width="47px" height="10px" alt="" />
+                        </div>
+                        <div>
+                            <a href="~/Report/Report07_1">@DPUWebPhet10.Resources.Layout.Layout.LEFTMENU_HEADER02_SUB04</a>
+                            <img src="~/Images/update.gif" width="47px" height="10px" alt="" />
+                        </div>
+                        <div>
+                            @Html.Label(@DPUWebPhet10.Resources.Layout.Layout.LEFTMENU_HEADER02_SUB05)
+                        </div>
+                        
+                        <div>
+                            @if (@HttpContext.Current.Session["PROJECT_IS_ANNOUNCE_ROUND1"].ToString().Equals("1"))
+                            {
+                            <a href="~/Report/Report16">@DPUWebPhet10.Resources.Layout.Layout.LEFTMENU_HEADER02_SUB06</a>
+                            }
+                            else
+                            {
+                                <a class="diableLink" href="#">@DPUWebPhet10.Resources.Layout.Layout.LEFTMENU_HEADER02_SUB06</a>
+                            }
+                        </div>
+                        <div>
+                            @if (@HttpContext.Current.Session["PROJECT_IS_ANNOUNCE_ROUND2"].ToString().Equals("1"))
+                            {
+                            <a href="~/Report/Report17">@DPUWebPhet10.Resources.Layout.Layout.LEFTMENU_HEADER02_SUB07</a>
+                            }
+                            else
+                            {
+                                <a class="diableLink" href="#">@DPUWebPhet10.Resources.Layout.Layout.LEFTMENU_HEADER02_SUB07</a>
+                            }
+                        </div>
+                    }
+                    <br />
+                </div>
+
+@*                <div class="box">
+                    <div class="head">
+                        <img src="~/Images/icons/folder_page.png" width="16px" height="16px" alt="" />
+                        @DPUWebPhet10.Resources.Layout.Layout.LEFTMENU_HEADER03</div>
+                    <br />
+                    @if (@HttpContext.Current.Session["PhetCulture"].ToString().Equals("en"))
+                    {
+                        <div>
+                            @Html.ActionLink(@DPUWebPhet10.Resources.Layout.Layout.LEFTMENU_HEADER03_SUB01, "Download", new { Controller = "Files", file = "schedule_en.docx" })
+                        </div>
+                        <div>
+                            @Html.Label(@DPUWebPhet10.Resources.Layout.Layout.LEFTMENU_HEADER03_SUB02)
+                        </div>
+                        <div>
+                            @Html.ActionLink(@DPUWebPhet10.Resources.Layout.Layout.LEFTMENU_HEADER03_SUB03, "Download", new { Controller = "Files", file = "basic-ed-en.doc" })
+                        </div>
+                        <div>
+                            @Html.ActionLink(@DPUWebPhet10.Resources.Layout.Layout.LEFTMENU_HEADER03_SUB04, "Download", new { Controller = "Files", file = "higher-ed-en.doc" })
+                        </div>
+
+                    }
+                    else
+                    { 
+                        <div>
+                            @Html.ActionLink(@DPUWebPhet10.Resources.Layout.Layout.LEFTMENU_HEADER03_SUB01, "Download", new { Controller = "Files", file = "schedule_th.doc" })
+                        </div>                                         
+                        <div>
+                            @Html.Label(@DPUWebPhet10.Resources.Layout.Layout.LEFTMENU_HEADER03_SUB02)
+                        </div>
+                        <div>
+                            @Html.ActionLink(@DPUWebPhet10.Resources.Layout.Layout.LEFTMENU_HEADER03_SUB03, "Download", new { Controller = "Files", file = "basic-ed.pdf" })
+                        </div>
+                        <div>
+                            @Html.ActionLink(@DPUWebPhet10.Resources.Layout.Layout.LEFTMENU_HEADER03_SUB04, "Download", new { Controller = "Files", file = "higher-ed.pdf" })
+                        </div>
+
+                                        
+                    }
+                    <div>
+                        @Html.ActionLink(@DPUWebPhet10.Resources.Layout.Layout.LEFTMENU_HEADER03_SUB05, "Download", new { Controller = "Files", file = "exam_paper_role.doc" })
+                    </div>
+                    <div>
+                        @Html.ActionLink(@DPUWebPhet10.Resources.Layout.Layout.LEFTMENU_HEADER03_SUB06, "Download", new { Controller = "Files", file = "manual.pdf" })
+                    </div>
+                    <br />
+                </div>*@
+
+            </div>
+            <div id="right">
+                <div class="box">
+                    <div class="head">
+                        <img src="~/Images/icons/feed.png" width="16px" height="16px" alt="" />
+                        @ViewBag.PageContent</div>
+                    @RenderBody()
+                </div>
+            </div>
+            <!-- End Contnet -->
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <br />
+    <div style="text-align: center; font-weight: bolder; color: Green">
+        ** หมายเหตุ สถานศึกษาจะได้รับของที่ระลึกในนามของสถานศึกษา สถานศึกษาละ 1 ชุด ส่วนนักเรียน
+        / นักศึกษาที่มาเข้าร่วมแข่งขันจะได้รับของที่ระลึกทุกคน **
+    </div>
+    <div id="footer">
+        มหาวิทยาลัยธุรกิจบัณฑิตย์ เลขที่ 110/1-4 ถนนประชาชื่น หลักสี่ กรุงเทพมหานคร 10210
+        โทรศัพท์ : 0-2954-7300 ต่อ 899 E-mail : petch@dpu.ac.th
+    </div>
+    @Styles.Render("~/Content/main.css")
+    @Styles.Render("~/Content/PagedList.css")
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

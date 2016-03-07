@@ -1,0 +1,45 @@
+﻿@model IEnumerable<DPUWebPhet10.Models.TB_ROOM>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Managementlayout.cshtml";
+}
+<div class="full_w">
+    <div class="h_title">
+        Manage pages - Room Management</div>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ROOM_NUMBER)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TB_M_LEVEL.LEVEL_NAME_TH)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ROOM_ROW)
+            </th>
+            <th>
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ROOM_NUMBER)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TB_M_LEVEL.LEVEL_NAME_TH)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ROOM_ROW)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ROOM_ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ROOM_ID })
+                </td>
+            </tr>
+        }
+    </table>
+</div>

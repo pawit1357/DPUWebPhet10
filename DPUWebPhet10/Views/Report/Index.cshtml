@@ -1,0 +1,183 @@
+﻿@model DPUWebPhet10.Models.ReportModelCriteria
+@using DPUWebPhet10.Helpers
+@using PagedList.Mvc;
+@{
+    Layout = "~/Views/Shared/_Managementlayout.cshtml";
+}
+@{    
+    <!-- Content -->
+    <div class="full_w">
+        <div class="h_title">
+            Manage pages - รายงาน</div>
+        @{
+            String userrole = (String)Session["ROLE"];
+            String[] userPermission = (String[])Session["ROLE_PERMISSION"];
+        }
+        @using (Html.BeginForm("Index", "Report"))
+        {
+            <p id="criTable">
+                <label>
+                    รายงาน :</label>
+                <select id="reportType" name="reportType" style="width: 400px">
+                    @if (userrole.Equals("ADMIN") || userrole.Equals("DPU_STAFF"))
+                    {  
+                        <option value="-1">-- เลือก --</option>
+@*                        <option value="1">พิมพ์เอกสารยืนยันการสมัคร</option>*@
+                        <option value="4">ใบเซ็นชื่อนักเรียนเข้าสอบแข่งขัน ภาษาจีน เพชรยอดมงกุฏ ครั้งที่ 11
+                            (นานาชาติ)</option>
+                        <option value="5">ใบลงทะเบียนนักเรียนที่สมัครเข้าร่วมแข่งขัน ภาษาจีน เพชรยอดมงกุฏ ครั้งที่
+                            11 (นานาชาติ)</option>
+                        <option value="-1">---------รายงานกรรมการคุมสอบ----------</option>
+                        <option value="8">รายงานใบเซ็นต์ชื่อกรรมการคุมสอบ</option>
+                        <option value="9">รายงานใบเซ็นต์ชื่อกรรมการคุมสอบ (แจ้งจำนวนผู้เข้าสอบ)</option>
+                        <option value="10">รายงานใบเซ็นต์ชื่อเข้าผู้เข้าสอบ และติดหน้าห้องสอบ</option>
+                        <option value="11">รายงานผังที่นั่งของผู้เข้าสอบ สำหรับติดหน้าห้องสอบ</option>
+                        <option value="12">รายงานรายชื่อกรรมการคุมสอบ ระบุตัวบุคคล</option>
+@*                        <option value="13">++++เอกสารแปะหน้าซองข้อสอบ(ไม่แน่ใจว่าถูกหรือไม่)++++</option>*@
+                        <option value="14">เอกสารแปะหน้าซองข้อสอบ</option>
+                        <option value="15">ผังเลขที่นั่งสอบแข่งขัน</option>
+                    }
+                    <option value="-1">---------รายงานสรุปยอด----------</option>
+                    <option value="19">รายงานสรุปจำนวนรวมของผู้สมัครในแต่ละวัน แยกตาม</option>
+                    <option value="-1">---------อื่น ๆ----------</option>
+                    <option value="20">รายงานรายชื่อสถานศึกษาที่ยังไม่ได้กรอกข้อมูลครู/อาจารย์ หรือ จำนวนนักเรียน/นักศึกษา</option>
+                </select>
+            </p>
+            <p id="levelCri">
+                <label>
+                    ระดับชั้น :</label>
+                <select id="studentLevel" name="studentLevel" style="width: 180px">
+                    <option value="0">-- เลือก --</option>
+                    <option value="1">ประถมศึกษาตอนต้น</option>
+                    <option value="2">ประถมศึกษาตอนปลาย</option>
+                    <option value="3">มัธยมศึกษาตอนต้น</option>
+                    <option value="4">มัธยมศึกษาตอนปลาย</option>
+                    <option value="5">อุดมศึกษา</option>
+                </select>
+            </p>
+            <p id="roomCri">
+                <label>
+                    ห้อง :</label>
+                <select id="roomNo" name="roomNo" style="width: 142px">
+                </select>
+            </p>
+            <p id="timePeriodCri">
+                <label>
+                    ช่วงเวลา :</label>
+                @Html.TextBoxFor(model => model.startDate, new { @class = "field small-field" })
+                <img id="url_user" src="/images/cal.png" alt="" width="16px" height="16px" />
+                @Html.TextBoxFor(model => model.endDate, new { @class = "field small-field" })
+                <img id="url_user" src="/images/cal.png" alt="" width="16px" height="16px" />
+            </p>
+            <p id="periodCri">
+                <label>
+                    ประเภทรายงาน :</label>
+                <select id="periodIndex" name="periodIndex" style="width: 180px">
+                    <option value="0">-- เลือก --</option>
+                    <option value="1">วันที่สมัคร</option>
+                    <option value="2">ระดับชั้น</option>
+                    <option value="3">สถานศึกษา</option>
+                    <option value="4">จังหวัด</option>
+                    <option value="5">ประเทศ</option>
+                </select>
+            </p>
+            <p>
+                <input type="submit" class="button" value="search" style="width: 50px" />
+            </p>
+            
+            <div class="sep">
+                @if (ViewBag.ResultMsg != null)
+                {
+                    <div class="n_ok">
+                        <p>
+                            @ViewBag.ResultMsg
+                        </p>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+}
+<script type="text/javascript" src="/Scripts/jquery.cascadingDropDown.js"></script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Styles.Render("~/Content/themes/base/css")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#startDate").datepicker
+            ({
+                dateFormat: 'dd/mm/yy',
+                showStatus: true,
+                showWeeks: true,
+                highlightWeek: true,
+                numberOfMonths: 1,
+                showAnim: "scale",
+                showOptions: {
+                    origin: ["top", "left"]
+                }
+            });
+            $("#endDate").datepicker
+            ({
+                dateFormat: 'dd/mm/yy',
+                showStatus: true,
+                showWeeks: true,
+                highlightWeek: true,
+                numberOfMonths: 1,
+                showAnim: "scale",
+                showOptions: {
+                    origin: ["top", "left"]
+                }
+            });
+
+            $("#roomNo").CascadingDropDown("#studentLevel", '/Report/AsyncRoomForLevel',
+            {
+                promptText: '-- เลือก --',
+                onLoading: function () {
+                    $(this).css("background-color", "#ff3");
+                },
+                onLoaded: function () {
+                    $(this).animate({ backgroundColor: '#ffffff' }, 300);
+                }
+            });
+
+            /*
+            REPORT SHOW CRITERIA
+            */
+
+
+            $("#levelCri").hide();
+            $("#roomCri").hide();
+            $("#periodCri").hide();
+            $("#timePeriodCri").hide();
+
+
+
+            $('#reportType').change(function () {
+
+                $("#levelCri").hide();
+                $("#roomCri").hide();
+
+                var reportType = $("#reportType").val();
+                //แสดง LEVEL,ROOM
+                if (reportType == "4" || reportType == "5" || reportType == "10" || reportType == "11") {
+                    $("#levelCri").show();
+//                    $("#roomCri").show();
+                }
+                //แสดง LEVEL ให้เลือก
+                if (reportType == "14" || reportType == "15") {
+                    $("#levelCri").show();
+                }
+
+                if (reportType == "19") {
+                    $("#periodCri").show();
+                    //                    $("#criTable tbody tr.timePeriodCri").show();
+                }
+
+            });
+
+
+
+        });
+    </script>
+}

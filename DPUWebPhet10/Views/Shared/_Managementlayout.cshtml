@@ -1,0 +1,213 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="" />
+    <title>ระบบจัดการข้อมูลการสอบแข่งขันเพชรยอดมงกุฏครั้งที่ 11 (นานาชาติ)</title>
+    <link rel="stylesheet" type="text/css" href="/Content/theme_management/style.css"
+          media="screen" />
+    <link rel="stylesheet" type="text/css" href="/Content/theme_management/navi.css"
+          media="screen" />
+    <link rel="stylesheet" type="text/css" href="/Content/PagedList.css" media="screen" />
+    <script type="text/javascript" src="/Scripts/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".box .h_title").not(this).next("ul").hide("normal");
+            $(".box .h_title").not(this).next("#home").show("normal");
+            $(".box").children(".h_title").click(function () { $(this).next("ul").slideToggle(); });
+        });
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <div id="header">
+            <div id="top">
+                <div class="left">
+                    <p>
+                        Welcome, <strong>
+                            @{
+                                String userrole = (String)Session["ROLE"];
+                                String[] userPermission = (String[])Session["ROLE_PERMISSION"];
+                                DPUWebPhet10.Models.TB_USER user = (DPUWebPhet10.Models.TB_USER)Session["USER"];
+                                @Html.Label(user.USERNAME);
+                                @Html.Label("  ROLE : " + userrole);
+
+                            }
+                        </strong>[ <a href="/Account/ManagementLogout">logout</a> ]
+                    </p>
+                </div>
+                <div class="right">
+                    <div class="align-right">
+                        <p>
+                            Last login: <strong>
+                                @{
+                                    @Html.Label(user.LASTED_LOGIN + "");
+                                }
+                            </strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div id="nav">
+                <ul>
+                    <li class="upp">
+                        <a href="#">หน้าหลัก</a> @*                        <ul>
+                                <li>&#8250; <a href="/Management/Index">แสดงรายชื่อโรงเรียน</a></li>
+                            </ul>*@
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="content">
+            <div id="sidebar">
+                @if (userrole.Equals("ADMIN") || userrole.Equals("DPU_STAFF") || userrole.Equals("DPU_CALLCENER") || userrole.Equals("TRIMIT_STAFF"))
+                {
+                    <div class="box">
+                        <div class="h_title">
+                            &#8250; หน้าหลัก
+                        </div>
+                        <ul id="home">
+                            <li class="b1"><a class="icon report" href="/Report/DailyReport1">สถิติ-รายวัน</a></li>
+                            <li class="b1"><a class="icon report" href="/Report/DailyReport2">สถิติ-แยกตามระดับชั้น</a></li>
+                            <li class="b2"><a class="icon page" href="/Management/SchoolList">แสดงรายชื่อโรงเรียน</a></li>
+                            <li class="b1"><a class="icon page" href="/Management/ConfirmDocumentList">พิมพ์เอกสารยืนยันการสมัคร</a></li>
+                            <li class="b1"><a class="icon page" href="/Management/SearchStudent">แก้ไขข้อมูลผู้สมัคร</a></li>
+                            <li class="b1"><a class="icon page" href="/Management/ManagementAnnounce">เปิดปิดการประกาศผล</a></li>
+                            <li class="b1"><a class="icon page" href="/Management/AddStudentAdhoc">เพิ่มผู้เข้าสอบ</a></li>
+                        </ul>
+                    </div>
+                }
+                @if (userrole.Equals("ADMIN") || userrole.Equals("DPU_STAFF"))
+                {
+                    @*                    <div class="box">
+                            <div class="h_title">
+                                &#8250; กรรมการคุมสอบ</div>
+                            <ul>
+                                <li class="b1"><a class="icon page" href="/Committee/Index">แสดงรายชื่อกรรมการ</a></li>
+                                <li class="b2"><a class="icon add_page" href="/Committee/Create">เพิ่มข้อมูลกรรมการ</a></li>
+                                <li class="b1"><a class="icon category" href="/Committee/ProcessCommittee">ประมวลประกรรมการคุมสอบ</a></li>
+                            </ul>
+                        </div>*@
+                }
+                @if (userrole.Equals("ADMIN") || userrole.Equals("DPU_STAFF"))
+                {
+                    <div class="box">
+                        <div class="h_title">
+                            &#8250; 1.จัดผังที่นั่งสอบ
+                        </div>
+                        <ul>
+                            <li class="b1"><a class="icon category" href="/ExaminationSeatingPlan/Index">จัดผังที่นั่งสอบ</a></li>
+                            <!-- <li class="b1">@*<a class="icon category" href="/ExaminationSeatingPlan/Special">จัดผังที่นั่งสอบ(เพิ่มรายชื่อหน้างาน)</a>*@</li>-->
+                            <li class="b2">
+                                <a class="icon report" href="/ExaminationSeatingPlan/ReportExportToPaper">
+                                    Export ข้อมูลพิมพ์กระดาษคำตอบ
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                }
+                @if (userrole.Equals("ADMIN") || userrole.Equals("DPU_STAFF") || userrole.Equals("DPU_STAFF_KEY"))
+                {
+                    <div class="box">
+                        <div class="h_title">
+                            &#8250; 2.ประมวลสอบรอบเจียรไนเพชร
+                        </div>
+                        <ul>
+                            <li class="b1"><a class="icon add_page" href="/Score/Round1">โหลดคะแนนตรวจ OMR เข้าระบบ</a></li>
+                            <li class="b2"><a class="icon add_page" href="/ExamAbsent/Index1">บันทึกข้อมูลขาดสอบ</a></li>
+                            @if (userrole.Equals("ADMIN") || userrole.Equals("DPU_STAFF"))
+                            {
+                                <li class="b1"><a class="icon category" href="/Score/ProcessRound1">ประมวลผล 100 อันดับ</a></li>
+                                <li class="b2"><a class="icon report" href="/Report/Round1Report01">รายงานพิมพ์ส่งคณะทำงาน 100 อันดับ (ตัดคะแนน)</a></li>
+
+                                @*                                <li class="b2"><a class="icon report" href="/Score/">Export ข้อมูลส่ง ศ.เทคโน</a></li>
+                                    <li class="b1"><a class="icon report" href="/Score/">Export ข้อมูลส่ง SMS</a></li>
+                                *@
+                            }
+                        </ul>
+                    </div>
+                }
+                @if (userrole.Equals("ADMIN") || userrole.Equals("DPU_STAFF") || userrole.Equals("DPU_STAFF_KEY"))
+                {
+                    <div class="box">
+                        <div class="h_title">
+                            &#8250; 3.ประมวลสอบรอบเพชรยอดมงกุฏ
+                        </div>
+                        <ul>
+                            <li class="b1"><a class="icon page" href="/Score/Round2_1">ป้อนคะแนนเรียงความ</a></li>
+                            <li class="b2"><a class="icon page" href="/Score/Round2_2">ป้อนคะแนนพูดสุนทรพจน์</a></li>
+                            @if (userrole.Equals("ADMIN") || userrole.Equals("DPU_STAFF"))
+                            {
+                                <li class="b1"><a class="icon category" href="/Score/ProcessRound2">ประมวลผลคะแนน</a></li>
+
+                            }
+                        </ul>
+                    </div>
+                }
+                @if (userrole.Equals("ADMIN") || userrole.Equals("DPU_STAFF") || userrole.Equals("DPU_BOARD") || userrole.Equals("DPU_CALLCENER") || userrole.Equals("TRIMIT_STAFF"))
+                {
+                    <div class="box">
+                        <div class="h_title">
+                            &#8250; 4. รายงาน
+                        </div>
+                        <ul>
+                            <li class="b1"><a class="icon report" href="/Report/Round1Report02">1.ติดบอร์ด แยกตามห้องสอบ</a></li>
+                            @*<li class="b1"><a class="icon report" href="/Report/Round1Report03">-ส่ง SMS</a></li>*@
+                            @*<li class="b1"><a class="icon report" href="/Report/Round1Report04">-ข้อมูลส่งศูนย์เทคโน</a></li>*@
+                            @*<li class="b1"><a class="icon report" href="/Report/Round1Report05">2.เรียงตามคะแนน</a></li>*@
+                            <li class="b1"><a class="icon report" href="/Report/Round2Report02">3.ใบเซ็นชื่อ(รอบเพชรยอดฯ)</a></li>
+                            <li class="b1"><a class="icon report" href="/Report/Round2Report03">4.รายงานคะแนนเรียงความ</a></li>
+                            <li class="b1"><a class="icon report" href="/Report/Round2Report04">5.รายงานคะแนนสุนทรพจน์</a></li>
+                            <li class="b2"><a class="icon report" href="/Report/Round2Report01">6.รายงานคะแนนเพชรยอดฯ (Final)</a></li>
+
+                            <li class="b1"><a class="icon report" href="/Report/Index">-รายงาน</a></li>
+                            <li class="b1"><a class="icon report" href="/ExamAbsent/AbsentList">-ข้อมูลขาดสอบ</a></li>
+                            <li class="b1"><a class="icon report" href="/Report/summary25Export">-สรุป(หน้า 25)</a></li>
+                            <li class="b1"><a class="icon report" href="/Concern/Index">-ผู้สมัครที่มีความน่าจะเป็นระดับชั้นผิด</a></li>
+                        </ul>
+                    </div>
+                }
+                @if (userrole.Equals("ADMIN") || userrole.Equals("DPU_STAFF") || userrole.Equals("DPU_CALLCENER"))
+                {
+                    <div class="box">
+                        <div class="h_title">
+                            &#8250; ผู้ดูแลระบบ
+                        </div>
+                        <ul>
+                            <li class="b1"><a class="icon config" href="/Room/Index">ห้อง</a></li>
+                            <li class="b1"><a class="icon config" href="/Account/CheckPassword">ตรวจสอบรหัสผ่าน</a></li>
+                            @if (userrole.Equals("ADMIN"))
+                            {
+                                <li class="b2"><a class="icon config" href="/Role/Index">กฎ</a></li>
+                                <li class="b1"><a class="icon config" href="/RolePermission/Index">สิทธิ์ผู้ใช้</a></li>
+                                <li class="b2"><a class="icon config" href="/User">ผู้ใช้งาน</a></li>
+                            }
+                        </ul>
+                    </div>
+                }
+            </div>
+            <div id="main">
+                <div class="clear">
+                </div>
+                <!-- Content -->
+                @RenderSection("featured", required: false) @RenderBody()
+                <!-- End Content -->
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+        <div id="footer">
+            <div class="left">
+                <p>
+                    Design: <a href=""></a>| Admin Panel: <a href="/Management">Management</a>
+                </p>
+            </div>
+            <div class="right">
+                <p>
+                </p>
+            </div>
+        </div>
+    </div>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

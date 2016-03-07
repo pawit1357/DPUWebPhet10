@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.Title = "Complete";
+}
+<br />
+<br />
+@if (@HttpContext.Current.Session["PhetCulture"].ToString().Equals("th"))
+{
+    <h2>
+        <img src="~/Images/msg-ok.gif" width="23px" height="23px" alt="" />
+        สมัครสอบแข่งขันภาษาจีนเพชรยอดมงกุฎ ครั้งที่ 12 (นานาชาติ) เรียบร้อยแล้ว
+    </h2>
+    <br />
+    <h3>
+        ข้อมูลรายละเอียด Username และ Password ดังข้างล่าง:
+    </h3>
+    <table>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">
+                User:
+            </td>
+            <td style="text-align: right;">
+                <img src="/images/mailicon.png" alt="" />
+            </td>
+            <td style="color: Maroon; font-weight: bolder;">
+                @ViewBag.UserName
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">
+                Password:
+            </td>
+            <td style="text-align: right;">
+                <img src="/images/passicon.png" alt="" />
+            </td>
+            <td style="color: Maroon; font-weight: bolder;">
+                @ViewBag.Password
+            </td>
+        </tr>
+    </table>
+}
+else
+{ 
+    <h2>
+        <img src="~/Images/msg-ok.gif" width="23px" height="23px" alt="" />
+        Thank you for Register Chinese Completetion.
+
+    </h2>
+    <br />
+    <h3>
+        Here are your details:
+    </h3>
+    <table>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">
+                User:
+            </td>
+            <td style="text-align: right;">
+                <img src="/images/mailicon.png" alt="" />
+            </td>
+            <td style="color: Maroon; font-weight: bolder;">
+                @ViewBag.UserName
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right; font-weight: bold;">
+                Password:
+            </td>
+            <td style="text-align: right;">
+                <img src="/images/passicon.png" alt="" />
+            </td>
+            <td style="color: Maroon; font-weight: bolder;">
+                @ViewBag.Password
+            </td>
+        </tr>
+    </table>
+
+}
+<br />
+@DPUWebPhet10.Resources.Application.Application.REGISTER_ITEM017
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />

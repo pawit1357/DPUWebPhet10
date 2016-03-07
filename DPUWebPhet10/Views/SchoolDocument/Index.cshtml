@@ -1,0 +1,35 @@
+﻿@model IEnumerable<DPUWebPhet10.Models.TB_SCHOOL_DOCUMENT>
+@{
+    ViewBag.Title = "Index";
+    var seq = 1;
+}
+<div class="table">
+    <table>
+        <tr>
+            <th>
+                @Html.Label("ลำดับ")
+            </th>
+            <th>
+                @Html.Label("เอกสาร")
+            </th>
+            <th>
+                @Html.Label("")
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                @seq
+                </td>
+                <td>
+                    @item.DOCUMENT_PATH
+                </td>
+                <td>
+                    @Html.ActionLink("Download", "Download1", new { Controller = "Files", file = item.DOCUMENT_PATH })
+                </td>
+            </tr>
+            seq++;
+        }
+    </table>
+</div>

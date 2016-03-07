@@ -1,0 +1,76 @@
+﻿@*@model IEnumerable<DPUWebPhet10.Models.ExamAbsentModel>*@
+@model DPUWebPhet10.Models.Round1ReportModelCriteria
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Managementlayout.cshtml";
+}
+<div class="full_w" style="width:800px">
+    <div class="h_title">
+        Manage pages - จัดการข้อมูลผู้ขาดสอบ</div>
+    @using (Html.BeginForm())
+    {
+
+        if (Model.reports != null)
+        {
+        <table>
+            <tr>
+                <th>
+                    ลำดับ
+                </th>
+                <th>
+                    เลขประจำตัว
+                </th>
+                <th>
+                    ชื่อ-นามสกุล
+                </th>
+                <th>
+                    สถานศึกษา
+                </th>
+                <th>
+                    เลือก
+                </th>
+            </tr>
+            @foreach (var item in Model.reports)
+            {
+            
+                <tr>
+                    <td>
+                        @item.seq
+                    </td>
+                    <td>
+                        @item.studentCode
+                    </td>
+                    <td>
+                        @item.studentFullName
+                    </td>
+                    <td>
+                        @item.schoolName
+                    </td>
+                    <td>
+                        <input id="SelectedStudentIDs@(item.studentCode)" type="checkbox" name="SelectedStudentIDs"
+                value="@item.studentCode"
+                @((Model.SelectedStudentIDs != null) ? Model.SelectedStudentIDs.Contains(item.studentCode) ? "checked" : "" : "")
+                />
+                    </td>
+                </tr>
+            }
+        </table>
+        }
+        else
+        {
+        <div class="n_error">
+            <p>
+                ไม่มีข้อมูลขาดสอบ
+            </p>
+        </div>
+        }
+        
+        <div class="entry">
+            <div class="sep">
+            </div>
+        </div>
+        <input type="submit" id="action" name="action" class="button" value="บันทึก" />
+        
+    }
+
+</div>

@@ -1,0 +1,146 @@
+﻿@model DPUWebPhet10.Models.Report07_1ModelCriteria
+@using DPUWebPhet10.Helpers
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "ประกาศเลขที่นั่งสอบ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+
+    <!-- Content -->
+
+
+    <!-- Box Head -->
+    <div class="box-head">
+        <br />
+        <div class="condition">
+            @using (Html.BeginForm("Report07_1", "Report"))
+            {
+                <table>
+                    <tr>
+                        <td style="text-align: right">
+                            ข้อมูลที่ต้องการค้นหา
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(model => model.searchText, new { style = "width: 200px" })
+                        </td>
+                        <td>
+                            <input type="submit" class="button" value="ค้นหา" style="width: 50px" />
+                            *เช่น เลขที่ผู้สมัคร, ชื่อ, นามสกุล, สถานศึกษา
+                        </td>
+                    </tr>
+                </table>
+            }
+        </div>
+        <br />
+    </div>
+    <div class="table" id="gridContent">
+        @if (Model.reports != null)
+        {
+            if (Model.reports.Count == 0)
+            {
+            <!-- Not found data -->
+            <div style="text-align: center; color: Red">
+                <h2>
+                    @Html.Label("ไม่พบข้อมูล")
+                </h2>
+            </div>             
+             
+            }
+            else
+            {   
+            <table width="100%">
+                <thead>
+                    <tr>
+                        <th>
+                            ลำดับ
+                        </th>
+                        <th>
+                            เลขประจำตัวผู้สอบ
+                        </th>
+                        <th>
+                            ชื่อ - นามกสุล
+                        </th>
+                        <th>
+                            สถาบัน
+                        </th>
+                        <th>
+                            เลขที่นั่งสอบ
+                        </th>
+                        <th>
+                            ห้องสอบ
+                        </th>
+                        <th>
+                            ใบยืนยัน
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var result in Model.reports)
+                    {
+                        <tr>
+                            <td>
+                                @result.seq
+                            </td>
+                            <td>@result.remark
+                            </td>
+                            <td>@result.name
+                            </td>
+                            <td>@result.school
+                            </td>
+                            <td>@result.id
+                            </td>
+                            <td>@result.roomNo
+                            </td>
+                        <td style="width: 80px; text-align: center;">
+                            @Html.ActionLink("แสดง", "PrintConfirmDocument", new { id = result.studentId })
+                        </td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+                                        @Html.PagedListPager(Model.reports,
+            page => Url.Action("Report07_1", new RouteValueDictionary() {
+               { "Page", page },{ "searchText", Model.searchText }
+            }),
+            PagedListRenderOptions.MinimalWithPageCountText)
+            }
+
+        }
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+    </div>
+
+
+    <!-- End Content -->
+
+
+    
+}
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+        });
+    </script>
+}

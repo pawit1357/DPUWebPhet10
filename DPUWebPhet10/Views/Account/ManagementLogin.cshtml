@@ -1,0 +1,43 @@
+﻿@model DPUWebPhet10.Models.LoginModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="" />
+    <title>ระบบจัดการข้อมูลการสอบแข่งขันเพชรยอดมงกุฏครั้งที่ 10 (นานาชาติ)</title>
+    <link rel="stylesheet" type="text/css" href="/Content/theme_management/login.css"
+        media="screen" />
+</head>
+<body>
+    <div class="wrap">
+        <div id="content">
+            <div id="main">
+                <div class="full_w">
+                    @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+
+
+                        @Html.LabelFor(m => m.UserName)
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "text" })
+                        @Html.ValidationMessageFor(m => m.UserName)
+
+                        @Html.LabelFor(m => m.Password)
+                        @Html.PasswordFor(m => m.Password, new { @class = "text" })
+                        @Html.ValidationMessageFor(m => m.Password)
+
+                        <div class="sep" />
+                        <button type="submit" class="ok">
+                            Login</button> <a class="button" href="">Forgotten password?</a>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

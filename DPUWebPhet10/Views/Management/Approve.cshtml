@@ -1,0 +1,63 @@
+﻿@model DPUWebPhet10.Models.TB_APPLICATION_SCHOOL
+@{
+    Layout = "~/Views/Shared/_Managementlayout.cshtml";
+}
+@{
+    <div class="full_w">
+        <div class="h_title">
+            Manage pages - แสดงผลลัพธ์จากการทำรายการ</div>
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(model => model.SCHOOL_ID)
+            @Html.HiddenFor(model => model.SCHOOL_ZONE_EDU)
+            @Html.HiddenFor(model => model.SCHOOL_ZONE)
+            @Html.HiddenFor(model => model.SCHOOL_TYPE)
+            @Html.HiddenFor(model => model.SCHOOL_TYPE_OTHER)
+            @Html.HiddenFor(model => model.SCHOOL_ADDR)		
+            @Html.HiddenFor(model => model.SCHOOL_ADDR_SOI)
+            @Html.HiddenFor(model => model.SCHOOL_ADDR_ROAD)
+            @Html.HiddenFor(model => model.SCHOOL_ADDR_TOMBON)
+            @Html.HiddenFor(model => model.SCHOOL_ADDR_AMPHUR)
+            @Html.HiddenFor(model => model.SCHOOL_ADDR_PROVINCE)
+            @Html.HiddenFor(model => model.SCHOOL_ADDR_ZIPCODE)
+            @Html.HiddenFor(model => model.SCHOOL_ADDR_PHONE)
+            @Html.HiddenFor(model => model.SCHOOL_ADDR_FAX)
+            @Html.HiddenFor(model => model.SCHOOL_NAME)
+            @Html.HiddenFor(model => model.SCHOOL_PROVINCE)
+            @Html.HiddenFor(model => model.SCHOOL_PASSWORD)
+            @Html.HiddenFor(model => model.SCHOOL_DOC_PATH)
+            @Html.HiddenFor(model => model.SCHOOL_REGISTER_DATE)
+            @Html.HiddenFor(model => model.SCHOOL_EMAIL)
+
+                
+
+            <div class="some-class">
+                @Html.DropDownList("SCHOOL_APPROVED_STATUS", String.Empty)
+            </div>
+                
+            <!-- Form Buttons -->
+            <div class="entry">
+                <div class="sep">
+                </div>               
+                <button type="submit" class="button edit">
+                    บันทึก</button>
+                    @Html.ActionLink("ย้อนกลับ", "SchoolList", new { id = Model.SCHOOL_ID }, new { @class = "button" })            
+            </div>
+            <!-- End Form Buttons -->
+        }
+    </div>  
+    
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+
+
+        });
+    </script>
+}
+

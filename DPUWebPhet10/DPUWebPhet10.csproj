@@ -1,0 +1,1520 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EE406406-8868-4215-98B4-C0252E4ED5F5}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DPUWebPhet10</RootNamespace>
+    <AssemblyName>DPUWebPhet10</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
+    <DeployIisAppPath>pechyod10</DeployIisAppPath>
+    <PublishDatabases>true</PublishDatabases>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DeployEncryptKey>
+    </DeployEncryptKey>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DotNet.Highcharts, Version=2.0.0.0, Culture=neutral, PublicKeyToken=88854f873df851bf, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\DotNet.Highcharts.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.AspNet, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Binaries\DotNetOpenAuth.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Binaries\DotNetOpenAuth.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Binaries\DotNetOpenAuth.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth.Consumer, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Binaries\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Binaries\DotNetOpenAuth.OpenId.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Binaries\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Binaries\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Highcharts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Binaries\Highcharts.dll</HintPath>
+    </Reference>
+    <Reference Include="Highcharts.MVC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Binaries\Highcharts.MVC.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Binaries\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20715.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebPages.OAuth, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.OAuth.2.0.20710.0\lib\net40\Microsoft.Web.WebPages.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Binaries\WebMatrix.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Binaries\WebMatrix.WebData.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\AuthConfig.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CommitteeController.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Controllers\ConcernController.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Controllers\ExaminationSeatingPlanController.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Controllers\ExamAbsentController.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Controllers\RoleController.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Controllers\RolePermissionController.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Controllers\RoomController.cs" />
+    <Compile Include="Controllers\SchoolDocumentController.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Controllers\ScoreController.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Controllers\FilesController.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Controllers\HomeController.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Controllers\ApplicationController.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Controllers\ReportController.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Controllers\SumController.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Controllers\UploadController.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Controllers\AccountController.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Controllers\ManagementController.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Content Include="Binaries\DotNet.Highcharts.dll" />
+    <Content Include="Binaries\DotNetOpenAuth.AspNet.dll" />
+    <Content Include="Binaries\DotNetOpenAuth.Core.dll" />
+    <Content Include="Binaries\DotNetOpenAuth.OAuth.Consumer.dll" />
+    <Content Include="Binaries\DotNetOpenAuth.OAuth.dll" />
+    <Content Include="Binaries\DotNetOpenAuth.OpenId.dll" />
+    <Content Include="Binaries\DotNetOpenAuth.OpenId.RelyingParty.dll" />
+    <Content Include="Binaries\EntityFramework.dll" />
+    <Content Include="Binaries\Highcharts.dll" />
+    <Content Include="Binaries\Highcharts.MVC.dll" />
+    <Content Include="Binaries\log4net.dll" />
+    <Content Include="Binaries\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="Binaries\Microsoft.Web.WebPages.OAuth.dll" />
+    <Content Include="Binaries\Newtonsoft.Json.dll" />
+    <Content Include="Binaries\PagedList.dll" />
+    <Content Include="Binaries\PagedList.Mvc.dll" />
+    <Content Include="Binaries\System.Net.Http.dll" />
+    <Content Include="Binaries\System.Net.Http.Formatting.dll" />
+    <Content Include="Binaries\System.Net.Http.WebRequest.dll" />
+    <Content Include="Binaries\System.Web.Helpers.dll" />
+    <Content Include="Binaries\System.Web.Http.dll" />
+    <Content Include="Binaries\System.Web.Http.WebHost.dll" />
+    <Content Include="Binaries\System.Web.Mvc.dll" />
+    <Content Include="Binaries\System.Web.Optimization.dll" />
+    <Content Include="Binaries\System.Web.Razor.dll" />
+    <Content Include="Binaries\System.Web.WebPages.Deployment.dll" />
+    <Content Include="Binaries\System.Web.WebPages.dll" />
+    <Content Include="Binaries\System.Web.WebPages.Razor.dll" />
+    <Content Include="Binaries\WebGrease.dll" />
+    <Content Include="Binaries\WebMatrix.Data.dll" />
+    <Content Include="Binaries\WebMatrix.WebData.dll" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\login.css" />
+    <Content Include="Content\main.css" />
+    <Content Include="Content\screen.css" />
+    <Content Include="Content\theme_management\login.css" />
+    <Content Include="Content\theme_management\navi.css" />
+    <Content Include="Content\theme_management\style.css" />
+    <Content Include="Document\china_phet11.SQL" />
+    <Content Include="Document\delete_tb_authencode_script.sql" />
+    <Content Include="Document\phetyod11_XXXXXXX.sql" />
+    <Content Include="Document\ReadMe.txt" />
+    <Content Include="Document\tb_application_school.txt" />
+    <Content Include="Document\TB_APPLICATION_STAFF.txt" />
+    <Content Include="Document\TB_APPLICATION_STUDENT.txt" />
+    <Content Include="Document\TB_ROOM.txt" />
+    <Content Include="Document\TB_STUDENT_SEAT.txt" />
+    <Content Include="FileUpload\uploads\_.txt" />
+    <Content Include="Images\10.jpg" />
+    <Content Include="Images\1375937658.png" />
+    <Content Include="Images\arrow_down.png" />
+    <Content Include="Images\arrow_right.png" />
+    <Content Include="Images\bg_arr_left.png" />
+    <Content Include="Images\bg_arr_nav.png" />
+    <Content Include="Images\bg_box_head.jpg" />
+    <Content Include="Images\bg_login_top.jpg" />
+    <Content Include="Images\bg_top.jpg" />
+    <Content Include="Images\DPU_Map_petchyod.png" />
+    <Content Include="Images\DPU_Map_petchyod_s.png" />
+    <Content Include="Images\dpu_map1.jpg" />
+    <Content Include="Images\dpu_map2.png" />
+    <Content Include="Images\exclamation.png" />
+    <Content Include="Images\file-pdf.png" />
+    <Content Include="Images\ico-excel.png" />
+    <Content Include="Images\ico-pdf.png" />
+    <Content Include="Images\icons\add.png" />
+    <Content Include="Images\icons\application_add.png" />
+    <Content Include="Images\icons\arrow_down.png" />
+    <Content Include="Images\icons\arrow_down_mini.gif" />
+    <Content Include="Images\icons\arrow_left.gif" />
+    <Content Include="Images\icons\arrow_right.gif" />
+    <Content Include="Images\icons\brick.png" />
+    <Content Include="Images\icons\bricks.png" />
+    <Content Include="Images\icons\bricks_gear.png" />
+    <Content Include="Images\icons\brick_edit.png" />
+    <Content Include="Images\icons\car.png" />
+    <Content Include="Images\icons\cart.png" />
+    <Content Include="Images\icons\cart_add.png" />
+    <Content Include="Images\icons\cog.png" />
+    <Content Include="Images\icons\coins.png" />
+    <Content Include="Images\icons\color_swatch.png" />
+    <Content Include="Images\icons\expand.jpg" />
+    <Content Include="Images\icons\feed.png" />
+    <Content Include="Images\icons\folder.png" />
+    <Content Include="Images\icons\folder_page.png" />
+    <Content Include="Images\icons\folder_page_add.png" />
+    <Content Include="Images\icons\folder_table.png" />
+    <Content Include="Images\icons\group.png" />
+    <Content Include="Images\icons\house.png" />
+    <Content Include="Images\icons\magnifier.png" />
+    <Content Include="Images\icons\page_add.png" />
+    <Content Include="Images\icons\page_gear.png" />
+    <Content Include="Images\icons\page_white_delete.png" />
+    <Content Include="Images\icons\page_white_edit.png" />
+    <Content Include="Images\icons\page_white_link.png" />
+    <Content Include="Images\icons\page_white_text_width.png" />
+    <Content Include="Images\icons\report.png" />
+    <Content Include="Images\icons\report_link.png" />
+    <Content Include="Images\icons\rss.png" />
+    <Content Include="Images\icons\user.png" />
+    <Content Include="Images\icons\user_add.png" />
+    <Content Include="Images\icons\user_delete.png" />
+    <Content Include="Images\icons\user_edit.png" />
+    <Content Include="Images\icons\world.png" />
+    <Content Include="Images\i_add.png" />
+    <Content Include="Images\i_add_page.png" />
+    <Content Include="Images\i_add_user.png" />
+    <Content Include="Images\i_archive.png" />
+    <Content Include="Images\i_block_users.png" />
+    <Content Include="Images\i_category.png" />
+    <Content Include="Images\i_config.png" />
+    <Content Include="Images\i_contact.png" />
+    <Content Include="Images\i_delete.png" />
+    <Content Include="Images\i_edit.png" />
+    <Content Include="Images\i_error.png" />
+    <Content Include="Images\i_ok.png" />
+    <Content Include="Images\i_page.png" />
+    <Content Include="Images\i_photo.png" />
+    <Content Include="Images\i_report.png" />
+    <Content Include="Images\i_users.png" />
+    <Content Include="Images\i_view_page.png" />
+    <Content Include="Images\i_warning.png" />
+    <Content Include="Images\map-Petchyod.png" />
+    <Content Include="Images\maps\map_1.jpg" />
+    <Content Include="Images\maps\map_2.jpg" />
+    <Content Include="Images\maps\map_3.jpg" />
+    <Content Include="Images\maps\map_4.jpg" />
+    <Content Include="Images\maps\map_5.jpg" />
+    <Content Include="Images\Map_DPU_new.jpg" />
+    <Content Include="Images\Map_DPU_new_s.jpg" />
+    <Content Include="Images\pw.png" />
+    <Content Include="Images\spinner.gif" />
+    <Content Include="Images\spinnerLarge.gif" />
+    <Content Include="Images\update.gif" />
+    <Content Include="ReadMe.txt" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\adapters\mootools-adapter.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\adapters\mootools-adapter.src.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\adapters\prototype-adapter.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\adapters\prototype-adapter.src.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\highcharts-more.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\highcharts.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\highcharts.src.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\modules\canvas-tools.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\modules\canvas-tools.src.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\modules\data.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\modules\data.src.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\modules\exporting.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\modules\exporting.src.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\modules\funnel.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\modules\funnel.src.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\themes\dark-blue.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\themes\dark-green.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\themes\gray.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\themes\grid.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\themes\skies.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\adapters\standalone-framework.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\adapters\standalone-framework.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\highcharts-3d.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\highcharts-3d.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\highcharts-all.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\highcharts-more.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\highcharts-more.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\highcharts.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\highcharts.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\canvas-tools.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\canvas-tools.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\data.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\data.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\drilldown.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\drilldown.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\exporting.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\exporting.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\funnel.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\funnel.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\heatmap.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\heatmap.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\no-data-to-display.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\no-data-to-display.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\solid-gauge.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\solid-gauge.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\themes\dark-blue.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\themes\dark-green.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\themes\dark-unica.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\themes\gray.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\themes\grid-light.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\themes\grid.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\themes\sand-signika.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\themes\skies.js" />
+    <Content Include="Scripts\jMenu.jquery.js" />
+    <Content Include="Scripts\jquery.filestyle.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\jQuery.tmpl.js" />
+    <Content Include="Scripts\jQuery.tmpl.min.js" />
+    <Content Include="Scripts\spin.js" />
+    <Content Include="Scripts\spin.min.js" />
+    <Content Include="Utils\Email-Templates\AccountDetail_th.html" />
+    <Content Include="Utils\Email-Templates\AccountDetail_en.html" />
+    <Compile Include="Controllers\SchoolController.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Controllers\StaffController.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Controllers\StudentController.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Controllers\UserController.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Account\CheckPasswordModel.cs" />
+    <Compile Include="Models\ApplicationAdhocModel.cs" />
+    <Compile Include="Models\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Report\ReportSummary25Model.cs" />
+    <Compile Include="Models\SchoolListModels.cs" />
+    <Compile Include="Models\ExamAbsentModel.cs" />
+    <Compile Include="Models\Report\ConfirmDocumentModel.cs" />
+    <Compile Include="Models\Report\Round1ReportModelCriteria.cs" />
+    <Compile Include="Models\Report\ReportModelCriteria.cs" />
+    <Compile Include="Models\Report\Report19Model.cs" />
+    <Compile Include="Models\Report\Report07_1ModelCriteria.cs" />
+    <Compile Include="Models\Report\Report07_1Model.cs" />
+    <Compile Include="Models\Report\Report15Model.cs" />
+    <Compile Include="Models\Report\Report14Model.cs" />
+    <Compile Include="Models\Report\Report13Model.cs" />
+    <Compile Include="Models\Report\Report12Model.cs" />
+    <Compile Include="Models\Report\Report11Model.cs" />
+    <Compile Include="Models\Report\Report10Model.cs" />
+    <Compile Include="Models\Report\Report09Model.cs" />
+    <Compile Include="Models\Report\Report08Model.cs" />
+    <Compile Include="Models\Score\ScoreRound22Model.cs" />
+    <Compile Include="Models\Score\ScoreRound21Model.cs" />
+    <Compile Include="Models\Score\ScoreRound1Model.cs" />
+    <Compile Include="Models\SeatPlan\ProcessStudentModel.cs" />
+    <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\TB_APPLICATION.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TB_APPLICATION_SCHOOL.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TB_APPLICATION_STAFF.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TB_APPLICATION_STUDENT.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TB_COMMITEE.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TB_COMMITEE_ROOM.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TB_CONCERN.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TB_EXAM_ABSENT.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TB_EXAM_ANOUNCE.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TB_M_AMPHUR.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TB_M_BUILDING.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TB_M_DISTRICT.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TB_M_LEVEL.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TB_M_PRIZE.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TB_M_PROVINCE.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TB_M_SCHOOL_9.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TB_M_STATUS.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TB_M_TITLE.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TB_ROLE.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TB_ROLE_PERMISSION.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TB_ROOM.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TB_SCHOOL_DOCUMENT.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TB_SCORE_ROUND_1.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TB_SCORE_ROUND_1_ERROR.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TB_SCORE_ROUND_2.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TB_STUDENT_SEAT.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TB_USER.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UploadModels.cs" />
+    <Compile Include="Models\Report\Report07Model.cs" />
+    <Compile Include="Models\Report\Report07ModelCriteria.cs" />
+    <Compile Include="Reports\AdhocReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AdhocReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\AdhocReport_Page25.cs">
+      <DependentUpon>AdhocReport_Page25.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\RptRound1_01_NationCondition.cs">
+      <DependentUpon>RptRound1_01_NationCondition.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\RptRound1_03.cs">
+      <DependentUpon>RptRound1_03.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\RptRound2_OLD.cs">
+      <DependentUpon>RptRound2_OLD.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\RptRound2_2.cs">
+      <DependentUpon>RptRound2_2.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\RptRound2_1.cs">
+      <DependentUpon>RptRound2_1.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\RptRound1_02.cs">
+      <DependentUpon>RptRound1_02.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\RptRound1_02_OLD1.cs">
+      <DependentUpon>RptRound1_02_OLD1.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\Rpt01_en.cs">
+      <DependentUpon>Rpt01_en.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\RptForExamPaper.cs">
+      <DependentUpon>RptForExamPaper.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\RptRound1SMS.cs">
+      <DependentUpon>RptRound1SMS.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\RptRound2.cs">
+      <DependentUpon>RptRound2.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\RptRound1_02_OLD.cs">
+      <DependentUpon>RptRound1_02_OLD.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\RptRound1_01.cs">
+      <DependentUpon>RptRound1_01.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\Rpt20.cs">
+      <DependentUpon>Rpt20.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\Rpt19.cs">
+      <DependentUpon>Rpt19.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\Rpt02_en.cs">
+      <DependentUpon>Rpt02_en.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\Rpt02_th_4.cs">
+      <DependentUpon>Rpt02_th_4.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\Rpt15.cs">
+      <DependentUpon>Rpt15.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\Rpt14.cs">
+      <DependentUpon>Rpt14.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\Rpt13.cs">
+      <DependentUpon>Rpt13.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\Rpt12.cs">
+      <DependentUpon>Rpt12.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\Rpt11.cs">
+      <DependentUpon>Rpt11.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\Rpt10.cs">
+      <DependentUpon>Rpt10.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\Rpt09.cs">
+      <DependentUpon>Rpt09.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\Rpt08.cs">
+      <DependentUpon>Rpt08.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\Rpt01_th.cs">
+      <DependentUpon>Rpt01_th.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Layout\Layout.en.Designer.cs">
+      <DependentUpon>Layout.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Layout\Layout.Designer.cs">
+      <DependentUpon>Layout.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\LoginPartial\LoginPartial.en.Designer.cs">
+      <DependentUpon>LoginPartial.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\LoginPartial\LoginPartial.Designer.cs">
+      <DependentUpon>LoginPartial.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Utils\CsvReader.cs" />
+    <Compile Include="Utils\PermissionUtils.cs" />
+    <Compile Include="Utils\Helpers\AutocompleteHelpers.cs" />
+    <Compile Include="Utils\Helpers\CollectionEditingHtmlExtensions.cs" />
+    <Compile Include="Utils\Helpers\Dynamic.cs" />
+    <Compile Include="Utils\Helpers\HtmlClientSideValidationExtensions.cs" />
+    <Compile Include="Utils\Helpers\HtmlExtensions.cs" />
+    <Compile Include="Utils\Helpers\HtmlPrefixScopeExtensions.cs" />
+    <Compile Include="Utils\Helpers\MyLabelExtensions.cs" />
+    <Compile Include="Utils\Helpers\RouteValueDictionaryExtensions.cs" />
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Common\RadioButtonModel.cs" />
+    <Compile Include="Models\Report\Report06ModelCriteria.cs" />
+    <Compile Include="Models\Report\Report06Model.cs" />
+    <Compile Include="Models\Report\Report05Model.cs" />
+    <Compile Include="Models\ManagementModel.cs" />
+    <Compile Include="Models\Meta\MetaModel.cs" />
+    <Compile Include="Models\Report\Report02Model.cs" />
+    <Compile Include="Models\Common\DPUPhet10Repository.cs" />
+    <Compile Include="Models\Common\IRepository.cs" />
+    <Compile Include="Models\ApplicationModel.cs" />
+    <Compile Include="Models\Report\Report01Model.cs" />
+    <Compile Include="Models\Report\Report03Model.cs" />
+    <Compile Include="Models\Report\Report04Model.cs" />
+    <Compile Include="Models\Report\Report03ModelCriteria.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\Rpt05.cs">
+      <DependentUpon>Rpt05.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\Rpt04.cs">
+      <DependentUpon>Rpt04.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\Rpt02_th.cs">
+      <DependentUpon>Rpt02_th.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Resources\Application\Application.en.Designer.cs">
+      <DependentUpon>Application.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Application\Application.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Application.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\CommonUtils.cs" />
+    <Compile Include="Utils\DiskFileStore.cs" />
+    <Compile Include="Utils\Email.cs" />
+    <Compile Include="Utils\ExtensionMethods.cs" />
+    <Compile Include="Utils\FileDownloadResult.cs" />
+    <Compile Include="Utils\FileUpload.cs" />
+    <Compile Include="Utils\IFileStore.cs" />
+    <Compile Include="Utils\MD5.cs" />
+    <Compile Include="Utils\GeneratePassword.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\themes\base\images\animated-overlay.gif" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.menu.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.spinner.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\jquery.ui.tooltip.css" />
+    <Content Include="Content\themes\base\minified\images\animated-overlay.gif" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.menu.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.spinner.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\add-button.gif" />
+    <Content Include="Images\banner.png" />
+    <Content Include="Images\banner2.png" />
+    <Content Include="Images\BG.jpg" />
+    <Content Include="Images\bg_infobox.gif" />
+    <Content Include="Images\body_bg_top.gif" />
+    <Content Include="Images\button.gif" />
+    <Content Include="Images\cal.png" />
+    <Content Include="Images\China-Flag.png" />
+    <Content Include="Images\close.gif" />
+    <Content Include="Images\del.gif" />
+    <Content Include="Images\delete.png" />
+    <Content Include="Images\download.png" />
+    <Content Include="Images\edit.gif" />
+    <Content Include="Images\edit.png" />
+    <Content Include="Images\facebook_icon.gif" />
+    <Content Include="Images\folder_document.png" />
+    <Content Include="Images\footer.gif" />
+    <Content Include="Images\h1.png" />
+    <Content Include="Images\dpu-logo.png" />
+    <Content Include="Images\header.gif" />
+    <Content Include="Images\input_left.png" />
+    <Content Include="Images\input_middle.png" />
+    <Content Include="Images\input_right.png" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\mailicon.png" />
+    <Content Include="Images\map.png" />
+    <Content Include="Images\menu_bg.gif" />
+    <Content Include="Images\menu_bg_clear.gif" />
+    <Content Include="Images\msg-error.gif" />
+    <Content Include="Images\msg-ok.gif" />
+    <Content Include="Images\overlay.png" />
+    <Content Include="Images\pagging.gif" />
+    <Content Include="Images\passicon.png" />
+    <Content Include="Images\password.gif" />
+    <Content Include="Images\report01_header.jpg" />
+    <Content Include="Images\schedule.gif" />
+    <Content Include="Images\sdfdsf.gif" />
+    <Content Include="Images\submit.png" />
+    <Content Include="Images\submit_hover.png" />
+    <Content Include="Images\tab.gif" />
+    <Content Include="Images\th.gif" />
+    <Content Include="Images\Thailand-Flag.png" />
+    <Content Include="Images\top_box_bg.gif" />
+    <Content Include="Images\twitter_icon.gif" />
+    <Content Include="Images\United-Kingdom-Flag.png" />
+    <Content Include="Images\username.gif" />
+    <Content Include="Images\wrapper_bottom.png" />
+    <Content Include="Images\wrapper_middle.png" />
+    <Content Include="Images\wrapper_top.png" />
+    <Content Include="Images\zonebar-downarrow.png" />
+    <Content Include="Images\zonebar-navleft.png" />
+    <Content Include="Images\zonebar-navright.png" />
+    <Content Include="Scripts\autocomplete.js" />
+    <Content Include="Scripts\jquery-asyncUpload\blankButton.png" />
+    <Content Include="Scripts\jquery-asyncUpload\jquery-asyncUpload-0.1.js" />
+    <Content Include="Scripts\jquery-asyncUpload\swfupload license.txt" />
+    <Content Include="Scripts\jquery-asyncUpload\swfupload.js" />
+    <Content Include="Scripts\jquery-asyncUpload\swfupload.swf" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.js" />
+    <Content Include="Scripts\ValidationEngine\css\screenshot.png" />
+    <Content Include="Scripts\ValidationEngine\css\template.css" />
+    <Content Include="Scripts\ValidationEngine\css\validationEngine.jquery.css" />
+    <Content Include="Scripts\ValidationEngine\js\contrib\other-validations.js" />
+    <Content Include="Scripts\ValidationEngine\js\jquery-1.6.min.js" />
+    <Content Include="Scripts\ValidationEngine\js\jquery.validationEngine.js" />
+    <Content Include="Scripts\ValidationEngine\js\languages\jquery.validationEngine-cz.js" />
+    <Content Include="Scripts\ValidationEngine\js\languages\jquery.validationEngine-da.js" />
+    <Content Include="Scripts\ValidationEngine\js\languages\jquery.validationEngine-de.js" />
+    <Content Include="Scripts\ValidationEngine\js\languages\jquery.validationEngine-en.js" />
+    <Content Include="Scripts\ValidationEngine\js\languages\jquery.validationEngine-es.js" />
+    <Content Include="Scripts\ValidationEngine\js\languages\jquery.validationEngine-et.js" />
+    <Content Include="Scripts\ValidationEngine\js\languages\jquery.validationEngine-fa.js" />
+    <Content Include="Scripts\ValidationEngine\js\languages\jquery.validationEngine-fi.js" />
+    <Content Include="Scripts\ValidationEngine\js\languages\jquery.validationEngine-fr.js" />
+    <Content Include="Scripts\ValidationEngine\js\languages\jquery.validationEngine-hr.js" />
+    <Content Include="Scripts\ValidationEngine\js\languages\jquery.validationEngine-hu.js" />
+    <Content Include="Scripts\ValidationEngine\js\languages\jquery.validationEngine-it.js" />
+    <Content Include="Scripts\ValidationEngine\js\languages\jquery.validationEngine-ja.js" />
+    <Content Include="Scripts\ValidationEngine\js\languages\jquery.validationEngine-nl.js" />
+    <Content Include="Scripts\ValidationEngine\js\languages\jquery.validationEngine-pl.js" />
+    <Content Include="Scripts\ValidationEngine\js\languages\jquery.validationEngine-pt.js" />
+    <Content Include="Scripts\ValidationEngine\js\languages\jquery.validationEngine-pt_BR.js" />
+    <Content Include="Scripts\ValidationEngine\js\languages\jquery.validationEngine-ro.js" />
+    <Content Include="Scripts\ValidationEngine\js\languages\jquery.validationEngine-ru.js" />
+    <Content Include="Scripts\ValidationEngine\js\languages\jquery.validationEngine-sv.js" />
+    <Content Include="Scripts\ValidationEngine\js\languages\jquery.validationEngine-tr.js" />
+    <Content Include="Scripts\ValidationEngine\js\languages\jquery.validationEngine-vi.js" />
+    <Content Include="Scripts\ValidationEngine\js\languages\jquery.validationEngine-zh_CN.js" />
+    <Content Include="Scripts\ValidationEngine\js\languages\jquery.validationEngine-zh_TW.js" />
+    <Content Include="Views\Application\_AddStaffPartial.cshtml" />
+    <Content Include="Views\Application\_AddStudentPartial.cshtml" />
+    <Content Include="Views\Application\Complete.cshtml" />
+    <Content Include="Views\Application\Edit.cshtml" />
+    <Content Include="Views\Application\EditComplete.cshtml" />
+    <Content Include="Document\CREATESTUDENT.prc" />
+    <Content Include="Document\Phetyod11_include.xls" />
+    <Content Include="Document\จัดเลขที่นั่งสอบ_พิเศษ.docx" />
+    <Content Include="Document\จัดเลขที่นั่งสอบ_พิเศษ.dot" />
+    <None Include="FileUpload\documents\basic-ed-en.doc" />
+    <None Include="FileUpload\documents\basic-ed-en.pdf" />
+    <None Include="FileUpload\documents\basic-ed.doc" />
+    <None Include="FileUpload\documents\basic-ed.pdf" />
+    <None Include="FileUpload\documents\chinese11.docx" />
+    <None Include="FileUpload\documents\exam_paper_role.doc" />
+    <None Include="FileUpload\documents\exam_paper_role.docx" />
+    <None Include="FileUpload\documents\exam_paper_role.pdf" />
+    <None Include="FileUpload\documents\higher-ed-en.doc" />
+    <None Include="FileUpload\documents\higher-ed-en.pdf" />
+    <None Include="FileUpload\documents\higher-ed.doc" />
+    <None Include="FileUpload\documents\higher-ed.pdf" />
+    <None Include="FileUpload\documents\manual.docx" />
+    <None Include="FileUpload\documents\manual.pdf" />
+    <None Include="FileUpload\documents\schedule_en.docx" />
+    <None Include="FileUpload\documents\schedule_th.doc" />
+    <None Include="FileUpload\documents\ครั้งที่ 10\basic-ed-en.docx" />
+    <None Include="FileUpload\documents\ครั้งที่ 10\basic-ed.docx" />
+    <None Include="FileUpload\documents\ครั้งที่ 10\basic-ed.pdf" />
+    <None Include="FileUpload\documents\ครั้งที่ 10\higher-ed-en.docx" />
+    <None Include="FileUpload\documents\ครั้งที่ 10\higher-ed.docx" />
+    <None Include="FileUpload\documents\ครั้งที่ 10\higher-ed.pdf" />
+    <None Include="FileUpload\documents\ครั้งที่ 10\schedule-en.docx" />
+    <None Include="FileUpload\documents\ครั้งที่ 10\schedule.docx" />
+    <None Include="FileUpload\documents\ครั้งที่ 10\scheduler.pdf" />
+    <None Include="Images\icons\Thumbs.db" />
+    <Content Include="Views\Account\CheckPassword.cshtml" />
+    <Content Include="Views\Application\Exception.cshtml" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <None Include="Properties\PublishProfiles\phetyod_web.pubxml" />
+    <None Include="Views\Application\Index.cshtml" />
+    <Content Include="Scripts\jquery-1.9.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery-ui-1.10.2.js" />
+    <Content Include="Scripts\jquery-ui-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery.cascadingDropDown.js" />
+    <Content Include="Scripts\jquery.ui.accordion.js" />
+    <Content Include="Scripts\jquery.ui.autocomplete.js" />
+    <Content Include="Scripts\jquery.ui.button.js" />
+    <Content Include="Scripts\jquery.ui.core.js" />
+    <Content Include="Scripts\jquery.ui.datepicker.js" />
+    <Content Include="Scripts\jquery.ui.dialog.js" />
+    <Content Include="Scripts\jquery.ui.draggable.js" />
+    <Content Include="Scripts\jquery.ui.droppable.js" />
+    <Content Include="Scripts\jquery.ui.effect-blind.js" />
+    <Content Include="Scripts\jquery.ui.effect-bounce.js" />
+    <Content Include="Scripts\jquery.ui.effect-clip.js" />
+    <Content Include="Scripts\jquery.ui.effect-drop.js" />
+    <Content Include="Scripts\jquery.ui.effect-explode.js" />
+    <Content Include="Scripts\jquery.ui.effect-fade.js" />
+    <Content Include="Scripts\jquery.ui.effect-fold.js" />
+    <Content Include="Scripts\jquery.ui.effect-highlight.js" />
+    <Content Include="Scripts\jquery.ui.effect-pulsate.js" />
+    <Content Include="Scripts\jquery.ui.effect-scale.js" />
+    <Content Include="Scripts\jquery.ui.effect-shake.js" />
+    <Content Include="Scripts\jquery.ui.effect-slide.js" />
+    <Content Include="Scripts\jquery.ui.effect-transfer.js" />
+    <Content Include="Scripts\jquery.ui.effect.js" />
+    <Content Include="Scripts\jquery.ui.menu.js" />
+    <Content Include="Scripts\jquery.ui.mouse.js" />
+    <Content Include="Scripts\jquery.ui.position.js" />
+    <Content Include="Scripts\jquery.ui.progressbar.js" />
+    <Content Include="Scripts\jquery.ui.resizable.js" />
+    <Content Include="Scripts\jquery.ui.selectable.js" />
+    <Content Include="Scripts\jquery.ui.slider.js" />
+    <Content Include="Scripts\jquery.ui.sortable.js" />
+    <Content Include="Scripts\jquery.ui.spinner.js" />
+    <Content Include="Scripts\jquery.ui.tabs.js" />
+    <Content Include="Scripts\jquery.ui.tooltip.js" />
+    <Content Include="Scripts\jquery.ui.widget.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-2.1.0.debug.js" />
+    <Content Include="Scripts\knockout-2.1.0.js" />
+    <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Images\accent.png" />
+    <Content Include="Images\bullet.png" />
+    <Content Include="Images\heroAccent.png" />
+    <Content Include="Images\orderedList0.png" />
+    <Content Include="Images\orderedList1.png" />
+    <Content Include="Images\orderedList2.png" />
+    <Content Include="Images\orderedList3.png" />
+    <Content Include="Images\orderedList4.png" />
+    <Content Include="Images\orderedList5.png" />
+    <Content Include="Images\orderedList6.png" />
+    <Content Include="Images\orderedList7.png" />
+    <Content Include="Images\orderedList8.png" />
+    <Content Include="Images\orderedList9.png" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Account\ManagementLogin.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Schedule.cshtml" />
+    <Content Include="Views\Shared\404.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\Management\SchoolList.cshtml" />
+    <Content Include="Views\School\Index.cshtml" />
+    <Content Include="Views\Upload\Index.cshtml" />
+    <Content Include="Views\Report\Report03.cshtml" />
+    <Content Include="Views\Shared\_LayoutRegister.cshtml" />
+    <Content Include="Views\Management\Approve.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Committee\Index.cshtml" />
+    <Content Include="Views\Committee\Create.cshtml" />
+    <Content Include="Views\Committee\Edit.cshtml" />
+    <Content Include="Views\Report\Report06.cshtml" />
+    <Content Include="Views\Report\Report07.cshtml" />
+    <Content Include="Views\Report\Report07_1.cshtml" />
+    <Content Include="Views\Committee\ProcessCommittee.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Report\ReportNotice01.cshtml" />
+    <Content Include="Views\Report\ReportNotice02.cshtml" />
+    <Content Include="Views\Report\ReportNotice03.cshtml" />
+    <Content Include="Views\Report\ReportNotice04.cshtml" />
+    <Content Include="Views\Application\_AddStaffPartial_Edit.cshtml" />
+    <Content Include="Views\Application\_AddStudentPartial_Edit.cshtml" />
+    <Content Include="Views\Report\Index.cshtml" />
+    <Content Include="Views\Score\Round2_1.cshtml" />
+    <Content Include="Views\Score\Round2_2.cshtml" />
+    <Content Include="Views\Score\Index.cshtml" />
+    <Content Include="Views\Score\Round1.cshtml" />
+    <Content Include="Views\Report\DailyReport.cshtml" />
+    <Content Include="Views\Shared\_Managementlayout.cshtml" />
+    <Content Include="Views\Management\EditSchool.cshtml" />
+    <Content Include="Views\Management\_AddStudentPartial_Edit.cshtml" />
+    <Content Include="Views\Management\_AddStaffPartial_Edit.cshtml" />
+    <Content Include="Views\Management\EditComplete.cshtml" />
+    <Content Include="Views\Management\Index.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Role\Details.cshtml" />
+    <Content Include="Views\Role\Create.cshtml" />
+    <Content Include="Views\Role\Edit.cshtml" />
+    <Content Include="Views\Role\Delete.cshtml" />
+    <Content Include="Views\RolePermission\Index.cshtml" />
+    <Content Include="Views\RolePermission\Details.cshtml" />
+    <Content Include="Views\RolePermission\Create.cshtml" />
+    <Content Include="Views\RolePermission\Edit.cshtml" />
+    <Content Include="Views\RolePermission\Delete.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\User\Delete.cshtml" />
+    <Content Include="Views\ExaminationSeatingPlan\Index.cshtml" />
+    <Content Include="Views\ExamAbsent\Index.cshtml" />
+    <Content Include="Views\Score\ProcessRound1.cshtml" />
+    <Content Include="Views\Report\Round1Report01.cshtml" />
+    <Content Include="Views\Report\Round1Report02.cshtml" />
+    <Content Include="Views\Score\ProcessRound2.cshtml" />
+    <Content Include="Views\Report\Round2Report01.cshtml" />
+    <Content Include="Views\SchoolDocument\Index.cshtml" />
+    <Content Include="Views\SchoolDocument\DocumentDetail.cshtml" />
+    <Content Include="Views\Management\DetailSchool.cshtml" />
+    <Content Include="Views\Management\ApproveStudentList.cshtml" />
+    <Content Include="Views\Management\ApproveStudent.cshtml" />
+    <Content Include="Views\Management\ConfirmDocumentList.cshtml" />
+    <Content Include="Views\Report\DailyReport1.cshtml" />
+    <Content Include="Views\ExaminationSeatingPlan\ReportExportToPaper.cshtml" />
+    <Content Include="Views\ExamAbsent\AbsentList.cshtml" />
+    <Content Include="Views\ExamAbsent\Index1.cshtml" />
+    <Content Include="Views\Report\Report16.cshtml" />
+    <Content Include="Views\Report\Report17.cshtml" />
+    <Content Include="Views\Home\Map.cshtml" />
+    <Content Include="Views\Report\Round2Report02.cshtml" />
+    <Content Include="Views\Report\Round2Report03.cshtml" />
+    <Content Include="Views\Report\Round2Report04.cshtml" />
+    <Content Include="Views\Report\Round1Report03.cshtml" />
+    <Content Include="Views\Report\Round1Report04.cshtml" />
+    <Content Include="Views\Report\Round1Report05.cshtml" />
+    <Content Include="Views\ExaminationSeatingPlan\Special.cshtml" />
+    <Content Include="Views\Room\Index.cshtml" />
+    <Content Include="Views\Room\Create.cshtml" />
+    <Content Include="Views\Room\Edit.cshtml" />
+    <Content Include="Views\Room\Delete.cshtml" />
+    <Content Include="Views\Concern\index.cshtml" />
+    <Content Include="Views\Management\SearchStudent.cshtml" />
+    <Content Include="Views\Management\ManagementAnnounce.cshtml" />
+    <Content Include="Views\Management\AddStudentAdhoc.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="FileUpload\include\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Reports\Rpt02_th.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt02_th.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\Rpt04.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt04.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\Rpt05.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt05.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\Rpt01_th.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt01_th.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\Rpt08.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt08.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\Rpt09.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt09.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\Rpt10.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt10.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\Rpt11.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt11.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\Rpt12.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt12.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\Rpt13.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt13.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\Rpt14.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt14.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\Rpt15.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt15.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\Rpt02_th_4.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt02_th_4.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\Rpt02_en.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt02_en.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\Rpt19.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt19.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\Rpt20.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt20.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\RptRound1_01.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptRound1_01.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\RptRound1_02_OLD.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptRound1_02_OLD.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\RptRound2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptRound2.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\RptRound1SMS.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptRound1SMS.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\RptForExamPaper.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptForExamPaper.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="Models\Report1.rdlc" />
+    <EmbeddedResource Include="Reports\AdhocReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>AdhocReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Content Include="Reports\Rpt01_en.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt01_en.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\RptRound1_02_OLD1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptRound1_02_OLD1.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\RptRound1_02.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptRound1_02.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\RptRound2_1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptRound2_1.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\RptRound2_2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptRound2_2.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\RptRound2_OLD.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptRound2_OLD.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\RptRound1_03.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptRound1_03.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="Reports\AdhocReport_Page25.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>AdhocReport_Page25.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Content Include="Reports\RptRound1_01_NationCondition.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptRound1_01_NationCondition.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="Resources\Application\Application.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Application.en.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Application\Application.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Layout\Layout.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Layout.en.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Layout\Layout.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Layout.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\LoginPartial\LoginPartial.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LoginPartial.en.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\LoginPartial\LoginPartial.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LoginPartial.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>46290</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/pechyod10</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

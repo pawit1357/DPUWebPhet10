@@ -1,0 +1,45 @@
+﻿@model DPUWebPhet10.Models.TB_ROLE
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Managementlayout.cshtml";
+}
+<div class="full_w">
+    <div class="h_title">
+        Manage pages - Create Role</div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true)
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.NAME)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.NAME)
+                    @Html.ValidationMessageFor(model => model.NAME)
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.DESCRIPTON)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.DESCRIPTON)
+                    @Html.ValidationMessageFor(model => model.DESCRIPTON)
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.STATUS)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.STATUS)
+                    @Html.ValidationMessageFor(model => model.STATUS)
+                </div>
+            
+        <div class="entry">
+            <div class="sep"></div>
+            <button type="submit" class="add">บันทึก</button>
+            <a class="button" href="/Role/Index">ยกเลิก</a> 
+        </div>        
+        }
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

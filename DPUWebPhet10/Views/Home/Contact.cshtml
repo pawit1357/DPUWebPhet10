@@ -1,0 +1,101 @@
+﻿@{
+    
+    if (@HttpContext.Current.Session["PhetCulture"].ToString().Equals("en"))
+    {
+        ViewBag.PageContent = "Contact";
+    }
+    else
+    {
+        ViewBag.PageContent = "ติดต่อ";
+    }    
+
+}
+<br />
+<br />
+@if (@HttpContext.Current.Session["PhetCulture"].ToString().Equals("en"))
+{
+    <div style="margin-left: 20px">
+        For further information please contact :
+        <blockquote>
+            <ul>
+                <li><span style="color: #4b0082;"><strong>Foundation Education Level </strong></span>
+                    <ul>
+                        <li><strong>Traimitr Widhyalai School, </strong>
+                            <br />
+                            660 Talat Noi Subdistrict, Samphanthawong District, Bangkok 10100, &nbsp;<br />
+                            Tel. 0-2222-5863, 0-2623-0904-5 ext. 101
+                            <br />
+                            Fax. 0-2222-5863 &nbsp;&nbsp; OR<br />
+                            &nbsp;</li>
+                        <li><strong>Dhurakij Pundit University, </strong>&nbsp;<br />
+                            110/1-4 Prachachuen Road, Laksi, Bangkok 10210, &nbsp;<br />
+                            Tel.0-2222-5863, 0-2954-7300 ext. 899, &nbsp;&nbsp;&nbsp;<br />
+                            Fax. 0-2222-5863,&nbsp;&nbsp;<br />
+                            Email: petch@dpu.ac.th&nbsp;</li>
+                    </ul>
+                </li>
+                <li><span style="color: #4b0082;"><strong>Tertiary Education Level </strong></span>
+                    <ul>
+                        <li><strong>Dhurakij Pundit University, </strong>&nbsp;<br />
+                            110/1-4 Prachachuen Road, Laksi, Bangkok 10210, &nbsp;<br />
+                            Tel. 0-2222-5863, 0-2954-7300 ext. 899, &nbsp;&nbsp;&nbsp;<br />
+                            Fax. 0-2222-5863&nbsp;&nbsp;<br />
+                            Email: petch@dpu.ac.th&nbsp;</li>
+                    </ul>
+                </li>
+            </ul>
+        </blockquote>
+    </div>    
+    <p style="margin-left: 40px">
+        &nbsp;</p>
+    <blockquote>
+        <p>
+            <strong><span style="color: #b22222">A map travels to come to Dhurakij Pundit university
+                (click for see large-sized picture)</span></strong></p>
+    </blockquote>    
+}
+else
+{
+    <div style="margin-left: 20px">
+        <blockquote>
+            <ul>
+                <li><span style="color: #4b0082;"><strong>ระดับการศึกษาขั้นพื้นฐาน</strong></span>
+                    <ul>
+                        <li><strong>โรงเรียนไตรมิตรวิทยาลัย</strong><br />
+                            เลขที่ 661 แขวงตลาดน้อย เขตสัมพันธวงศ์ กรุงเทพมหานคร 10100 &nbsp;<br />
+                            โทรศัพท์ 0-2222-5863, 0-2623-0904-5 ต่อ 101<br />
+                            โทรสาร 0-2222-5863&nbsp;&nbsp; หรือ<br />
+                            &nbsp;</li>
+                        <li><strong>มหาวิทยาลัยธุรกิจบัณฑิตย์</strong>&nbsp;<br />
+                            เลขที่ 110/1-4 ถนนประชาชื่น หลักสี่ กรุงเทพมหานคร 10210 &nbsp;<br />
+                            โทรศัพท์ 0-2222-5863, 0-2954-7300&nbsp; ต่อ 899&nbsp;&nbsp;&nbsp;<br />
+                            โทรสาร 0-2222-5863&nbsp;&nbsp;<br />
+                            E-mail&nbsp; :&nbsp; petch@dpu.ac.th&nbsp;</li>
+                    </ul>
+                </li>
+                <li><span style="color: #4b0082;"><strong>ระดับอุดมศึกษา</strong></span>
+                    <ul>
+                        <li><strong>มหาวิทยาลัยธุรกิจบัณฑิตย์</strong>&nbsp;<br />
+                            เลขที่ 110/1-4 ถนนประชาชื่น หลักสี่ กรุงเทพมหานคร 10210 &nbsp;<br />
+                            โทรศัพท์ 0-2222-5863, 0-2954-7300&nbsp; ต่อ 899&nbsp;&nbsp;&nbsp;<br />
+                            โทรสาร 0-2222-5863&nbsp;&nbsp;<br />
+                            E-mail&nbsp; :&nbsp; petch@dpu.ac.th&nbsp;</li>
+                    </ul>
+                </li>
+            </ul>
+        </blockquote>
+    </div>
+    <p style="margin-left: 40px">
+        &nbsp;</p>
+    <blockquote>
+        <p>
+            <strong><span style="color: #b22222">แผนที่เดินทางมามหาวิทยาลัยธุรกิจบัณฑิตย์ (คลิกเพื่อดูภาพขนาดใหญ่)</span></strong></p>
+    </blockquote>
+}
+<p>
+    <font face="Tahoma"><span style="font-size: 12px"><a href="/Images/Map_DPU_new.jpg"
+        target="_blank">
+        <img alt="" src="/Images/Map_DPU_new_s.jpg" style="border-bottom: 0px solid; border-left: 0px solid;
+            width: 500px; height: 735px; border-top: 0px solid; border-right: 0px solid" /></a></span></font></p>
+<p>
+    &nbsp;</p>

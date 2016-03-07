@@ -1,0 +1,37 @@
+﻿@model DPUWebPhet10.Models.TB_ROLE
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Managementlayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>TB_ROLE</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NAME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DESCRIPTON)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DESCRIPTON)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.STATUS)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.STATUS)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

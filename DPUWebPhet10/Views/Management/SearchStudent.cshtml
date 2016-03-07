@@ -1,0 +1,156 @@
+﻿@model DPUWebPhet10.Models.ConfirmDocumentModel
+@{
+    Layout = "~/Views/Shared/_Managementlayout.cshtml";
+}
+@{
+
+    String userrole = (String)Session["ROLE"];
+    String[] userPermission = (String[])Session["ROLE_PERMISSION"];
+
+
+    <div class="full_w" style="width: 715px">
+        <div class="h_title" style="width: 700px">
+            Manage pages - พิมพ์เอกสารยืนยันการสมัคร
+        </div>
+        <h2></h2>
+        @using (Html.BeginForm())
+        {
+            <span>เลขประจำตัวสอบ</span>
+            @Html.TextBoxFor(model => model.schoolName, new { @class = "field small-field" })
+            <input type="submit" class="button" value="ค้นหา" />
+            <div class="entry">
+                <div class="sep">
+                </div>
+            </div>
+
+            <table>
+                <tr>
+                    <th style="width: 100px;">
+                        เลขประจำตัว
+                    </th>
+                    <th style="width: 100px;">
+                        คำนำหน้า
+                    </th>
+                    <th style="width: 100px;">
+                        ชื่อ
+                    </th>
+                    <th style="width: 150px;">
+                        นามสกุล
+                    </th>
+                    <th style="width: 150px;">
+                        ระดับชั้น
+                    </th>
+                    <th style="width: 150px;">
+                        ที่นั่ง/ห้องสอบ
+                    </th>
+                    <th style="width: 150px;">
+                        โรงเรียน
+                    </th>
+                    <th style="width: 80px;">
+                        สถานะ
+                    </th>
+                    <th style="width: 80px;">
+                        แก้ไข
+                    </th>
+                </tr>
+                @if (Model.students != null)
+                {
+                    if (Model.students.Count > 0)
+                    {
+                        foreach (var item in Model.students)
+                        {
+                            <tr>
+                                <td style="width: 120px; text-align: left;">
+                                    @*@String.Format("{0:G}", item.TB_STUDENT_SEAT.STUDENT_CODE)*@
+
+                                </td>
+                                <td style="width: 80px; text-align: center;">
+                                    <select id="STD_TITLE_IDs@(item.STD_TITLE_ID)" name="STD_TITLE_IDs">
+                                        <option value="0">-- เลือก --</option>
+                                        <option value="1" @(item.STD_TITLE_ID == 1 ? "selected" : "")>เด็กชาย</option>
+                                        <option value="2" @(item.STD_TITLE_ID == 2 ? "selected" : "")>เด็กหญิง</option>
+                                        <option value="3" @(item.STD_TITLE_ID == 3 ? "selected" : "")>นาย</option>
+                                        <option value="4" @(item.STD_TITLE_ID == 4 ? "selected" : "")>นางสาว</option>
+                                    </select>
+                                    @*@Html.DisplayFor(modelItem => item.TB_M_TITLE.TITLE_NAME_TH)*@
+                                </td>
+                                <td style="width: 80px; text-align: center;">
+                                    <input id="names@(item.STD_NAME)" name="names" type="text" value="@(item.STD_NAME)" /> 
+
+                                    @*@Html.EditorFor(modelItem => item.STD_NAME, new { STD_NAME = 10 })*@
+                                </td>
+                                <td style="width: 80px; text-align: center;">
+                                    @*@Html.EditorFor(modelItem => item.STD_SURNAME)*@
+                                    <input id="surnames@(item.STD_SURNAME)" name="surnames" type="text" value="@(item.STD_SURNAME)" />
+
+                                </td>
+                                <td style="width: 80px; text-align: center;">
+
+                                    <select id="SelectedLevelIDs@(item.STD_LEVEL_ID)" name="SelectedLevelIDs">
+                                        <option value="0">-- เลือก --</option>
+                                        <option value="1" @(item.STD_LEVEL_ID == 1 ? "selected" : "")>ประถมศึกษาตอนต้น</option>
+                                        <option value="2" @(item.STD_LEVEL_ID == 2 ? "selected" : "")>ประถมศึกษาตอนปลาย</option>
+                                        <option value="3" @(item.STD_LEVEL_ID == 3 ? "selected" : "")>มัธยมศึกษาตอนต้น</option>
+                                        <option value="4" @(item.STD_LEVEL_ID == 4 ? "selected" : "")>มัธยมศึกษาตอนปลาย</option>
+                                        <option value="5" @(item.STD_LEVEL_ID == 5 ? "selected" : "")>อุดมศึกษา</option>
+                                    </select>
+
+                                </td>
+                                <td style="width: 100px; text-align: center;">
+
+                                    @Html.DisplayFor(modelItem => item.STD_EMAIL)/
+                                    @Html.DisplayFor(modelItem => item.TB_STUDENT_SEAT.TB_ROOM.ROOM_NUMBER)
+                                </td>
+                                <td style="width: 150px; text-align: center;">
+                                    @Html.DisplayFor(modelItem => item.TB_APPLICATION_SCHOOL.SCHOOL_NAME)
+                                </td>
+                                <td style="width: 150px; text-align: center;">
+                                    @Html.DisplayFor(modelItem => item.TB_M_STATUS.STATUS_NAME_TH)
+                                </td>
+                                <td style="width: 80px; text-align: center;">
+                                    <button name="action" type="submit" class="button edit" value="adjust">เปลี่ยน</button>
+                                    @*@Html.ActionLink("แก้ไข", "AdjustStudentLevel", new { id = item.STD_ID, levelid = item.STD_LEVEL_ID })*@
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <div class="n_error">
+                            <p>
+                                ไม่พบข้อมูล
+                            </p>
+                        </div>
+                    }
+                }
+            </table>
+        }
+    </div>@*
+        @{
+
+            }
+
+            <% using (Html.BeginForm()) { %>
+            <%= Html.DropDownListFor(x => x.ValueId, Model.Values) %>
+            <br/>
+            <%= Html.EditorFor(x => x.NewValue) %>
+            <%= Html.ActionLink("Suggest Value", "New", "NewValue", null, new { id = "new-value-link" }) %>
+            <button type="submit">OK</button>
+        <% } %>*@
+    <br />
+    <button type="submit"></button>
+
+
+
+    <div id="dialog"></div>
+}
+@section Scripts {
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+
+
+        });
+    </script>
+}

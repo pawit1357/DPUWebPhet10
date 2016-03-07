@@ -1,0 +1,25 @@
+﻿@model DPUWebPhet10.Models.TB_ROOM
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Managementlayout.cshtml";
+}
+<div class="full_w">
+    <div class="h_title">
+        Manage pages - Delete Room</div>
+    <h3>
+        Are you sure you want to delete this?</h3>
+    <div class="display-field">
+        ROOM: @Html.DisplayFor(model => model.ROOM_NUMBER)
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        <div class="entry">
+            <div class="sep">
+            </div>
+            <button type="submit" class="cancel">
+                ลบ</button>
+            <a class="button" href="/Room/Index">ยกเลิก</a>
+        </div>
+    }
+</div>

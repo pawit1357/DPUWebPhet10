@@ -1,0 +1,38 @@
+﻿@model IEnumerable<DPUWebPhet10.Models.TB_APPLICATION_SCHOOL>
+@{
+    ViewBag.Title = "Index";
+}
+@{
+    <br />
+    var grid = new WebGrid(Model, rowsPerPage: 10, ajaxUpdateContainerId: "worksajaxgrid", ajaxUpdateCallback: "ajaxUpdate_Callback");
+   
+    <div class="table">
+        @grid.GetHtml(
+                                       tableStyle: "gridTable",
+                                              headerStyle: "",
+                                              footerStyle: "pagging",
+                                              alternatingRowStyle: "",
+                                              selectedRowStyle: "",
+                                              rowStyle: "",
+   columns: grid.Columns(
+
+                            grid.Column(header: "#", format: item => item.WebGrid.Rows.IndexOf(item) + 1),
+                            grid.Column("SCHOOL_NAME", "สถาบัน", canSort: false, style: "px300"),
+
+                      grid.Column(
+                 header: "เอกสาร",
+                //columnName: "SCHOOL_NAME",
+                          format: (item) => item.SCHOOL_DOC_PATH == null ? @Html.Raw("") : Html.ActionLink(
+                                       "ตรวจสอบ", "../SchoolDocument/Index", new { ID = @item.SCHOOL_ID }
+                 )
+
+
+),
+                //grid.Column(@DPUWebPhet10.Resources.School.School.SCHOOL_DOC_PATH, format: (item) => item.SCHOOL_DOC_PATH == null ? @Html.Raw("") : @Html.ActionLink("Download", "Index", new { Controller = "SchoolDocument", file = @item.SCHOOL_ID }), canSort: false),
+                                     grid.Column("TB_M_STATUS.STATUS_NAME_TH", "สถานะใบสมัคร", canSort: false, style: "px300")
+                //grid.Column(@DPUWebPhet10.Resources.School.School.SCHOOL_APPROVED_STATUS, format: (item) => @Html.Raw(((string)item.SCHOOL_APPROVED_STATUS).Equals("Y") ? @DPUWebPhet10.Resources.Common.Common.LB014 : @DPUWebPhet10.Resources.Common.Common.LB015), canSort: false)
+                //grid.Column(@DPUWebPhet10.Resources.Common.Common.LB007, format: (item) => Html.ActionLink(@DPUWebPhet10.Resources.Common.Common.LB007, "Edit", new { id = item.SCHOOL_ID }), canSort: false)
+             )
+ )
+    </div>
+}

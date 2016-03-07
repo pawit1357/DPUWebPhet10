@@ -1,0 +1,146 @@
+﻿@model DPUWebPhet10.Models.Round1ReportModelCriteria
+@using DPUWebPhet10.Helpers
+@using PagedList.Mvc;
+@{
+    Layout = "~/Views/Shared/_Managementlayout.cshtml";
+}
+@{
+    <div class="full_w"  style="width: 850px">
+        <div class="h_title">
+            Manage pages - รายงานส่ง SMS</div>
+        @using (Html.BeginForm("Round1Report03", "Report"))
+        {
+            @Html.Label("เลือกช่วงชั้น")
+
+            @Html.DropDownListFor(model => model.studentLevel, new SelectList(
+                      new List<Object>{ 
+                           new { value = 0 , text = "-- ทั้งหมด --"  },
+                           new { value = 1 , text = "ช่วงชั้นที่ 1 ประถมศึกษาปีที่ 1-3"  },
+                           new { value = 2 , text = "ช่วงชั้นที่ 2 ประถมศึกษาปีที่ 4-6" },
+                           new { value = 3 , text = "ช่วงชั้นที่ 3 มัธยมศึกษาปีที่ 1-3"},
+                           new { value = 4 , text = "ช่วงชั้นที่ 4 มัธยมศึกษาปีที่ 4-6"},
+                           new { value = 5 , text = "อุดมศึกษา"}
+                        },
+                      "value",
+                      "text",
+                                      0), new { style = "width: 200px" })
+            <button name="action" type="submit" class="button add" value="search">
+                แสดง</button>
+            <div class="sep">
+            </div>
+
+        
+        if (Model.reports != null)
+        {
+            
+            <table  style="width: 820px">
+                <thead>
+                    <tr>
+                        <th>
+                            ลำดับที่
+                        </th>
+                        <th>
+                            เลขประจำตัวสอบ
+                        </th>
+                        <th>
+                            ชื่อ-นามสกุล
+                        </th>
+                        <th>
+                            โรงเรียน
+                        </th>
+                        <th>
+                            จังหวัด
+                        </th>
+                        <th>
+                            คะแนน
+                        </th>
+                        <th>
+                            หมายเหตุ
+                        </th>
+@*                        <th>
+                        ปรับเปลี่ยน
+                        </th>*@
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var result in Model.reports)
+                    {
+                        <tr >
+                            <td >
+                                @result.seq
+                            </td>
+                            <td>@result.studentCode
+                            </td>
+                            <td>@result.studentFullName
+                            </td>
+                            <td>@result.schoolName
+                            </td>
+                            <td>@result.province
+                            </td>
+                            <td>@result.round1score
+                            </td>
+@*                            <td>@result.remark
+                            </td>*@
+                            <td>
+                            <input type="hidden" name="SelectedStudentIDs" value="@result.studentCode" />
+                            <select id="SelectedStudentIDs@(result.studentCode)" name="SelectedPrizeValueIDs" style="width: 150px">
+
+                                <option value="0" @(result.prize_id == 0 ? "selected" : "" )>-- select --</option>
+                                <option value="1" @(result.prize_id == 1 ? "selected" : "" )>เข้ารอบเพชรยอดมงกุฏ</option>
+                                <option value="2" @(result.prize_id == 2 ? "selected" : "" )>รางวัลชมเชย</option>
+                                <option value="3" @(result.prize_id == 3 ? "selected" : "" )>รางวัลผ่านเกณฑ์</option>
+                                <option value="4" @(result.prize_id == 4 ? "selected" : "" )>-</option>
+                            </select>                            
+                            
+                            </td>
+                        </tr>
+                        if (result.seq == 10||result.seq == 50||result.seq == 100)
+                        { 
+                            <tr>
+                                <td colspan="7" style="text-align:center;color:Red"><span >####################################################################</span></td>
+                            </tr>
+                        }
+                        
+                    }
+@*                    <tr>
+                        <td colspan="7" style="text-align:right">
+            @if(Model.reports.Count >0){
+                <button name="action" type="submit" class="button edit" value="adjust">ปรับบเปลี่ยนลำดับ</button>
+            }                        
+                        </td>
+                    </tr>*@
+
+                </tbody>
+            </table>
+
+        }
+            <div>
+                @Html.PagedListPager(
+                        Model.reports, page => Url.Action("Round1Report03", new RouteValueDictionary() { { "Page", page }, { "studentLevel", Model.studentLevel } }),
+                    PagedListRenderOptions.MinimalWithPageCountText)
+            </div>
+            
+
+                    if (Model.reports.Count > 0)
+                    {                                    
+                        <div class="entry" style="text-align:right;vertical-align:top;">
+                            <div class="sep">
+                            </div>
+                            <span style="font-weight:bolder;">
+                            @Html.Label("เลือกรูปแบบไฟล์")
+                            </span>
+@*                            @Html.ActionImage("Round1ReportExport", new { studentLevel = Model.studentLevel, exportFormat = 1 }, "~/Images/ico-pdf.png", "Edit")  *@                          
+@*                            @Html.ActionImage("Round1ReportExport", new { studentLevel = Model.studentLevel, exportFormat = 2 }, "~/Images/ico-excel.png", "Edit")*@
+                            @Html.ActionImage("Round1ReportExportSMS", new { studentLevel = Model.studentLevel }, "~/Images/ico-excel.png", "Edit")
+                        </div>
+                    }                    
+        }
+    </div>
+
+}
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+        });
+    </script>
+}

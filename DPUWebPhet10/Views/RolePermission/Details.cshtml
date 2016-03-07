@@ -1,0 +1,29 @@
+﻿@model DPUWebPhet10.Models.TB_ROLE_PERMISSION
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>TB_ROLE_PERMISSION</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TB_ROLE.NAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TB_ROLE.NAME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PERMISSION_CODE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PERMISSION_CODE)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

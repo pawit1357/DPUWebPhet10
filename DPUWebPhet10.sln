@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPUWebPhet10", "DPUWebPhet10\DPUWebPhet10.csproj", "{EE406406-8868-4215-98B4-C0252E4ED5F5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{BB98A21B-AB57-4F6A-9006-0AD4CE593E5C}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPU.PhetYod.Test", "DPU.PhetYod.Test\DPU.PhetYod.Test.csproj", "{0311C6BF-AA8C-4922-A58F-EE3C3F81E8A5}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EE406406-8868-4215-98B4-C0252E4ED5F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE406406-8868-4215-98B4-C0252E4ED5F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE406406-8868-4215-98B4-C0252E4ED5F5}.Debug|x64.ActiveCfg = Debug|x64
+		{EE406406-8868-4215-98B4-C0252E4ED5F5}.Debug|x64.Build.0 = Debug|x64
+		{EE406406-8868-4215-98B4-C0252E4ED5F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE406406-8868-4215-98B4-C0252E4ED5F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE406406-8868-4215-98B4-C0252E4ED5F5}.Release|x64.ActiveCfg = Release|Any CPU
+		{EE406406-8868-4215-98B4-C0252E4ED5F5}.Release|x64.Build.0 = Release|Any CPU
+		{0311C6BF-AA8C-4922-A58F-EE3C3F81E8A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0311C6BF-AA8C-4922-A58F-EE3C3F81E8A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0311C6BF-AA8C-4922-A58F-EE3C3F81E8A5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0311C6BF-AA8C-4922-A58F-EE3C3F81E8A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0311C6BF-AA8C-4922-A58F-EE3C3F81E8A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0311C6BF-AA8C-4922-A58F-EE3C3F81E8A5}.Release|x64.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

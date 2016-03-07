@@ -1,0 +1,55 @@
+﻿@model DPUWebPhet10.Models.TB_APPLICATION_STAFF
+@using DPUWebPhet10.Helpers
+<div class="editorStaffRow">
+    @using (Html.BeginCollectionItem("Staffs"))
+    {         
+  
+        <table>
+            <tr>
+                <td style="width: 150px;text-align:center;">
+                    @{ 
+                        String titleName = "";
+                        int id = Convert.ToInt16(Model.STAFF_TITLE_ID);
+                        switch (id)
+                        {
+                            case 3: titleName = "นาย";
+                                break;
+                            case 4: titleName = "นางสาว";
+                                break;
+                            case 5: titleName = "นาง";
+                                break;
+                            case 6: titleName = "อาจารย์";
+                                break;
+                            case 7: titleName = "ผศ.";
+                                break;
+                            case 8: titleName = "รศ.";
+                                break;
+                            case 9: titleName = "ศ.";
+                                break;
+                            case 10: titleName = "ดร.";
+                                break;
+                        }
+                        @Html.Label(titleName);
+                    }
+                </td>
+                <td style="width: 150px;text-align:left;">
+                    @Html.Label(@Model.STAFF_NAME)
+                </td>
+                <td style="width: 150px;text-align:left;">
+                    @Html.Label(@Model.STAFF_SURNAME)
+                </td>
+                <td style="width: 150px;text-align:left;">
+                    @Html.Label(@Model.STAFF_PHONE)
+                </td>
+                <td style="width: 150px">
+                    <label class="delete-staff" style="text-align: left; cursor: pointer;">@DPUWebPhet10.Resources.Application.Application.LB_BUTTON_05</label>
+                </td>
+            </tr>
+        </table>
+
+        @Html.HiddenFor(model => model.STAFF_TITLE_ID)
+        @Html.HiddenFor(model => model.STAFF_NAME)
+        @Html.HiddenFor(model => model.STAFF_SURNAME)
+        @Html.HiddenFor(model => model.STAFF_PHONE)
+    }
+</div>

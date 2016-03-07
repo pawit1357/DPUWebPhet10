@@ -1,0 +1,71 @@
+﻿@model DPUWebPhet10.Models.TB_USER
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>TB_USER</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TB_ROLE.NAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TB_ROLE.NAME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.USERNAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.USERNAME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PASSWORD)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PASSWORD)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TB_M_STATUS.STATUS_NAME_TH)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TB_M_STATUS.STATUS_NAME_TH)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CREATE_BY)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CREATE_BY)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LASTED_LOGIN)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LASTED_LOGIN)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EMAIL)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EMAIL)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CREATE_DATE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CREATE_DATE)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

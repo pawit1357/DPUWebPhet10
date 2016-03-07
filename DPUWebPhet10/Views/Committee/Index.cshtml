@@ -1,0 +1,86 @@
+﻿@model IEnumerable<DPUWebPhet10.Models.TB_COMMITEE>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Managementlayout.cshtml";
+}
+@{
+    var grid = new WebGrid(Model, rowsPerPage: 10, ajaxUpdateContainerId: "worksajaxgrid", ajaxUpdateCallback: "ajaxUpdate_Callback");
+    <div class="full_w">
+        <div class="h_title">
+            Manage pages - กรรมกรรคุมสอบ</div>
+        <p>
+            @using (Html.BeginForm("Importexcel", "Committee", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <p>
+                    <label>
+                        เลือกไฟล์ (*.Excel)</label>
+                    <input style="color: Green" type="file" id="FileUpload1" name="FileUpload1" />
+                    <button type="submit" class="button add">
+                        นำเข้าข้อมูล</button>
+                </p>
+            }
+        </p>
+        <div class="sep">
+        </div>
+        @grid.GetHtml(
+                                     tableStyle: "gridTable",
+                                              headerStyle: "",
+                                              footerStyle: "pagging",
+                                              alternatingRowStyle: "",
+                                             selectedRowStyle: "",
+                                              rowStyle: "",
+   columns: grid.Columns(
+            grid.Column("ลบ",
+            format:
+            @<text><input class="check-box" id="chkCommitee" name="chkCommitee" type="checkbox" value="@item.COMMITEE_ID" /></text>, canSort: false),
+                      grid.Column("TB_M_TITLE.TITLE_NAME_TH", "คำนำหน้า", canSort: false),
+                           grid.Column("COMMITEE_NAME", "ชื่อ-นามสกุล", canSort: false, style: "px300"),
+                      grid.Column("COMMITEE_PHONE", "เบอร์ติดต่อ", canSort: false),
+                 grid.Column("แก้ไข", format: (item) => Html.ActionLink("แก้ไข", "Edit", new { id = item.COMMITEE_ID }, new { @class = "ico edit" }), canSort: false)
+             )
+
+ )
+        <div class="entry">
+            <div class="sep">
+            </div>
+@*            <img id="url_user" src="/images/del.gif" alt="" width="16px" height="16px" />
+            <label id="delete-staff">
+                ลบ</label>*@
+        </div>
+    </div>
+
+    
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Styles.Render("~/Content/themes/base/css")
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#delete-staff").click(function () {
+
+                if (confirm("Are you sure to delete records")) {
+                    $('#gridContent table tr').each(function () {
+
+                        if ($(this).find("input[id*='chkCommitee']").length > 0) {
+                            if ($(this).find("input[id*='chkCommitee']")[0].checked == true) {
+                                var id = $(this).find("input[id*='chkCommitee']").attr("value");
+                                var data = { ID: id };
+
+                                var temp = $(this);
+                                $.getJSON("/Committee/Delete", data, function (response) {
+                                    if (response == true) {
+                                        temp.remove();
+                                    }
+                                });
+                            }
+                        }
+                    });
+                }
+            });
+
+
+        });
+    </script>
+}

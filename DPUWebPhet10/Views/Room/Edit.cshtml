@@ -1,0 +1,284 @@
+﻿@model DPUWebPhet10.Models.TB_ROOM
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Managementlayout.cshtml";
+}
+<div class="full_w">
+    <div class="h_title">
+        Manage pages - Edit Room</div>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+
+
+        @Html.HiddenFor(model => model.ROOM_ID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ROOM_FOR_LEVEL, "TB_M_LEVEL")
+        </div>
+        <div class="editor-field">
+            <select id="ROOM_FOR_LEVEL" name="ROOM_FOR_LEVEL">
+                <option value="0" @(Model.ROOM_FOR_LEVEL == 0 ? "selected" : "")>-- เลือก --</option>
+                <option value="1"@(Model.ROOM_FOR_LEVEL == 1 ? "selected" : "")>ประถมศึกษาตอนต้น</option>
+                <option value="2"@(Model.ROOM_FOR_LEVEL == 2 ? "selected" : "")>ประถมศึกษาตอนปลาย</option>
+                <option value="3"@(Model.ROOM_FOR_LEVEL == 3 ? "selected" : "")>มัธยมศึกษาตอนต้น</option>
+                <option value="4"@(Model.ROOM_FOR_LEVEL == 4 ? "selected" : "")>มัธยมศึกษาตอนปลาย</option>
+                <option value="5"@(Model.ROOM_FOR_LEVEL == 5 ? "selected" : "")>อุดมศึกษา</option>
+                <option value="6"@(Model.ROOM_FOR_LEVEL == 6 ? "selected" : "")>ทุกระดับชั้น</option>
+            </select>
+@*            @Html.DropDownList("ROOM_FOR_LEVEL", String.Empty)*@
+            @Html.ValidationMessageFor(model => model.ROOM_FOR_LEVEL)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ROOM_BUILD, "TB_M_BUILDING")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("ROOM_BUILD", String.Empty)
+            @Html.ValidationMessageFor(model => model.ROOM_BUILD)
+        </div>
+
+@*        <div class="editor-label">
+            @Html.LabelFor(model => model.ROOM_FLOOR)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ROOM_FLOOR)
+            @Html.ValidationMessageFor(model => model.ROOM_FLOOR)
+        </div>*@
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ROOM_NUMBER)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ROOM_NUMBER)
+            @Html.ValidationMessageFor(model => model.ROOM_NUMBER)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ROOM_SEAT_COUNT)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ROOM_SEAT_COUNT)
+            @Html.ValidationMessageFor(model => model.ROOM_SEAT_COUNT)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ROOM_COMMITTEE_COUNT)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ROOM_COMMITTEE_COUNT)
+            @Html.ValidationMessageFor(model => model.ROOM_COMMITTEE_COUNT)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ROOM_ROW)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ROOM_ROW)
+            @Html.ValidationMessageFor(model => model.ROOM_ROW)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ROW_1)
+        </div>
+        <div class="editor-field">
+            <select id="ROW_1" name="ROW_1">
+                <option value="0" @(Model.ROW_1 == 0 ? "selected" : "")>-- เลือก --</option>
+                <option value="1"@(Model.ROW_1 == 1 ? "selected" : "")>ประถมศึกษาตอนต้น</option>
+                <option value="2"@(Model.ROW_1 == 2 ? "selected" : "")>ประถมศึกษาตอนปลาย</option>
+                <option value="3"@(Model.ROW_1 == 3 ? "selected" : "")>มัธยมศึกษาตอนต้น</option>
+                <option value="4"@(Model.ROW_1 == 4 ? "selected" : "")>มัธยมศึกษาตอนปลาย</option>
+                <option value="5"@(Model.ROW_1 == 5 ? "selected" : "")>อุดมศึกษา</option>
+                <option value="5"@(Model.ROW_1 == 6 ? "selected" : "")>ทุกระดับชั้น</option>
+            </select>
+            @Html.ValidationMessageFor(model => model.ROW_1)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ROW_2)
+        </div>
+        <div class="editor-field">
+            <select id="ROW_2" name="ROW_2">
+                <option value="0" @(Model.ROW_2 == 0 ? "selected" : "")>-- เลือก --</option>
+                <option value="1"@(Model.ROW_2 == 1 ? "selected" : "")>ประถมศึกษาตอนต้น</option>
+                <option value="2"@(Model.ROW_2 == 2 ? "selected" : "")>ประถมศึกษาตอนปลาย</option>
+                <option value="3"@(Model.ROW_2 == 3 ? "selected" : "")>มัธยมศึกษาตอนต้น</option>
+                <option value="4"@(Model.ROW_2 == 4 ? "selected" : "")>มัธยมศึกษาตอนปลาย</option>
+                <option value="5"@(Model.ROW_2 == 5 ? "selected" : "")>อุดมศึกษา</option>
+                <option value="5"@(Model.ROW_2 == 6 ? "selected" : "")>ทุกระดับชั้น</option>
+            </select>
+            @Html.ValidationMessageFor(model => model.ROW_2)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ROW_3)
+        </div>
+        <div class="editor-field">
+            <select id="ROW_3" name="ROW_3">
+                <option value="0" @(Model.ROW_3 == 0 ? "selected" : "")>-- เลือก --</option>
+                <option value="1"@(Model.ROW_3 == 1 ? "selected" : "")>ประถมศึกษาตอนต้น</option>
+                <option value="2"@(Model.ROW_3 == 2 ? "selected" : "")>ประถมศึกษาตอนปลาย</option>
+                <option value="3"@(Model.ROW_3 == 3 ? "selected" : "")>มัธยมศึกษาตอนต้น</option>
+                <option value="4"@(Model.ROW_3 == 4 ? "selected" : "")>มัธยมศึกษาตอนปลาย</option>
+                <option value="5"@(Model.ROW_3 == 5 ? "selected" : "")>อุดมศึกษา</option>
+                <option value="5"@(Model.ROW_3 == 6 ? "selected" : "")>ทุกระดับชั้น</option>
+            </select>
+            @Html.ValidationMessageFor(model => model.ROW_3)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ROW_4)
+        </div>
+        <div class="editor-field">
+            <select id="ROW_4" name="ROW_4">
+                <option value="0" @(Model.ROW_4 == 0 ? "selected" : "")>-- เลือก --</option>
+                <option value="1"@(Model.ROW_4 == 1 ? "selected" : "")>ประถมศึกษาตอนต้น</option>
+                <option value="2"@(Model.ROW_4 == 2 ? "selected" : "")>ประถมศึกษาตอนปลาย</option>
+                <option value="3"@(Model.ROW_4 == 3 ? "selected" : "")>มัธยมศึกษาตอนต้น</option>
+                <option value="4"@(Model.ROW_4 == 4 ? "selected" : "")>มัธยมศึกษาตอนปลาย</option>
+                <option value="5"@(Model.ROW_4 == 5 ? "selected" : "")>อุดมศึกษา</option>
+                <option value="5"@(Model.ROW_4 == 6 ? "selected" : "")>ทุกระดับชั้น</option>
+            </select>
+            @Html.ValidationMessageFor(model => model.ROW_4)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ROW_5)
+        </div>
+        <div class="editor-field">
+            <select id="ROW_5" name="ROW_5">
+                <option value="0" @(Model.ROW_5 == 0 ? "selected" : "")>-- เลือก --</option>
+                <option value="1"@(Model.ROW_5 == 1 ? "selected" : "")>ประถมศึกษาตอนต้น</option>
+                <option value="2"@(Model.ROW_5 == 2 ? "selected" : "")>ประถมศึกษาตอนปลาย</option>
+                <option value="3"@(Model.ROW_5 == 3 ? "selected" : "")>มัธยมศึกษาตอนต้น</option>
+                <option value="4"@(Model.ROW_5 == 4 ? "selected" : "")>มัธยมศึกษาตอนปลาย</option>
+                <option value="5"@(Model.ROW_5 == 5 ? "selected" : "")>อุดมศึกษา</option>
+                <option value="5"@(Model.ROW_5 == 6 ? "selected" : "")>ทุกระดับชั้น</option>
+            </select>
+            @Html.ValidationMessageFor(model => model.ROW_5)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ROW_6)
+        </div>
+        <div class="editor-field">
+            <select id="ROW_6" name="ROW_6">
+                <option value="0" @(Model.ROW_6 == 0 ? "selected" : "")>-- เลือก --</option>
+                <option value="1"@(Model.ROW_6 == 1 ? "selected" : "")>ประถมศึกษาตอนต้น</option>
+                <option value="2"@(Model.ROW_6 == 2 ? "selected" : "")>ประถมศึกษาตอนปลาย</option>
+                <option value="3"@(Model.ROW_6 == 3 ? "selected" : "")>มัธยมศึกษาตอนต้น</option>
+                <option value="4"@(Model.ROW_6 == 4 ? "selected" : "")>มัธยมศึกษาตอนปลาย</option>
+                <option value="5"@(Model.ROW_6 == 5 ? "selected" : "")>อุดมศึกษา</option>
+                <option value="5"@(Model.ROW_6 == 6 ? "selected" : "")>ทุกระดับชั้น</option>
+            </select>
+            @Html.ValidationMessageFor(model => model.ROW_6)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ROW_7)
+        </div>
+        <div class="editor-field">
+            <select id="ROW_7" name="ROW_7">
+                <option value="0" @(Model.ROW_7 == 0 ? "selected" : "")>-- เลือก --</option>
+                <option value="1"@(Model.ROW_7 == 1 ? "selected" : "")>ประถมศึกษาตอนต้น</option>
+                <option value="2"@(Model.ROW_7 == 2 ? "selected" : "")>ประถมศึกษาตอนปลาย</option>
+                <option value="3"@(Model.ROW_7 == 3 ? "selected" : "")>มัธยมศึกษาตอนต้น</option>
+                <option value="4"@(Model.ROW_7 == 4 ? "selected" : "")>มัธยมศึกษาตอนปลาย</option>
+                <option value="5"@(Model.ROW_7 == 5 ? "selected" : "")>อุดมศึกษา</option>
+                <option value="5"@(Model.ROW_7 == 6 ? "selected" : "")>ทุกระดับชั้น</option>
+            </select>
+            @Html.ValidationMessageFor(model => model.ROW_7)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ROW_8)
+        </div>
+        <div class="editor-field">
+            <select id="ROW_8" name="ROW_8">
+                <option value="0" @(Model.ROW_8 == 0 ? "selected" : "")>-- เลือก --</option>
+                <option value="1"@(Model.ROW_8 == 1 ? "selected" : "")>ประถมศึกษาตอนต้น</option>
+                <option value="2"@(Model.ROW_8 == 2 ? "selected" : "")>ประถมศึกษาตอนปลาย</option>
+                <option value="3"@(Model.ROW_8 == 3 ? "selected" : "")>มัธยมศึกษาตอนต้น</option>
+                <option value="4"@(Model.ROW_8 == 4 ? "selected" : "")>มัธยมศึกษาตอนปลาย</option>
+                <option value="5"@(Model.ROW_8 == 5 ? "selected" : "")>อุดมศึกษา</option>
+                <option value="5"@(Model.ROW_8 == 6 ? "selected" : "")>ทุกระดับชั้น</option>
+            </select>
+            @Html.ValidationMessageFor(model => model.ROW_8)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ROW_9)
+        </div>
+        <div class="editor-field">
+            <select id="ROW_9" name="ROW_9">
+                <option value="0" @(Model.ROW_9 == 0 ? "selected" : "")>-- เลือก --</option>
+                <option value="1"@(Model.ROW_9 == 1 ? "selected" : "")>ประถมศึกษาตอนต้น</option>
+                <option value="2"@(Model.ROW_9 == 2 ? "selected" : "")>ประถมศึกษาตอนปลาย</option>
+                <option value="3"@(Model.ROW_9 == 3 ? "selected" : "")>มัธยมศึกษาตอนต้น</option>
+                <option value="4"@(Model.ROW_9 == 4 ? "selected" : "")>มัธยมศึกษาตอนปลาย</option>
+                <option value="5"@(Model.ROW_9 == 5 ? "selected" : "")>อุดมศึกษา</option>
+                <option value="5"@(Model.ROW_9 == 6 ? "selected" : "")>ทุกระดับชั้น</option>
+            </select>
+            @Html.ValidationMessageFor(model => model.ROW_9)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ROW_10)
+        </div>
+        <div class="editor-field">
+            <select id="ROW_10" name="ROW_10">
+                <option value="0" @(Model.ROW_10 == 0 ? "selected" : "")>-- เลือก --</option>
+                <option value="1"@(Model.ROW_10 == 1 ? "selected" : "")>ประถมศึกษาตอนต้น</option>
+                <option value="2"@(Model.ROW_10 == 2 ? "selected" : "")>ประถมศึกษาตอนปลาย</option>
+                <option value="3"@(Model.ROW_10 == 3 ? "selected" : "")>มัธยมศึกษาตอนต้น</option>
+                <option value="4"@(Model.ROW_10 == 4 ? "selected" : "")>มัธยมศึกษาตอนปลาย</option>
+                <option value="5"@(Model.ROW_10 == 5 ? "selected" : "")>อุดมศึกษา</option>
+                <option value="5"@(Model.ROW_10 == 6 ? "selected" : "")>ทุกระดับชั้น</option>
+            </select>
+            @Html.ValidationMessageFor(model => model.ROW_10)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ROW_11)
+        </div>
+        <div class="editor-field">
+            <select id="ROW_11" name="ROW_11">
+                <option value="0" @(Model.ROW_11 == 0 ? "selected" : "")>-- เลือก --</option>
+                <option value="1"@(Model.ROW_11 == 1 ? "selected" : "")>ประถมศึกษาตอนต้น</option>
+                <option value="2"@(Model.ROW_11 == 2 ? "selected" : "")>ประถมศึกษาตอนปลาย</option>
+                <option value="3"@(Model.ROW_11 == 3 ? "selected" : "")>มัธยมศึกษาตอนต้น</option>
+                <option value="4"@(Model.ROW_11 == 4 ? "selected" : "")>มัธยมศึกษาตอนปลาย</option>
+                <option value="5"@(Model.ROW_11 == 5 ? "selected" : "")>อุดมศึกษา</option>
+                <option value="5"@(Model.ROW_11 == 6 ? "selected" : "")>ทุกระดับชั้น</option>
+            </select>
+            @Html.ValidationMessageFor(model => model.ROW_11)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ROW_12)
+        </div>
+        <div class="editor-field">
+            <select id="ROW_12" name="ROW_12">
+                <option value="0" @(Model.ROW_12 == 0 ? "selected" : "")>-- เลือก --</option>
+                <option value="1"@(Model.ROW_12 == 1 ? "selected" : "")>ประถมศึกษาตอนต้น</option>
+                <option value="2"@(Model.ROW_12 == 2 ? "selected" : "")>ประถมศึกษาตอนปลาย</option>
+                <option value="3"@(Model.ROW_12 == 3 ? "selected" : "")>มัธยมศึกษาตอนต้น</option>
+                <option value="4"@(Model.ROW_12 == 4 ? "selected" : "")>มัธยมศึกษาตอนปลาย</option>
+                <option value="5"@(Model.ROW_12 == 5 ? "selected" : "")>อุดมศึกษา</option>
+                <option value="5"@(Model.ROW_12 == 6 ? "selected" : "")>ทุกระดับชั้น</option>
+            </select>
+            @Html.ValidationMessageFor(model => model.ROW_12)
+        </div>
+
+        <div class="entry">
+            <div class="sep">
+            </div>
+            <button type="submit" class="add">
+                บันทึก</button>
+            <a class="button" href="/Room/Index">ยกเลิก</a>
+        </div>    
+    }
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

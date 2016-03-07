@@ -1,0 +1,36 @@
+﻿<!-- End Content -->
+@{
+    Layout = "~/Views/Shared/_Managementlayout.cshtml";
+}
+@{
+    <div class="full_w">
+        <div class="h_title">
+            Manage pages - ประมวลผลกรรมการคุมสอบ</div>
+        <br />
+        <p>
+            <a class="button add" href="/Committee/doProcessCommittee">ประมวลผล</a>
+        </p>
+        <div class="entry">
+            <div class="sep">
+            </div>
+        </div>
+        @if (ViewBag.ResultMsg != null)
+        {
+            <div class="n_ok">
+                <p>
+                    @ViewBag.ResultMsg
+                </p>
+            </div>
+        }
+    </div>
+
+    
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+    <script type="text/javascript">
+        $(document).ready(function () {
+        });
+    </script>
+}

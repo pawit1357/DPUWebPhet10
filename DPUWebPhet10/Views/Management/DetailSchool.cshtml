@@ -1,0 +1,177 @@
+﻿@using DPUWebPhet10.Helpers
+@model DPUWebPhet10.Models.ApplicationModel
+@{
+    Layout = "~/Views/Shared/_Managementlayout.cshtml";
+}
+<div class="full_w">
+    <div class="h_title">
+        Manage pages - แสดงข้อมูลโรงเรียน</div>
+    <h1>
+        ข้อมูลโรงเรียน</h1>
+    <p>
+        @Html.Label("โรงเรียน:", new { @class = "labelDesc" })
+        @Html.DisplayFor(model => model.school.SCHOOL_NAME)
+    </p>
+    <p>
+        @Html.Label("เขตพื้นที่การศึกษา:", new { @class = "labelDesc" })
+        @Html.DisplayFor(model => model.school.SCHOOL_ZONE)
+    </p>
+    <p>
+        @Html.Label("ประเภทโรงเรียน:", new { @class = "labelDesc" })
+        @Html.DropDownList("idSelectedSchoolType", Model.rSchoolTypes, "-- Select --", new { style = "width: 142px", @disabled = "disabled" })
+        @*        @Html.DisplayFor(model => model.school.SCHOOL_TYPE)*@
+    </p>
+    <p>
+        @Html.Label("อื่น ๆ :", new { @class = "labelDesc" })
+        @Html.DisplayFor(model => model.school.SCHOOL_TYPE_OTHER)
+    </p>
+    <p>
+        @Html.Label("ที่อยู่:", new { @class = "labelDesc" })
+        @Html.DisplayFor(model => model.school.SCHOOL_ADDR)
+    </p>
+    <p>
+        @Html.Label("ตรอก/ซอย:", new { @class = "labelDesc" })
+        @Html.DisplayFor(model => model.school.SCHOOL_ADDR_SOI)
+    </p>
+    <p>
+        @Html.Label("ถนน:", new { @class = "labelDesc" })
+        @Html.DisplayFor(model => model.school.SCHOOL_ADDR_ROAD)
+    </p>
+    <p>
+        @Html.Label("แขวง/ตำบล:", new { @class = "labelDesc" })
+        @Html.DisplayFor(model => model.school.TB_M_DISTRICT.DISTRICT_NAME)
+    </p>
+    <p>
+        @Html.Label("อำเภอ:", new { @class = "labelDesc" })
+        @Html.DisplayFor(model => model.school.TB_M_AMPHUR.AMPHUR_NAME)
+    </p>
+    <p>
+        @Html.Label("จังหวัด:", new { @class = "labelDesc" })
+        @Html.DisplayFor(model => model.school.TB_M_PROVINCE.PROVINCE_NAME)
+    </p>
+    <p>
+        @Html.Label("รหัสไปรษณีย์:", new { @class = "labelDesc" })
+        @Html.DisplayFor(model => model.school.SCHOOL_ADDR_ZIPCODE)
+    </p>
+    <p>
+        @Html.Label("เบอร์ติดต่อ:", new { @class = "labelDesc" })
+        @Html.DisplayFor(model => model.school.SCHOOL_ADDR_PHONE)
+    </p>
+    <p>
+        @Html.Label("แฟกซ์:", new { @class = "labelDesc" })
+        @Html.DisplayFor(model => model.school.SCHOOL_ADDR_FAX)
+    </p>
+    @*    <p>
+        @Html.Label("จังหวัด:")
+        @Html.DisplayFor(model => model.school.SCHOOL_PROVINCE)
+    </p>*@
+    <p>
+        @Html.Label("รหัสผ่าน:", new { @class = "labelDesc" })
+        @Html.DisplayFor(model => model.school.SCHOOL_PASSWORD)
+    </p>
+    <p>
+        @Html.Label("อีเมล์:", new { @class = "labelDesc" })
+        @Html.DisplayFor(model => model.school.SCHOOL_EMAIL)
+    </p>
+    <div class="sep">
+    </div>
+    <h1>
+        ข้อมูลผู้ควบคุมดูแล</h1>
+    <table>
+        <tr>
+            <th style="width: 150px; text-align: center; font-weight: bold;">
+                @Html.Label("คำนำหน้าชื่อ", new { style = "text-align:center" })
+            </th>
+            <th style="width: 150px; text-align: left; font-weight: bold;">
+                @Html.Label("ชื่อ", new { style = "text-align:center" })
+            </th>
+            <th style="width: 150px; text-align: left; font-weight: bold;">
+                @Html.Label("นามสกุล", new { style = "text-align:center" })
+            </th>
+            <th style="width: 150px; text-align: left; font-weight: bold;">
+                @Html.Label("โทรศัพท์", new { style = "text-align:center" })
+            </th>
+        </tr>
+        @foreach (var item in Model.Staffs)
+        {
+            <tr>
+                <td style="width: 150px; text-align: center;">
+                    <!-- Teacher title -->
+                    @Html.DisplayFor(modelItem => item.TB_M_TITLE.TITLE_NAME_TH)
+                </td>
+                <td style="width: 150px; text-align: left;">
+                    @Html.DisplayFor(modelItem => item.STAFF_NAME)
+                </td>
+                <td style="width: 150px; text-align: left;">
+                    @Html.DisplayFor(modelItem => item.STAFF_SURNAME)
+                </td>
+                <td style="width: 150px; text-align: left;">
+                    @Html.DisplayFor(modelItem => item.STAFF_PHONE)
+                </td>
+            </tr>
+        }
+    </table>
+    <div class="sep">
+    </div>
+    <h1>
+        ข้อมูลนักเรียน</h1>
+    <table>
+        <tr>
+            <th style="width: 120px; text-align: center; font-weight: bold;">
+                @Html.Label("ระดับชั้น")
+            </th>
+            <th style="width: 80px; text-align: center; font-weight: bold;">
+                @Html.Label("ปีที่")
+            </th>
+            <th style="width: 100px; text-align: center; font-weight: bold;">
+                @Html.Label("คำนำหน้าชื่อ")
+            </th>
+            <th style="width: 150px; text-align: center; font-weight: bold;">
+                @Html.Label("ชื่อ")
+            </th>
+            <th style="width: 150px; text-align: center; font-weight: bold;">
+                @Html.Label("นามสกุล")
+            </th>
+            <th style="width: 80px; text-align: center; font-weight: bold;">
+                @Html.Label("โทรศัพท์")
+            </th>
+        </tr>
+        @foreach (var item in Model.Students)
+        {
+            <tr>
+                <td style="width: 120px; text-align: left;">
+                    @Html.DisplayFor(modelItem => item.TB_M_LEVEL.LEVEL_NAME_TH)
+                </td>
+                <td style="width: 80px; text-align: center;">
+                    @Html.DisplayFor(modelItem => item.STD_GRADE)
+                </td>
+                <td style="width: 100px; text-align: center;">
+                    @Html.DisplayFor(modelItem => item.TB_M_TITLE.TITLE_NAME_TH)
+                </td>
+                <td style="width: 150px; text-align: center;">
+                    @Html.DisplayFor(modelItem => item.STD_NAME)
+                </td>
+                <td style="width: 150px; text-align: center;">
+                    @Html.DisplayFor(modelItem => item.STD_SURNAME)
+                </td>
+                <td style="width: 80px; text-align: center;">
+                    @Html.DisplayFor(modelItem => item.STD_PHONE)
+                </td>
+            </tr>
+        }
+    </table>
+    <h2>@Html.Label("สถานะเอกสาร:")@Model.school.TB_M_STATUS.STATUS_NAME_TH</h2>
+    <div class="entry">
+        <div class="sep">
+        </div>
+        <a class="button" href="/Management/SchoolList">ย้อนกลับ</a>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+          
+    </script>
+}

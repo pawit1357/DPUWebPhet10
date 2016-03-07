@@ -1,0 +1,41 @@
+﻿@model DPUWebPhet10.Models.ProcessStudentModel
+@{
+    Layout = "~/Views/Shared/_Managementlayout.cshtml";
+}
+@{
+    <div class="full_w">
+        <div class="h_title">
+            Manage pages - ประมวลผลที่นั่งสอบ</div>
+        <br />
+        @using (Html.BeginForm())
+        {
+            <p>
+                <span>เลือกระดับชั้น</span>
+                @Html.DropDownList("StudentLevel", String.Empty)
+                <input type="submit" class="button" value="ประมวลผล" />
+            </p>
+        }
+        <div class="entry">
+            <div class="sep">
+            </div>
+        </div>
+        @if (ViewBag.ResultMsg != null)
+        {
+            <div class="n_ok">
+                <p>
+                    @ViewBag.ResultMsg
+                </p>
+            </div>
+        }
+    </div>
+
+    
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+    <script type="text/javascript">
+        $(document).ready(function () {
+        });
+    </script>
+}

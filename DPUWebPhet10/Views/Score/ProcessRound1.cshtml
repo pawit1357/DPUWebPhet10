@@ -1,0 +1,85 @@
+﻿@model DPUWebPhet10.Models.ScoreRound1Model
+@using DPUWebPhet10.Helpers
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "";
+    Layout = "~/Views/Shared/_Managementlayout.cshtml";
+}
+@{
+    
+    <div class="full_w">
+        <div class="h_title">
+            Manage pages - ประมวลผล 100 อันดับ</div>
+        <!-- Content -->
+        <!-- Box Head -->
+        <div>
+            <br />
+            <div class="condition">
+                @using (Html.BeginForm("doProcessRound1", "Score"))
+                { 
+                    <p>
+                        <label>
+                            ระดับชั้น :</label>
+                        <select id="studentLevel" name="studentLevel" style="width: 180px">
+                            <option value="0">-- เลือก --</option>
+                            <option value="1">ประถมศึกษาตอนต้น</option>
+                            <option value="2">ประถมศึกษาตอนปลาย</option>
+                            <option value="3">มัธยมศึกษาตอนต้น</option>
+                            <option value="4">มัธยมศึกษาตอนปลาย</option>
+                            <option value="5">อุดมศึกษา</option>
+                        </select>
+
+                        <button type="submit" class="button add">
+                            ประมวลผล</button>
+                    </p>
+                    
+                    <div class="entry">
+                        <div class="sep">
+                        </div>
+                        <label>
+                            เงื่อนไข</label>
+                        <label>
+                            คะแนนลำดับที่1-10 ชื่อรางวัล : เข้ารอบเพชรยอดมงกุฎ
+                        </label>
+                        <label>
+                            คะแนนลำดับที่ 11-50 ชื่อรางวัล : รางวัลชมเชย
+                        </label>
+                        <label>
+                            คะแนนลำดับที่ 51-100 ชื่อรางวัล : รางวัลผ่านเกณฑ์
+                        </label>
+                        <label>
+                            คะแนนลำดับที่ 101 – คนสุดท้าย ชื่อรางวัล : ว่าง</label>
+                    </div>
+                            
+
+                    <br />
+                }
+                @if (ViewBag.ResultMsg != null)
+                {
+                    <div class="n_ok">
+                        <p>
+                            @ViewBag.ResultMsg
+                        </p>
+                    </div>
+                }
+            </div>
+        </div>
+        <!-- End Content -->
+    </div> 
+}
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+
+        });
+    </script>
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />

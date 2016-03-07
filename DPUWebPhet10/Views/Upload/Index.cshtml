@@ -1,0 +1,95 @@
+﻿@using DPUWebPhet10.Helpers
+@model DPUWebPhet10.Models.UploadModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+@using (Html.BeginForm("Upload", "Upload", FormMethod.Post, new { enctype = "multipart/form-data", id = "myForm" }))
+{
+    
+    @Html.HiddenFor(model => model.school.SCHOOL_ID)
+    @Html.HiddenFor(model => model.school.SCHOOL_ZONE_EDU)
+    @Html.HiddenFor(model => model.school.SCHOOL_ZONE)
+    @Html.HiddenFor(model => model.school.SCHOOL_TYPE)
+    @Html.HiddenFor(model => model.school.SCHOOL_TYPE_OTHER)
+    @Html.HiddenFor(model => model.school.SCHOOL_ADDR)		
+    @Html.HiddenFor(model => model.school.SCHOOL_ADDR_SOI)
+    @Html.HiddenFor(model => model.school.SCHOOL_ADDR_ROAD)
+    @Html.HiddenFor(model => model.school.SCHOOL_ADDR_TOMBON)
+    @Html.HiddenFor(model => model.school.SCHOOL_ADDR_AMPHUR)
+    @Html.HiddenFor(model => model.school.SCHOOL_ADDR_PROVINCE)
+    @Html.HiddenFor(model => model.school.SCHOOL_ADDR_ZIPCODE)
+    @Html.HiddenFor(model => model.school.SCHOOL_ADDR_PHONE)
+    @Html.HiddenFor(model => model.school.SCHOOL_ADDR_FAX)
+    @Html.HiddenFor(model => model.school.SCHOOL_NAME)
+    @Html.HiddenFor(model => model.school.SCHOOL_PROVINCE)
+    @Html.HiddenFor(model => model.school.SCHOOL_PASSWORD)
+    @Html.HiddenFor(model => model.school.SCHOOL_DOC_PATH)
+    @Html.HiddenFor(model => model.school.SCHOOL_REGISTER_DATE)
+    @Html.HiddenFor(model => model.school.SCHOOL_APPROVED_STATUS)
+    @Html.HiddenFor(model => model.school.SCHOOL_EMAIL)
+    @Html.HiddenFor(model => model.school.SCHOOL_CULTURE)
+    @Html.HiddenFor(model => model.school.SCHOOL_ROUND)
+
+    <div class="form">
+        <h1>
+        </h1>
+        <table>
+            <tr>
+            <td>
+            <img src="~/Images/icons/page_add.png" width="16px" height="16px" alt="" />
+            </td>
+                <td>
+                    <input type="file"  id="photo" name="photo" />
+                    <br />
+                </td>
+                <td>
+                    <span style="color: Red">@Html.ValidationMessageFor(model => model.photo_filename)</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!-- Form Buttons -->
+    <div class="buttons">
+        <input type="submit" class="button"  value="บันทึก" />
+        <br />
+    </div>
+    <!-- End Form Buttons -->
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+}
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+
+            $("#photo").makeAsyncUploader({
+                upload_url: "/Upload/AsyncUpload",
+                flash_url: '/Scripts/jquery-asyncUpload/swfupload.swf',
+                file_size_limit: "10 MB",
+                button_image_url: '/Scripts/jquery-asyncUpload/blankButton.png',
+                disableDuringUpload: 'INPUT[type="submit"]'
+            });
+
+        });
+    </script>
+}

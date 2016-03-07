@@ -1,0 +1,66 @@
+﻿@model DPUWebPhet10.Models.ScoreRound1Model
+@using DPUWebPhet10.Helpers
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "";
+    Layout = "~/Views/Shared/_Managementlayout.cshtml";
+}
+@{
+    
+    <div class="full_w">
+        <div class="h_title">
+            Manage pages - บันทึกคะแนนรอบเจียรไนเพชร</div>
+        <!-- Content -->
+        <!-- Box Head -->
+        <div>
+            <br />
+            <div class="condition">
+                @using (Html.BeginForm("doUploadRound1", "Score", FormMethod.Post, new { enctype = "multipart/form-data", id = "myForm" }))
+                { 
+                    <p>
+                        <label>
+                            โหลดข้อมูลจากากรตรวจ OMR (ไฟล์ *.csv เท่านั้น)
+                        </label>
+                        <input style="color: Green" type="file" id="FileUpload1" name="FileUpload1" />
+                        <button type="submit" class="button">
+                            ประมวลผล</button>
+                    </p>
+                            
+                    <div class="entry">
+                        <div class="sep">
+                        </div>
+                        <a class="button cancel" href="/Score/deleteRound1Data">ล้างข้อมูลรอบเจียรไนเพชร</a>
+                    </div>
+                            
+
+                    <br />
+                }
+                @if (ViewBag.ResultMsg != null)
+                {
+                    <div class="n_ok">
+                        <p>
+                            @ViewBag.ResultMsg
+                        </p>
+                    </div>
+                }
+            </div>
+        </div>
+        <!-- End Content -->
+    </div> 
+}
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+
+        });
+    </script>
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<DPUWebPhet10.Models.TB_ROLE_PERMISSION>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Managementlayout.cshtml";
+}
+<div class="full_w">
+    <div class="h_title">
+        Manage pages - Role Management</div>
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TB_ROLE.NAME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PERMISSION_CODE)
+            </th>
+            <th>
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TB_ROLE.NAME)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PERMISSION_CODE)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+    </table>
+    <div class="entry">
+        <div class="sep">
+        </div>
+        <a class="button add" href="/RolePermission/Create">Create New</a>
+    </div>
+</div>

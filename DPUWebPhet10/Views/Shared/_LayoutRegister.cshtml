@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>- Chinese Competetion -</title>
+    <script type="text/javascript" src="~/Scripts/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-asyncUpload/jquery-asyncUpload-0.1.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-asyncUpload/swfupload.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('html').click(function (e) {
+                if (e.target.id == 'menu04' ||
+				      e.target.parentNode.id == 'menu04') {
+                    if ($('#menupanel04').css("visibility") == "hidden") {
+                        $('#menupanel04').css({ visibility: "visible" });
+                    } else {
+                        $('#menupanel04').css({ visibility: "hidden" });
+                    }
+                } else {
+                    if (e.target.id != 'menupanel04' && e.target.parentNode.id != 'menupanel04' && e.target.id != 'menupanel04-inner' && e.target.parentNode.id != 'menupanel04-inner') {
+                        $('#menupanel04').css({ visibility: "hidden" });
+                    }
+                }
+            });
+
+
+
+
+            $('html').click(function (e) {
+                if (e.target.id == 'menu05' ||
+				      e.target.parentNode.id == 'menu05') {
+                    if ($('#menupanel05').css("visibility") == "hidden") {
+                        $('#menupanel05').css({ visibility: "visible" });
+                    } else {
+                        $('#menupanel05').css({ visibility: "hidden" });
+                    }
+                } else {
+                    if (e.target.id != 'menupanel05' && e.target.parentNode.id != 'menupanel05' && e.target.id != 'menupanel05-inner' && e.target.parentNode.id != 'menupanel05-inner') {
+                        $('#menupanel05').css({ visibility: "hidden" });
+                    }
+                }
+            });
+            $("#btnLogin").click(function (e) {
+                e.preventDefault;
+
+                var uname = $("#uname").val();
+                var pwd = $("#pwd").val();
+                $.post("/Account/CheckLogin", { 'uname': uname, 'pwd': pwd },
+
+                    function (data) {
+                        if (data.Success == true) {
+
+                            window.location.href = '/Home';
+                        }
+                        else { alert('บัญชีผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง'); }
+                    });
+                return false;
+            });
+
+
+
+        });
+    </script>
+</head>
+<body>
+    @*<div id="menupanel04" class="menupanel04">
+        <div id="menupanel04-inner">
+            <div class="arrow">
+            </div>*@
+            @*<a href="/FileUpload/documents/basic-ed.pdf" target="_blank"><span>@DPUWebPhet10.Resources.Layout.Layout.TOPMENU_HEADER04_SUB01</span></a>*@
+            @*<a href="/FileUpload/documents/higher-ed.pdf" target="_blank"><span>@DPUWebPhet10.Resources.Layout.Layout.TOPMENU_HEADER04_SUB02</span></a>*@
+        @*</div>
+    </div>*@
+    @*<div id="menupanel05" class="menupanel05">
+        <div id="menupanel05-inner">
+            <div class="arrow">
+            </div>
+            <a href="~/Report/Report16">@DPUWebPhet10.Resources.Layout.Layout.TOPMENU_HEADER05_SUB01</a>
+            <a href="~/Report/Report17">@DPUWebPhet10.Resources.Layout.Layout.TOPMENU_HEADER05_SUB02</a>
+        </div>
+    </div>*@
+    <div id="wrapper">
+        <div id="header-text1">
+            <div class="left">
+                <table>
+                    <tr>
+                        <td><a id="menu01" href="~/Home" style=" color: white"><img src="~/Images/home.png" width="17px" height="17px" alt="" /></a></td>
+                        <td>
+                            <a href="https://twitter.com/dhurakijpundit">
+                                <img src="~/Images/twitter_icon.gif" width="17px" height="17px" alt="" /></a>
+                        </td>
+                        <td>
+                            <a href="http://www.facebook.com/dpu.ac.th">
+                                <img src="~/Images/facebook_icon.gif" width="17px" height="17px" alt="" /></a>
+                        </td>
+                        <td>
+                            Dhurakij Pundit University
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="right">
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+        <div id="header">
+        </div>
+        <div id="banner">
+            @*<img src="~/Images/banner.png" />*@
+        </div>
+
+        <div id="content">
+            <!-- Content Here -->
+            <div id="right">
+                <div class="box" style="width: 968px; margin: -10px;">
+                    @RenderBody()
+                </div>
+            </div>
+            <!-- End Contnet -->
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <br />
+    <div id="footer">
+มหาวิทยาลัยธุรกิจบัณฑิตย์  เลขที่ 110/1-4 ถนนประชาชื่น หลักสี่ กรุงเทพมหานคร 10210 โทรศัพท์ 0-2954-7300 ต่อ 899   E-mail  :  petch@dpu.ac.th
+    </div>
+        @Styles.Render("~/Content/screen.css")
+    @Styles.Render("~/Content/main.css")
+    @Styles.Render("~/Content/PagedList.css")
+
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

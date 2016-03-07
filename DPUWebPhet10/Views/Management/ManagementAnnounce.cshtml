@@ -1,0 +1,88 @@
+﻿@model DPUWebPhet10.Models.TB_APPLICATION
+@{
+    Layout = "~/Views/Shared/_Managementlayout.cshtml";
+}
+@{
+    <div class="full_w">
+        <div class="h_title">
+            Manage pages - เปิด-ปิด การประกาศผล
+        </div>
+        @using (Html.BeginForm())
+        {
+
+            @Html.HiddenFor(model => model.PROJECT_ID)
+            @*@Html.HiddenFor(model => model.PROJECT_ROUND)
+    @Html.HiddenFor(model => model.PROJECT_REGISTER_START)
+    @Html.HiddenFor(model => model.PROJECT_REGISTER_END)
+    @Html.HiddenFor(model => model.PROJECT_EXAM_DATE)
+    @Html.HiddenFor(model => model.PROJECT_STATUS)
+    @Html.HiddenFor(model => model.PROJECT_ANNOUNCE_DATE)
+    @Html.HiddenFor(model => model.PROJECT_IS_ANNOUNCE_ROUND1)
+    @Html.HiddenFor(model => model.PROJECT_IS_ANNOUNCE_ROUND2)*@
+
+            <table>
+                <tr>
+                    <td style="width: 150px;text-align:right;">รอบเจียระไนเพชร</td>
+                    <td style="width: 150px;text-align:left;">
+                   
+
+
+            @Html.DropDownListFor(model => model.PROJECT_IS_ANNOUNCE_ROUND1, new SelectList(
+                      new List<Object>{
+                           new { value = 1 , text = "On"},
+                           new { value = 0 , text = "Off"},
+                        },
+                      "value",
+                      "text",
+                            0), new { style = "width: 100px" })
+                    
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 150px;text-align:right;">รอบเพชรยอดมงกุฏ</td>
+                    <td style="width: 150px;text-align:left;">
+                  
+
+
+            @Html.DropDownListFor(model => model.PROJECT_IS_ANNOUNCE_ROUND2, new SelectList(
+                      new List<Object>{
+                           new { value = 1 , text = "On"},
+                           new { value = 0 , text = "Off"},
+                        },
+                      "value",
+                      "text",
+                            0), new { style = "width: 100px" })
+                        
+                    </td>
+                </tr>
+            </table>
+
+
+
+                        <!-- Form Buttons -->
+            <div class="entry">
+                <div class="sep">
+                </div>
+                <button type="submit" class="button edit">
+                    บันทึก
+                </button>
+                @*@Html.ActionLink("ย้อนกลับ", "SchoolList", new { id = Model.SCHOOL_ID }, new { @class = "button" })*@
+            </div>
+                        <!-- End Form Buttons -->
+        }
+    </div>
+
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+
+
+        });
+    </script>
+}
+

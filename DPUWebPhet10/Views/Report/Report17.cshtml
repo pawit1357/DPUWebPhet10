@@ -1,0 +1,124 @@
+﻿@model DPUWebPhet10.Models.Round1ReportModelCriteria
+@using DPUWebPhet10.Helpers
+@using PagedList.Mvc;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    <div class="box-head">
+        <br />
+        <div class="condition">
+            @using (Html.BeginForm("Report17", "Report"))
+            {
+                <table>
+                    <tr>
+                        <td style="text-align: right">
+                            @Html.Label("เลือกระดับชั้น")
+                        </td>
+                        <td>
+                            @Html.DropDownListFor(model => model.studentLevel, new SelectList(
+                      new List<Object>{ 
+                           new { value = 0 , text = "-- เลือก --"  },
+                           new { value = 1 , text = "ช่วงชั้นที่ 1 ประถมศึกษาปีที่ 1-3"  },
+                           new { value = 2 , text = "ช่วงชั้นที่ 2 ประถมศึกษาปีที่ 4-6" },
+                           new { value = 3 , text = "ช่วงชั้นที่ 3 มัธยมศึกษาปีที่ 1-3"},
+                           new { value = 4 , text = "ช่วงชั้นที่ 4 มัธยมศึกษาปีที่ 4-6"},
+                           new { value = 5 , text = "อุดมศึกษา"}
+                        },
+                      "value",
+                      "text",
+                                 0), new { style = "width: 200px" })
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">
+                            @Html.Label("ค้นหา (เลขที่ประจำดัวสอบ,ชื่อ-สกุล,สถานศึกษา) :")
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(model => model.searchText, new { style = "width: 300px" })
+                        </td>
+                        <td>
+                            <input type="submit" class="button" value="ค้นหา" style="width: 50px" />
+                        </td>
+                    </tr>
+                </table>
+
+            }
+            <div class="table" id="gridContent">
+                <br />
+                <table width="100%">
+                    <thead>
+                        <tr>
+                            <th>
+                                เลขประจำตัวสอบ
+                            </th>
+                            <th>
+                                ชื่อ-นามสกุล
+                            </th>
+                            <th>
+                                สถานศึกษา
+                            </th>
+                            <th>
+                                คะแนน
+                            </th>
+                            <th>
+                                อันดับ
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.reports != null)
+                        {
+                            foreach (var result in Model.reports)
+                            {
+                            <tr>
+                                <td>@result.studentCode
+                                </td>
+                                <td>@result.studentFullName
+                                </td>
+                                <td>@result.schoolName
+                                </td>
+                                <td>@result.round2score
+                                </td>
+                                <td>@result.remark
+                                </td>
+                            </tr>
+
+                            }
+                            if (Model.reports.Count == 0)
+                            {
+                            <!-- Not found data -->
+                            <div style="text-align: center; color: Red">
+                                <h2>
+                                    @Html.Label("ไม่พบข้อมูล")
+                                </h2>
+                            </div>             
+             
+                            }
+                        }
+                    </tbody>
+                </table>
+                @if (Model.reports != null)
+                {
+                    if (Model.reports.Count > 0)
+                    {
+                    <div>
+                        @Html.PagedListPager(
+                        Model.reports, page => Url.Action("Report17", new RouteValueDictionary() { { "Page", page }, { "studentLevel", Model.studentLevel } }),
+                    PagedListRenderOptions.MinimalWithPageCountText)
+                    </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+
+}
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+        });
+    </script>
+}

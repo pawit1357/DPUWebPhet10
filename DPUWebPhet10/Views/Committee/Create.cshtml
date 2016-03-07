@@ -1,0 +1,67 @@
+﻿@model DPUWebPhet10.Models.TB_COMMITEE
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Managementlayout.cshtml";
+}
+<div class="full_w">
+    <div class="h_title">
+        Manage pages - เพิ่มข้อมูลกรรมการ</div>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+
+        <p>
+            @Html.LabelFor(model => model.COMMITEE_TITLE_ID, "คำนำหน้า")
+        </p>
+        <p>
+            @Html.DropDownListFor(model => model.COMMITEE_TITLE_ID, new SelectList(
+                      new List<Object>{ 
+                           new { value = 0 , text = "-- Select --"  },
+                           new { value = 3 , text = "นาย"},
+                           new { value = 4 , text = "นางสาว"},
+                           new { value = 5 , text = "นาง"}
+                        },
+                      "value",
+                      "text",
+                            0), new { style = "width: 100px" })
+        </p>
+        <p>
+            @Html.LabelFor(model => model.COMMITEE_NAME,"ชื่อ")
+            @Html.EditorFor(model => model.COMMITEE_NAME)
+            @Html.ValidationMessageFor(model => model.COMMITEE_NAME)
+        </p>
+        <p>
+            @Html.LabelFor(model => model.COMMITEE_SURNAME, "นามสกุล")
+            @Html.EditorFor(model => model.COMMITEE_SURNAME)
+            @Html.ValidationMessageFor(model => model.COMMITEE_SURNAME)
+        </p>
+        <p>
+            @Html.LabelFor(model => model.COMMITEE_PHONE, "เบอร์โทร")
+            @Html.EditorFor(model => model.COMMITEE_PHONE)
+            @Html.ValidationMessageFor(model => model.COMMITEE_PHONE)
+        </p>
+        <p>
+            @Html.LabelFor(model => model.COMMITEE_STATUS, "สถานะ")
+            @Html.DropDownListFor(model => model.COMMITEE_STATUS, new SelectList(
+                      new List<Object>{ 
+                           new { value = "A" , text = "Active"},
+                           new { value = "I" , text = "InActive"}
+                        },
+                      "value",
+                      "text",
+                            0), new { style = "width: 100px" })
+        </p>
+       
+        <div class="entry">
+            <div class="sep">
+            </div>
+            <button type="submit" class="button add">
+                บันทึก</button>
+            <a class="button" href="/Committee/Index">ยกเลิก</a>
+        </div>
+    }
+</div>
+<!-- End Content -->
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

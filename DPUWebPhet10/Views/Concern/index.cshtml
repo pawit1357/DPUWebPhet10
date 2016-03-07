@@ -1,0 +1,96 @@
+﻿@model DPUWebPhet10.Models.TB_APPLICATION_STUDENT
+@using DPUWebPhet10.Helpers
+@using PagedList.Mvc;
+@{
+    Layout = "~/Views/Shared/_Managementlayout.cshtml";
+}
+@{
+    <div class="full_w">
+        <div class="h_title">
+            Manage pages - รายงานผู้สมัครที่มีความน่าจะเป็นระดับชั้นผิด
+        </div>
+        <br />
+        @using (Html.BeginForm())
+        {
+@*            <p>
+                <span>เลือกระดับชั้น</span>
+                @Html.DropDownList("StudentLevel", "<-- ทั้งหมด -->")
+                <input type="submit" class="button" value="ค้นหา" />
+            </p>*@
+            <div class="entry">
+                <div class="sep">
+                </div>
+            </div>
+            if (Model.reports != null)
+            {
+            <table style="width: 80%">
+                <tr>
+                    <th style="width: 50px; text-align: center;">ลำดับ
+                    </th>
+                    <th style="width: 450px; text-align: left;">โรงเรียน
+                    </th>
+                    <th style="width: 300px; text-align: left;">ชื่อ - นามสกุล
+                    </th>
+                    <th style="width: 150px; text-align: left;">ระดับชั้น
+                    </th>
+                    <th style="width: 150px; text-align: left;">อ. ผู้ดูแล
+                    </th>
+                    <th style="width: 150px; text-align: left;">เบอร์ติดต่อ
+                    </th>
+                </tr>
+                @foreach (var item in Model.reports)
+                {
+            
+                    <tr>
+                        <td style="width: 50px; text-align: center;">
+                            @item.seq
+                        </td>
+                        <td style="width: 450px; text-align: left;">
+                            @item.SCHOOL_NAME
+                        </td>
+                        <td style="width: 300px; text-align: left;">
+                            @item.STD_NAME @item.STD_SURNAME
+                        </td>
+                        <td style="width: 150px; text-align: left;">
+                            @item.LEVEL_NAME
+                        </td>
+                        <td style="width: 150px; text-align: left;">
+                            @item.STAFF_NAME
+                        </td>
+                        <td style="width: 150px; text-align: left;">
+                            @item.STAFF_PHONE
+                        </td>
+                    </tr>
+                }
+            </table>
+            @Html.PagedListPager(Model.reports,
+                 page => Url.Action("index", new RouteValueDictionary() {
+               { "Page", page },
+            }),
+            PagedListRenderOptions.MinimalWithPageCountText)            
+            }
+            else
+            {
+            <div class="n_error">
+                <p>
+                    ไม่พบข้อมูล
+                </p>
+            </div>
+            }
+        }
+    </div>
+    <div class="ExportSection">
+@*        @Html.ActionLink("Export to Csv", "ExportClientsListToCSV")*@
+        @Html.ActionLink("Export to Excel", "ExportClientsListToExcel")
+
+    </div>
+    
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+    <script type="text/javascript">
+        $(document).ready(function () {
+        });
+    </script>
+}
